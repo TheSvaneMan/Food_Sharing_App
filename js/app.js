@@ -18,10 +18,13 @@ function showLoginPage() {
 function showSignUpPage() {
 	navigateTo('#/signup');
 }
-
 // Show Home Page
 function showHomePage() {
 	navigateTo('#/browse');
+}
+// Add New Product Page
+function showAddNewProductPage() {
+	navigateTo('#/addNewProduct');
 }
 
 // ========== Sign Up Procedure ==========
@@ -139,7 +142,7 @@ function TogglePasswordVisibility() {
 async function LogOut() {
 	const options = {
 		method: 'POST',
-		headers: { 'Content-Type': 'application/json; chartype=utf-8' }
+		headers: { 'Content-Type': 'application/json; chartype=utf-8' },
 	};
 	const response = await fetch(_security + '?action=logOut', options);
 	// Wait for server response
@@ -163,9 +166,8 @@ async function LogOut() {
 // Food Allergies
 // This filter should be used both on Browse and Explore (Dynamic Component)
 
-
 // ========== Additional Systems ==========
-// Keeping track of the transaction state happens only after the user clicks "Buy", (?) 
+// Keeping track of the transaction state happens only after the user clicks "Buy", (?)
 // Col saying if it is sold.
 // Only on transaction complete/ sold can you make a review.
 // Save date item sold. NOW().
@@ -177,7 +179,7 @@ async function LogOut() {
 
 // User settings : Dark Mode, Background Wallpaper, Colors, etc
 
-// I have one other fun feature to add but lets get the CRUD working on items :D 
+// I have one other fun feature to add but lets get the CRUD working on items :D
 
 async function AddFoodProduct() {
 	foodName = document.getElementById('foodName').value;
@@ -206,5 +208,28 @@ async function AddFoodProduct() {
 	};
 	await fetch(_baseUrl + '?action=addNewFood', options).then((response) => {
 		let result = response.json();
+	});
+}
+
+// ========== Google Maps ==========
+/* function myMap() {
+	var mapProp = {
+		center: new google.maps.LatLng(51.508742, -0.12085),
+		zoom: 5,
+	};
+	var map = new google.maps.Map(document.getElementById('googleMap'), mapProp);
+} */
+
+// ========== Image Recognition Feature ==========
+const img = document.getElementById('testImg');
+
+function predictFood() {
+	// Load the model.
+	mobilenet.load().then((model) => {
+		// Classify the image.
+		model.classify(img).then((predictions) => {
+			console.log('Predictions: ');
+			console.log(predictions);
+		});
 	});
 }
