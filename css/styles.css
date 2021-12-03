@@ -1,0 +1,190 @@
+/* ------------ Root Variables ----------------- */
+:root {
+    --white: white;
+    --black: black;
+    --grey: grey;
+    --red: red;
+    --shadow: black 5px 5px 10px;
+    --button: #075f5f;
+    --background: #071a1d;
+    --darker-background: #062e2c;
+    --border-radius: 10px;
+    --padding-sm: 5px;
+}
+
+/* ---------- scrollbar ---------- */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--darker-background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: var(--background);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--background);
+}
+
+/* ------------- Navigation ---------- */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--darker-background);
+    height: 5vh;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+#featureSection {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 5vh;
+    background-color: var(--darker-background);
+}
+
+/* ------------- Footer ---------- */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    height: 2vh;
+}
+
+/* ------------- Page ---------- */
+.page {
+    display: none;
+    margin: 0 auto;
+    /*min heigh is screen heigh minus height of tab and top bar */
+    min-height: 88vh;
+    background: var(--light-grey);
+    animation: fadeIn 0.4s;
+    padding: var(--padding-sm);
+}
+
+/* ------------- Body ---------- */
+body {
+    margin: 0 auto;
+    height: 100vh;
+    color: var(--white);
+    background-color: var(--background);
+}
+
+/* ------------- Logo ---------- */
+.logo {
+    width: 72px;
+    border-radius: 50px;
+}
+
+/* ------------- Placeholder ---------- */
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+/* ------------- Input Function ---------- */
+.inputFunction {
+    height: 32px;
+    margin-bottom: var(--padding-sm);
+    padding: var(--padding-sm);
+    width: 80%;
+    color: var(--white);
+    background: var(--background);
+    border-radius: var(--border-radius);
+}
+
+/* ------------- Account Control Panel ---------- */
+#accountControlPanel {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* ------------- Buttons ---------- */
+.defaultButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    height: 28px;
+    width: 72px;
+    margin: 4px;
+    font-size: 1rem;
+    padding: var(--padding-sm);
+    background-color: var(--button);
+    border-radius: var(--border-radius);
+    border-style: var(--white);
+}
+
+/* ------------- Food Component ---------- */
+.foodComponent {
+    display: grid;
+    position: relative;
+    height: 280px;
+    margin: 5px;
+    width: 180px;
+    background-color: var(--darker-background);
+    border-radius: var(--border-radius);
+}
+
+.foodImage {
+    height: 120px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.foodPrice {
+    z-index: 5;
+    position: absolute;
+    right: 2%;
+    top: 30%;
+    background-color: black;
+    padding: var(--padding-sm);
+}
+
+.foodDescriptions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foodFunctions {
+    display: grid;
+}
+
+/* ------------- My Store ---------- */
+#listedItems {
+    display: grid;
+    height: 60vh;
+    grid-template-columns: 50% 50%;
+    overflow-y: scroll;
+}
