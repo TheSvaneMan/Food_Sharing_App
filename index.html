@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Food Share</title>
-		<link rel="stylesheet" href="css/styles.css" />
-		<link href="ico/favicon.ico" rel="icon" />
-	</head>
-	<body>
-		<!-- Features
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Food Share</title>
+	<link rel="stylesheet" href="css/styles.css" />
+	<link href="ico/favicon.ico" rel="icon" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<script src="https://kit.fontawesome.com/3f9455542b.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Features
 		<section id="featureSection">
 			<button class="defaultButton" onclick="window.history.back()">
 				Back
@@ -18,278 +24,203 @@
 			<button class="defaultButton">Cart</button>
 			<button class="defaultButton">Inbox</button>
 		</section> -->
-		<!-- Landing Page -->
-		<section id="landingPage" class="page">
-			<img class="landImg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg">
-			<section id="accountControlPanel">
-				<!-- Logo
+	<!-- Landing Page -->
+	<section id="landingPage" class="page">
+		<img class="landImg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg">
+		<section id="accountControlPanel">
+			<!-- Logo
 				
 				<h1>Welcome</h1>
 				<h2>Sharing is caring!</h2> -->
-				<div class="landing">
+			<div class="landing">
 				<img src="assets/tmp_logo.png" class="logo" />
-				<button class="loginSignupBtn" id="login" onclick="showLoginPage()">Login</button>
-				<button class="loginSignupBtn" id="signup" onclick="showSignUpPage()">Sign up</button>
+				<button class="loginSignupBtn" id="landinglogin" onclick="showLoginPage()">Login</button>
+				<button class="loginSignupBtn" id="landingsignup" onclick="showSignUpPage()">Sign up</button>
 			</div>
-			</section>
-		
-			<!-- Footer
+		</section>
+
+		<!-- Footer
 			<footer>
 				<p>
 					Copyright Food Share 2021 - A wholesome web app to reduce food waste
 				</p>
 			</footer> -->
-		</section>
-		<!-- Login Page -->
-		<section id="loginPage" class="page">
-			<!-- Logo -->
-			<img src="assets/tmp_logo.png" width="72px" class="logo" />
+	</section>
+	<!-- Login Page -->
+	<section id="loginPage" class="page">
+		<!-- Logo -->
+		<div class="landing" id="loginPage">
 			<h1>Login</h1>
-			<form method="POST">
-				<input
-					class="inputFunction"
-					type="text"
-					id="loginEmail"
-					placeholder="Enter Email"
-				/>
-				<input
-					class="inputFunction"
-					type="password"
-					id="loginPassword"
-					placeholder="Enter Password"
-				/>
+			<form method="POST" class="loginform">
+				<input class="inputFunction" type="text" id="loginEmail" placeholder="Email" />
+				<input class="inputFunction" type="password" id="loginPassword" placeholder="Password" />
 			</form>
-
-			<!-- An element to toggle between password visibility -->
+			<button class="loginSignupBtn" id="login" onclick="login()">Login</button>
+			<div class="logoptions">
+				<h3>or log in with</h3>
+				<button class="logoptionsbtn"><i class="fab fa-facebook" id="fb"></i></button>
+				<button class="logoptionsbtn"><i class="fab fa-google" id="google"></i></button>
+				<button class="logoptionsbtn">Login</button>
+				<!-- An element to toggle between password visibility
 			<input type="checkbox" onclick="TogglePasswordVisibility()" />Show
-			Password
-			<button class="defaultButton" onclick="login()">Login</button>
+			Password -->
 
-			<a href="">Forgot password?</a>
-			<p>Don't have an account? <a href="#/signup">Sign up here!</a></p>
-		</section>
-		<!-- Sign Up Page -->
-		<section id="signUpPage" class="page">
-			<!-- Logo -->
-			<img src="assets/tmp_logo.png" width="72px" class="logo" />
-			<form action="">
-				<input
-					class="inputFunction"
-					type="text"
-					id="signUpFirstName"
-					placeholder="Enter First Name"
-				/>
-				<input
-					class="inputFunction"
-					type="text"
-					id="signUpLastName"
-					placeholder="Enter Last Name"
-				/>
-				<input
-					class="inputFunction"
-					type="text"
-					id="signUpEmail"
-					placeholder="Enter Email"
-				/>
-				<input
-					class="inputFunction"
-					type="text"
-					id="signUpPassword"
-					placeholder="Enter preferred Password"
-				/>
-				<input
-					class="inputFunction"
-					type="text"
-					id="signUpCity"
-					placeholder="City"
-				/>
-				<input
-					class="inputFunction"
-					type="text"
-					id="signUpCountry"
-					placeholder="Country"
-				/>
-				<input
-					class="inputFunction"
-					type="number"
-					id="signUpPostalCode"
-					placeholder="Post Code"
-				/>
-				<!-- Programmatically assign values -->
-				<p>Birthday</p>
-				<input type="date" id="signUpBirthday" placeholder="yyyy-mm-dd" />
-				<h3>What are you interested in most on the platform?</h3>
-				<select
-					id="signUpInterestedIn"
-					name="signUpInterestedIn"
-					placeholder="Interested in?"
-				>
-					<option value="s">Sharing</option>
-					<option value="b">Buying</option>
-					<option value="x">Both</option>
-				</select>
-			</form>
 
-			<button class="defaultButton" onclick="createUserEvent()">SignUp</button>
-			<p>Already have an account? <a href="#/login">Login here!</a></p>
-		</section>
-		<!-- Browse Page -->
-		<section id="browsePage" class="page">
-			<h1>BROWSE</h1>
-			<button class="defaultButton">Filters</button>
-			<input type="text" placeholder="Search" class="inputFunction" />
-			<p>Current Filters: Price</p>
-			<!-- Loop through Food Objects -->
-			<!-- Listed Items -->
-			<section id="listedItems">
-				<article class="foodComponent">
-					<div class="foodHeader">
-						<img
-							class="foodImage"
-							src="assets/tmp_food.png"
-							alt="Food Picture"
-						/>
-						<div class="foodPrice">Price: 40dkk</div>
-					</div>
-					<div class="foodContent">
-						<div class="foodDescription">
-							<p>Food Description (Short)</p>
-						</div>
-						<div class="foodFunctions">
-							<button class="defaultButton">Delete</button>
-							<button class="defaultButton">Update</button>
-						</div>
-					</div>
-				</article>
-			</section>
-		</section>
+				<!--<a href="">Forgot password?</a>
+			<p>Don't have an account? <a href="#/signup">Sign up here!</a></p>-->
+			</div>
+		</div>
+	</section>
+	<!-- Sign Up Page -->
+	<section id="signUpPage" class="page">
+		<!-- Logo -->
+		<img src="assets/tmp_logo.png" width="72px" class="logo" />
+		<form action="">
+			<input class="inputFunction" type="text" id="signUpFirstName" placeholder="Enter First Name" />
+			<input class="inputFunction" type="text" id="signUpLastName" placeholder="Enter Last Name" />
+			<input class="inputFunction" type="text" id="signUpEmail" placeholder="Enter Email" />
+			<input class="inputFunction" type="text" id="signUpPassword" placeholder="Enter preferred Password" />
+			<input class="inputFunction" type="text" id="signUpCity" placeholder="City" />
+			<input class="inputFunction" type="text" id="signUpCountry" placeholder="Country" />
+			<input class="inputFunction" type="number" id="signUpPostalCode" placeholder="Post Code" />
+			<!-- Programmatically assign values -->
+			<p>Birthday</p>
+			<input type="date" id="signUpBirthday" placeholder="yyyy-mm-dd" />
+			<h3>What are you interested in most on the platform?</h3>
+			<select id="signUpInterestedIn" name="signUpInterestedIn" placeholder="Interested in?">
+				<option value="s">Sharing</option>
+				<option value="b">Buying</option>
+				<option value="x">Both</option>
+			</select>
+		</form>
 
-		<!-- Item Page -->
-		<section id="itemPage" class="page">
-			<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
-			<p>Price: 50dkk</p>
-			<h1>Food Title</h1>
-			<h2>From Penda</h2>
-			<p>Location</p>
-			<p>Date Uploaded</p>
-			<b>Description</b>
-			<p>Description about the meal.</p>
-			<b>Location</b>
-			<button class="defaultButton">Buy</button
-			><button class="defaultButton">Message</button>
-		</section>
-		<!-- My Store-->
-		<section id="myStorePage" class="page">
-			<h1>MY STORE</h1>
-			<h4>Items on the market</h4>
-			<!-- Store Functions -->
-			<section>
-				<button class="defaultButton" onclick="showAddNewProductPage()">
-					Add +
-				</button>
-				<button class="defaultButton">Active</button>
-				<button class="defaultButton">Sold</button>
-			</section>
-			<!-- Listed Items -->
-			<section id="listedItems">
-				<article class="foodComponent">
-					<div class="foodHeader">
-						<img
-							class="foodImage"
-							src="assets/tmp_food.png"
-							alt="Food Picture"
-						/>
-						<div class="foodPrice">Price: 40dkk</div>
+		<button class="defaultButton" onclick="createUserEvent()">SignUp</button>
+		<p>Already have an account? <a href="#/login">Login here!</a></p>
+	</section>
+	<!-- Browse Page -->
+	<section id="browsePage" class="page">
+		<h1>BROWSE</h1>
+		<button class="defaultButton">Filters</button>
+		<input type="text" placeholder="Search" class="inputFunction" />
+		<p>Current Filters: Price</p>
+		<!-- Loop through Food Objects -->
+		<!-- Listed Items -->
+		<section id="listedItems">
+			<article class="foodComponent">
+				<div class="foodHeader">
+					<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
+					<div class="foodPrice">Price: 40dkk</div>
+				</div>
+				<div class="foodContent">
+					<div class="foodDescription">
+						<p>Food Description (Short)</p>
 					</div>
-					<div class="foodContent">
-						<div class="foodDescription">
-							<p>Food Description (Short)</p>
-						</div>
-						<div class="foodFunctions">
-							<button class="defaultButton">Delete</button>
-							<button class="defaultButton">Update</button>
-						</div>
+					<div class="foodFunctions">
+						<button class="defaultButton">Delete</button>
+						<button class="defaultButton">Update</button>
 					</div>
-				</article>
-			</section>
-		</section>
-		<!-- Add New Product -->
-		<section id="addNewProductPage" class="page">
-			<h1>ADD NEW PRODUCT</h1>
-			<p>Name of the Meal</p>
-			<input
-				type="text"
-				class="inputFunction"
-				id="newProductName"
-				placeholder="Name of Meal"
-			/>
-			<p>Short Description of Food Contents</p>
-			<input
-				type="text"
-				class="inputFunction"
-				id="newProductDescription"
-				placeholder="Description of Meal"
-			/>
-			<p>Category</p>
-			<p>Choose tags that describe your product</p>
-			<input type="checkbox" /><b>Fruit</b> <input type="checkbox" /><b
-				>Vegetable</b
-			>
-			<input type="checkbox" /><b>Grain</b> <input type="checkbox" /><b>Meat</b>
-			<input type="checkbox" /><b>Cooked Meal</b>
-			<p>Pick up location</p>
-			<!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
-
-			<input
-				type="text"
-				id="newProductPickUpLoc"
-				placeholder="Location of pickup"
-				class="inputFunction"
-			/>
-			<p>Allergens</p>
-			<p>Help keep people safe by identifying key ingredients</p>
-			<input type="checkbox" /><b>Peanuts</b> <input type="checkbox" /><b
-				>Lactose</b
-			>
-			<p>Price</p>
-			<input
-				type="number"
-				id="newProductPrice"
-				placeholder="Price of the meal"
-				class="inputFunction"
-			/>
-			<form action="backend/uploadFiles/B_UploadFile.php"  method="post" enctype="multipart/form-data">
-				<h3>Add an image</h3>
-				<input type="file" name="fileToUpload" id="fileToUpload" placeholder="Image of the meal" />
-				<input type="submit" name="action" value="upload">
-			</form>
-			<!-- Display Image -->
-			<img src="local/food/food19.jpg" alt="The recently uploaded image" id="testImg">
-			<button class="defaultButton" onclick="predictFood()">Predict Image</button>
-			<button class="defaultButton" >Share Meal</button>
-		</section>
-		<!-- Bought Items -->
-		<section id="boughtItemsPage" class="page">
-			<article>
-				<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
-				<p>Price 40dkk</p>
-				<p>Food Description (Short)</p>
-				<p>Date Sold: 12th November 2021</p>
+				</div>
 			</article>
 		</section>
-		<!-- Account Page -->
-		<section id="userAccountPage" class="page">
-			<img src="assets/tmp_profilePic.png" alt="Profile Picture" width="72px" />
-			<p>Change email</p>
-			<p>email</p>
-			<p>Password</p>
-			<button class="defaultButton">Delect Account</button>
-			<button class="defaultButton" onclick="LogOut()">Sign Out</button>
+	</section>
+
+	<!-- Item Page -->
+	<section id="itemPage" class="page">
+		<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
+		<p>Price: 50dkk</p>
+		<h1>Food Title</h1>
+		<h2>From Penda</h2>
+		<p>Location</p>
+		<p>Date Uploaded</p>
+		<b>Description</b>
+		<p>Description about the meal.</p>
+		<b>Location</b>
+		<button class="defaultButton">Buy</button><button class="defaultButton">Message</button>
+	</section>
+	<!-- My Store-->
+	<section id="myStorePage" class="page">
+		<h1>MY STORE</h1>
+		<h4>Items on the market</h4>
+		<!-- Store Functions -->
+		<section>
+			<button class="defaultButton" onclick="showAddNewProductPage()">
+				Add +
+			</button>
+			<button class="defaultButton">Active</button>
+			<button class="defaultButton">Sold</button>
 		</section>
-		<!-- Message Page -->
-		<section id="inboxPage" class="page"></section>
-		<!-- Navigation -->
-		<!--<nav>
+		<!-- Listed Items -->
+		<section id="listedItems">
+			<article class="foodComponent">
+				<div class="foodHeader">
+					<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
+					<div class="foodPrice">Price: 40dkk</div>
+				</div>
+				<div class="foodContent">
+					<div class="foodDescription">
+						<p>Food Description (Short)</p>
+					</div>
+					<div class="foodFunctions">
+						<button class="defaultButton">Delete</button>
+						<button class="defaultButton">Update</button>
+					</div>
+				</div>
+			</article>
+		</section>
+	</section>
+	<!-- Add New Product -->
+	<section id="addNewProductPage" class="page">
+		<h1>ADD NEW PRODUCT</h1>
+		<p>Name of the Meal</p>
+		<input type="text" class="inputFunction" id="newProductName" placeholder="Name of Meal" />
+		<p>Short Description of Food Contents</p>
+		<input type="text" class="inputFunction" id="newProductDescription" placeholder="Description of Meal" />
+		<p>Category</p>
+		<p>Choose tags that describe your product</p>
+		<input type="checkbox" /><b>Fruit</b> <input type="checkbox" /><b>Vegetable</b>
+		<input type="checkbox" /><b>Grain</b> <input type="checkbox" /><b>Meat</b>
+		<input type="checkbox" /><b>Cooked Meal</b>
+		<p>Pick up location</p>
+		<!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
+
+		<input type="text" id="newProductPickUpLoc" placeholder="Location of pickup" class="inputFunction" />
+		<p>Allergens</p>
+		<p>Help keep people safe by identifying key ingredients</p>
+		<input type="checkbox" /><b>Peanuts</b> <input type="checkbox" /><b>Lactose</b>
+		<p>Price</p>
+		<input type="number" id="newProductPrice" placeholder="Price of the meal" class="inputFunction" />
+		<form action="backend/uploadFiles/B_UploadFile.php" method="post" enctype="multipart/form-data">
+			<h3>Add an image</h3>
+			<input type="file" name="fileToUpload" id="fileToUpload" placeholder="Image of the meal" />
+			<input type="submit" name="action" value="upload">
+		</form>
+		<!-- Display Image -->
+		<img src="local/food/food19.jpg" alt="The recently uploaded image" id="testImg">
+		<button class="defaultButton" onclick="predictFood()">Predict Image</button>
+		<button class="defaultButton">Share Meal</button>
+	</section>
+	<!-- Bought Items -->
+	<section id="boughtItemsPage" class="page">
+		<article>
+			<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
+			<p>Price 40dkk</p>
+			<p>Food Description (Short)</p>
+			<p>Date Sold: 12th November 2021</p>
+		</article>
+	</section>
+	<!-- Account Page -->
+	<section id="userAccountPage" class="page">
+		<img src="assets/tmp_profilePic.png" alt="Profile Picture" width="72px" />
+		<p>Change email</p>
+		<p>email</p>
+		<p>Password</p>
+		<button class="defaultButton">Delect Account</button>
+		<button class="defaultButton" onclick="LogOut()">Sign Out</button>
+	</section>
+	<!-- Message Page -->
+	<section id="inboxPage" class="page"></section>
+	<!-- Navigation -->
+	<!--<nav>
 			<ul>
 				<li class="defaultButton">
 					<a href="#/browse" class="nav-link">Discover</a>
@@ -305,19 +236,20 @@
 				</li>
 			</ul>
 		</nav> -->
-		<!-- Image Recognition feature -->
-		<!-- Load TensorFlow.js. This is required to use MobileNet. -->
-		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
-		<!-- Load the MobileNet model. -->
-		<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
-		<!-- Google Maps -->
-		<!-- Blocked for now, security reasons -->
-		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=[Value]=myMap"></script> -->
-		<!-- Router -->
-		<script src="js/router.js"></script>
-		<!-- Main app.js -->
-		<script src="js/app.js"></script>
-		<!-- Authentication Backend -->
-		<script src="backend/security/auth/B_Auth.php"></script>
-	</body>
+	<!-- Image Recognition feature -->
+	<!-- Load TensorFlow.js. This is required to use MobileNet. -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
+	<!-- Load the MobileNet model. -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
+	<!-- Google Maps -->
+	<!-- Blocked for now, security reasons -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=[Value]=myMap"></script> -->
+	<!-- Router -->
+	<script src="js/router.js"></script>
+	<!-- Main app.js -->
+	<script src="js/app.js"></script>
+	<!-- Authentication Backend -->
+	<script src="backend/security/auth/B_Auth.php"></script>
+</body>
+
 </html>

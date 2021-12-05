@@ -33,6 +33,10 @@
     background: var(--background);
 }
 
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 /* ------------- Navigation ---------- */
 nav {
     display: flex;
@@ -89,15 +93,33 @@ footer {
 
 
 .landing{
-    background-color: #fff;
+    background-color: rgb(194, 78, 78);
     height: 420px;
     padding: 0;
     position: absolute;
     left: 0;
     right: 0;
     bottom: -80px;
-    border-radius: 30px;
+    border-radius: 30px;   
+}
+
+#loginPage{
+    height: 500px;
+}
+
+.loginform{
+    margin-left: 30px;
     
+}
+
+input{
+    color: #000;
+}
+
+#loginPage h1{
+    margin-left: 30px;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
 }
 /* ------------- Body ---------- */
 body {
@@ -126,20 +148,23 @@ body {
 /* ------------- Placeholder ---------- */
 ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white;
+    color: #BABABA;
     opacity: 1;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
     /* Firefox */
 }
 
 /* ------------- Input Function ---------- */
 .inputFunction {
-    height: 32px;
+    height: 50px;
     margin-bottom: var(--padding-sm);
-    padding: var(--padding-sm);
-    width: 80%;
+    padding: 5px 0;
+    width: 90%;
     color: var(--white);
     background: var(--background);
     border-radius: var(--border-radius);
+    border-style: none;
 }
 
 /* ------------- Account Control Panel ---------- */
@@ -177,6 +202,19 @@ body {
 
 #login{
     position: absolute;
+    bottom: 30vh;
+    left: 0;
+    right: 0;
+    width: 250px;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#landinglogin{
+    position: absolute;
     bottom: 18vh;
     left: 0;
     right: 0;
@@ -187,7 +225,7 @@ body {
     background-color: #11999E;
 }
 
-#signup{
+#landingsignup{
     position: absolute;
     bottom: 7vh;
     left: 0;
@@ -201,6 +239,37 @@ body {
     border-color: #11999E;
     border-style: solid;
     border-radius: 15px;
+}
+
+.logoptions{
+    position: relative;
+    margin-top: 13vh;
+    text-align: center;
+    color: #BABABA;
+
+}
+
+.logoptionsbtn{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: #BABABA;
+    border-style: solid;
+}
+
+#fb{
+    font-size: 2rem;
+    color: #1977f3;
+}
+
+#google{
+    font-size: 2rem;
+    color: #1977f3;  
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+      
 }
 
 /* ------------- Food Component ---------- */
