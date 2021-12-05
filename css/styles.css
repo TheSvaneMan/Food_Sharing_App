@@ -88,7 +88,7 @@ footer {
     min-height: 88vh;
     background: var(--light-grey);
     animation: fadeIn 0.4s;
-    padding: var(--padding-sm);
+   
 }
 
 
@@ -372,7 +372,14 @@ body {
     position: absolute;
     right: 45px;
     top: 70px;
+}
 
+#message{
+    font-size: 2rem;
+    color: #40514E;
+    position: absolute;
+    right: 20px;
+    top: 0;
 }
 
 #interest{
@@ -391,22 +398,29 @@ body {
     font-weight: 400;
 }
 
+#browse{
+    padding-left: 30px;
+    font-size: 1.6rem;
+    color: #40514E;
+}
+
 /* ------------- Food Component ---------- */
 .foodComponent {
     display: grid;
     position: relative;
-    height: 260px;
-    margin: 5px;
-    width: 170px;
-    background-color: var(--darker-background);
-    border-radius: 15px;
+    height: 250px;
+    margin: 5px 7px;
+    width: 175px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #293634;
 }
 
 .foodImage {
-    height: 120px;
+    height: 150px;
     width: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: inherit;
 }
 
 .foodPrice {
@@ -418,10 +432,24 @@ body {
     padding: var(--padding-sm);
 }
 
-.foodDescriptions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.foodcontent {
+    background-color: var(--white);
+    border-radius: inherit;
+    text-align: left;   
+}
+
+.description{
+    padding-left: 10px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+.seller{
+    padding-left: 12px;
+    margin: 0 auto;
+    font-size: 0.7rem;
+    font-weight: 400;
+    margin-bottom: 20px;
 }
 
 .foodFunctions {
@@ -431,7 +459,17 @@ body {
 /* ------------- My Store ---------- */
 #listedItems {
     display: grid;
-    height: 60vh;
+    height: 63vh;
     grid-template-columns: 50% 50%;
     overflow-y: scroll;
+}
+
+.icons{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    position: relative;
+    font-size: 2rem;
+    margin-top: 10px;
+    padding-left: 50px;
+    color:#40514E;
 }

@@ -105,8 +105,8 @@
 			<div class="signoptions" style="margin-top: 80px">
 				<h3 id="smoler">Already have an account? <a id="signlink" href="#/login">Log in</a></h3>
 			</div>
-			
-			
+
+
 			<!-- An element to toggle between password visibility
 			<input type="checkbox" onclick="TogglePasswordVisibility()" />Show
 			Password -->
@@ -120,27 +120,56 @@
 
 
 	<!-- Browse Page -->
-	<section id="browsePage" class="page" style="background: cadetblue;">
-		<h1>BROWSE</h1>
+	<section id="browsePage" class="page">
+		<h1 id="browse">Browse</h1>
 		<input type="text" placeholder="Search" class="inputFunction" id="searchbar" />
 		<i id="search" class="fas fa-search"></i>
 		<i id="sliders" class="fas fa-sliders-h"></i>
-		<p style="text-align: center;">Current Filters: Price</p>
+		<i id="message" class="far fa-comment"></i>
+		<p style="padding-left: 20px;">Filtered by: Price</p>
 		<!-- Loop through Food Objects -->
 		<!-- Listed Items -->
 		<section id="listedItems">
 			<article class="foodComponent">
-				<div class="foodHeader">
-					<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
-					<div class="foodPrice">Price: 40dkk</div>
+				<div class="foodcontent">
+					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
+					<h3 class="description">Vegetable rice</h3>
+					<h4 class="seller">From Penda Svane</h4>
+					<h4 class="description">29kr</h4>
 				</div>
-				<div class="foodContent">
-					<div class="foodDescription">
-						<p>Food Description (Short)</p>
-					</div>
+			</article>
+			<article class="foodComponent">
+				<div class="foodcontent">
+					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
+					<h3 class="description">Vegetable rice</h3>
+					<h4 class="seller">From Penda Svane</h4>
+					<h4 class="description">29kr</h4>
+				</div>
+			</article>
+			<article class="foodComponent">
+				<div class="foodcontent">
+					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
+					<h3 class="description">Vegetable rice</h3>
+					<h4 class="seller">From Penda Svane</h4>
+					<h4 class="description">29kr</h4>
 				</div>
 			</article>
 		</section>
+		<article class="icons">
+			<div>
+				<i class="fas fa-map"></i>
+			</div>
+			<div>
+				<i class="fas fa-search"></i>
+			</div>
+			<div>
+				<i class="fas fa-shopping-basket"></i>
+			</div>
+			<div>
+				<i class="fas fa-user"></i>
+			</div>
+		</article>
+
 	</section>
 
 	<!-- Item Page -->
