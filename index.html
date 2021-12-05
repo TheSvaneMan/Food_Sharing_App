@@ -9,7 +9,7 @@
 		<link href="ico/favicon.ico" rel="icon" />
 	</head>
 	<body>
-		<!-- Features -->
+		<!-- Features
 		<section id="featureSection">
 			<button class="defaultButton" onclick="window.history.back()">
 				Back
@@ -17,23 +17,28 @@
 			<button class="defaultButton">History</button>
 			<button class="defaultButton">Cart</button>
 			<button class="defaultButton">Inbox</button>
-		</section>
+		</section> -->
 		<!-- Landing Page -->
 		<section id="landingPage" class="page">
+			<img class="landImg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg">
 			<section id="accountControlPanel">
-				<!-- Logo -->
-				<img src="assets/tmp_logo.png" class="logo" />
+				<!-- Logo
+				
 				<h1>Welcome</h1>
-				<h2>Sharing is caring!</h2>
-				<button class="defaultButton" onclick="showLoginPage()">Login</button>
-				<button class="defaultButton" onclick="showSignUpPage()">SignUp</button>
+				<h2>Sharing is caring!</h2> -->
+				<div class="landing">
+				<img src="assets/tmp_logo.png" class="logo" />
+				<button class="loginSignupBtn" id="login" onclick="showLoginPage()">Login</button>
+				<button class="loginSignupBtn" id="signup" onclick="showSignUpPage()">Sign up</button>
+			</div>
 			</section>
-			<!-- Footer -->
+		
+			<!-- Footer
 			<footer>
 				<p>
 					Copyright Food Share 2021 - A wholesome web app to reduce food waste
 				</p>
-			</footer>
+			</footer> -->
 		</section>
 		<!-- Login Page -->
 		<section id="loginPage" class="page">
@@ -284,7 +289,7 @@
 		<!-- Message Page -->
 		<section id="inboxPage" class="page"></section>
 		<!-- Navigation -->
-		<nav>
+		<!--<nav>
 			<ul>
 				<li class="defaultButton">
 					<a href="#/browse" class="nav-link">Discover</a>
@@ -299,7 +304,7 @@
 					<a href="#/account" class="nav-link">Account</a>
 				</li>
 			</ul>
-		</nav>
+		</nav> -->
 		<!-- Image Recognition feature -->
 		<!-- Load TensorFlow.js. This is required to use MobileNet. -->
 		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>

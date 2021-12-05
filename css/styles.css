@@ -6,10 +6,9 @@
     --red: red;
     --shadow: black 5px 5px 10px;
     --button: #075f5f;
-    --background: #071a1d;
+    --background: #ffffff;
     --darker-background: #062e2c;
     --border-radius: 10px;
-    --padding-sm: 5px;
 }
 
 /* ---------- scrollbar ---------- */
@@ -88,18 +87,40 @@ footer {
     padding: var(--padding-sm);
 }
 
+
+.landing{
+    background-color: #fff;
+    height: 420px;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -80px;
+    border-radius: 30px;
+    
+}
 /* ------------- Body ---------- */
 body {
     margin: 0 auto;
-    height: 100vh;
+    height: auto;
     color: var(--white);
     background-color: var(--background);
+    position: relative;
 }
 
 /* ------------- Logo ---------- */
 .logo {
-    width: 72px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 275px;
     border-radius: 50px;
+}
+
+.landImg{
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* ------------- Placeholder ---------- */
@@ -126,7 +147,6 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
 }
 
 /* ------------- Buttons ---------- */
@@ -135,14 +155,52 @@ body {
     justify-content: center;
     align-items: center;
     color: var(--white);
-    height: 28px;
-    width: 72px;
-    margin: 4px;
+    margin: 0 auto;
     font-size: 1rem;
     padding: var(--padding-sm);
     background-color: var(--button);
     border-radius: var(--border-radius);
     border-style: var(--white);
+}
+
+.loginSignupBtn {
+    display: flex;
+    justify-content: center;
+    color: var(--white);
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: var(--padding-sm);
+    background-color: var(--button);
+    border-radius: var(--border-radius);
+    border-style: var(--white);
+}
+
+#login{
+    position: absolute;
+    bottom: 18vh;
+    left: 0;
+    right: 0;
+    width: 300px;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#signup{
+    position: absolute;
+    bottom: 7vh;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    width: 300px;
+    font-size: 1.5rem;
+    padding: 15px;
+    background-color: #fff;
+    color: #11999E;
+    border-color: #11999E;
+    border-style: solid;
+    border-radius: 15px;
 }
 
 /* ------------- Food Component ---------- */
