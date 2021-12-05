@@ -96,11 +96,11 @@
 			</form>
 			<h3 id="interest">What are you most interested in?</h3>
 			<div class="radio">
-				<input type="radio" id="buy" name="buy" value="buy"><label for="huey">Buying</label>
-				<input type="radio" id="sell" name="sell" value="sell"><label for="huey">Selling</label>
-				<input type="radio" id="both" name="both" value="both"><label for="huey">Both</label>
+				<input type="radio" id="buy" name="buy" value="b"><label for="buy">Buying</label>
+				<input type="radio" id="sell" name="sell" value="s"><label for="sell">Selling</label>
+				<input type="radio" id="both" name="both" value="x"><label for="both">Both</label>
 			</div>
-			<button class="loginSignupBtn" id="signup" onclick="login()">Sign up</button>
+			<button class="loginSignupBtn" id="signup" onclick="createUserEvent()">Sign up</button>
 
 			<div class="signoptions" style="margin-top: 80px">
 				<h3 id="smoler">Already have an account? <a id="signlink" href="#/login">Log in</a></h3>
@@ -117,12 +117,15 @@
 		</div>
 		</div>
 	</section>
+
+
 	<!-- Browse Page -->
-	<section id="browsePage" class="page">
+	<section id="browsePage" class="page" style="background: cadetblue;">
 		<h1>BROWSE</h1>
-		<button class="defaultButton">Filters</button>
-		<input type="text" placeholder="Search" class="inputFunction" />
-		<p>Current Filters: Price</p>
+		<input type="text" placeholder="Search" class="inputFunction" id="searchbar" />
+		<i id="search" class="fas fa-search"></i>
+		<i id="sliders" class="fas fa-sliders-h"></i>
+		<p style="text-align: center;">Current Filters: Price</p>
 		<!-- Loop through Food Objects -->
 		<!-- Listed Items -->
 		<section id="listedItems">
@@ -134,10 +137,6 @@
 				<div class="foodContent">
 					<div class="foodDescription">
 						<p>Food Description (Short)</p>
-					</div>
-					<div class="foodFunctions">
-						<button class="defaultButton">Delete</button>
-						<button class="defaultButton">Update</button>
 					</div>
 				</div>
 			</article>

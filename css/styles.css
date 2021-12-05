@@ -130,7 +130,7 @@ label{
 body {
     margin: 0 auto;
     height: auto;
-    color: var(--white);
+    color: var(--black);
     background-color: var(--background);
     position: relative;
 }
@@ -155,22 +155,42 @@ body {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #BABABA;
     opacity: 1;
-    padding: 10px;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
     /* Firefox */
 }
 
+
 /* ------------- Input Function ---------- */
 .inputFunction {
-    height: 50px;
+    height: 40px;
+    margin-top: 10px;
     margin-bottom: var(--padding-sm);
-    margin-left: 10px;
     padding: 5px 0;
-    width: 90%;
-    color: var(--white);
+    width: 85%;
+    color: #40514E;
     background: var(--background);
     border-radius: var(--border-radius);
     border-style: none;
+}
+
+#searchbar{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    border-radius: 50px;
+    
+}
+
+#searchbar::placeholder{
+    padding-left: 45px;
+}
+
+
+.loginform input {
+    padding-left: 20px;
+    
 }
 
 /* ------------- Account Control Panel ---------- */
@@ -338,6 +358,23 @@ body {
     color: #000;
 }
 
+#search{
+    font-size: 1.7rem;
+    color: #8c9795;
+    position: absolute;
+    left: 40px;
+    top: 70px;
+}
+
+#sliders{
+    font-size: 1.7rem;
+    color: #8c9795;
+    position: absolute;
+    right: 45px;
+    top: 70px;
+
+}
+
 #interest{
     color: #40514E;
     text-align: center;
@@ -358,17 +395,18 @@ body {
 .foodComponent {
     display: grid;
     position: relative;
-    height: 280px;
+    height: 260px;
     margin: 5px;
-    width: 180px;
+    width: 170px;
     background-color: var(--darker-background);
-    border-radius: var(--border-radius);
+    border-radius: 15px;
 }
 
 .foodImage {
     height: 120px;
     width: 100%;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 .foodPrice {
