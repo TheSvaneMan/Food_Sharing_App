@@ -93,7 +93,7 @@ footer {
 
 
 .landing{
-    background-color: rgb(194, 78, 78);
+    background-color: #fff;
     height: 420px;
     padding: 0;
     position: absolute;
@@ -107,6 +107,7 @@ footer {
     height: 500px;
 }
 
+
 .loginform{
     margin-left: 30px;
     
@@ -116,10 +117,14 @@ input{
     color: #000;
 }
 
+label{
+    color:#40514E;
+}
 #loginPage h1{
-    margin-left: 30px;
+    margin-left: 40px;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
+    color: #40514E;
 }
 /* ------------- Body ---------- */
 body {
@@ -159,6 +164,7 @@ body {
 .inputFunction {
     height: 50px;
     margin-bottom: var(--padding-sm);
+    margin-left: 10px;
     padding: 5px 0;
     width: 90%;
     color: var(--white);
@@ -205,9 +211,22 @@ body {
     bottom: 30vh;
     left: 0;
     right: 0;
-    width: 250px;
-    padding: 15px 20px;
-    font-size: 1.5rem;
+    width: 270px;
+    padding: 12px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#signup{
+    position: absolute;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    width: 270px;
+    padding: 12px 10px;
+    font-size: 1.2rem;
     font-weight: bold;
     border-radius: 15px;
     background-color: #11999E;
@@ -243,33 +262,96 @@ body {
 
 .logoptions{
     position: relative;
-    margin-top: 13vh;
+    margin-top: 14vh;
     text-align: center;
     color: #BABABA;
+}
 
+
+.logoptions h3{
+    font-weight: 300;
+    font-size: 1rem;
+    color: #40514E;
+    opacity: 0.8;
+}
+
+.signoptions{
+    position: relative;
+    margin-top: -10px;
+    text-align: center;
+    color: #BABABA;
+}
+
+
+.signoptions h3{
+    font-weight: 300;
+    font-size: 1rem;
+    color: #40514E;
+    opacity: 0.8;
+}
+
+#smol{
+    margin-top: 25px;
+    font-size: 0.8rem;
+    opacity: 1;
+    font-weight: 600;
+}
+
+#smoler{
+    font-size: 0.8rem;
+    opacity: 1;
+    font-weight: 500;
+}
+
+#signlink{
+    color: #293634;
+    font-weight: 600;
 }
 
 .logoptionsbtn{
-    padding: 10px 20px;
+    padding: 7px 25px;
     border-radius: 10px;
     border-color: #BABABA;
     border-style: solid;
+    border-width: 1px;
+    background-color: #fff;
+    margin: 0 2px;
 }
 
 #fb{
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #1977f3;
 }
 
 #google{
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #1977f3;  
     background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    -webkit-text-fill-color: transparent;
-      
+    -webkit-text-fill-color: transparent;    
+}
+
+#apple{
+    font-size: 1.7rem;
+    color: #000;
+}
+
+#interest{
+    color: #40514E;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.radio{
+    position: relative;
+    margin-top: -10px;
+    text-align: center;
+    color: #40514E;
+    font-size: 0.9rem;
+    font-weight: 400;
 }
 
 /* ------------- Food Component ---------- */

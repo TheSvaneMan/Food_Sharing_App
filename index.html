@@ -11,7 +11,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<script src="https://kit.fontawesome.com/3f9455542b.js" crossorigin="anonymous"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -24,6 +24,8 @@
 			<button class="defaultButton">Cart</button>
 			<button class="defaultButton">Inbox</button>
 		</section> -->
+
+
 	<!-- Landing Page -->
 	<section id="landingPage" class="page">
 		<img class="landImg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg">
@@ -46,8 +48,11 @@
 				</p>
 			</footer> -->
 	</section>
+
+
 	<!-- Login Page -->
 	<section id="loginPage" class="page">
+		<img class="landImg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg">
 		<!-- Logo -->
 		<div class="landing" id="loginPage">
 			<h1>Login</h1>
@@ -60,7 +65,9 @@
 				<h3>or log in with</h3>
 				<button class="logoptionsbtn"><i class="fab fa-facebook" id="fb"></i></button>
 				<button class="logoptionsbtn"><i class="fab fa-google" id="google"></i></button>
-				<button class="logoptionsbtn">Login</button>
+				<button class="logoptionsbtn"><i class="fab fa-apple" id="apple"></i></button>
+				<h3 id="smol">Forgot your password?</h3>
+				<h3 id="smoler">Don't have an account yet? <a id="signlink" href="#/signup">Create an account</a></h3>
 				<!-- An element to toggle between password visibility
 			<input type="checkbox" onclick="TogglePasswordVisibility()" />Show
 			Password -->
@@ -73,29 +80,42 @@
 	</section>
 	<!-- Sign Up Page -->
 	<section id="signUpPage" class="page">
+		<img class="landImg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg">
 		<!-- Logo -->
-		<img src="assets/tmp_logo.png" width="72px" class="logo" />
-		<form action="">
-			<input class="inputFunction" type="text" id="signUpFirstName" placeholder="Enter First Name" />
-			<input class="inputFunction" type="text" id="signUpLastName" placeholder="Enter Last Name" />
-			<input class="inputFunction" type="text" id="signUpEmail" placeholder="Enter Email" />
-			<input class="inputFunction" type="text" id="signUpPassword" placeholder="Enter preferred Password" />
-			<input class="inputFunction" type="text" id="signUpCity" placeholder="City" />
-			<input class="inputFunction" type="text" id="signUpCountry" placeholder="Country" />
-			<input class="inputFunction" type="number" id="signUpPostalCode" placeholder="Post Code" />
-			<!-- Programmatically assign values -->
-			<p>Birthday</p>
-			<input type="date" id="signUpBirthday" placeholder="yyyy-mm-dd" />
-			<h3>What are you interested in most on the platform?</h3>
-			<select id="signUpInterestedIn" name="signUpInterestedIn" placeholder="Interested in?">
-				<option value="s">Sharing</option>
-				<option value="b">Buying</option>
-				<option value="x">Both</option>
-			</select>
-		</form>
+		<div class="landing" id="loginPage">
+			<h1>Sign up</h1>
+			<div class="signoptions">
+				<button class="logoptionsbtn"><i class="fab fa-facebook" id="fb"></i></button>
+				<button class="logoptionsbtn"><i class="fab fa-google" id="google"></i></button>
+				<button class="logoptionsbtn"><i class="fab fa-apple" id="apple"></i></button>
+			</div>
+			<form method="POST" class="loginform">
+				<input class="inputFunction" type="text" id="loginEmail" placeholder="Full name" />
+				<input class="inputFunction" type="text" id="loginEmail" placeholder="Email" />
+				<input class="inputFunction" type="password" id="loginPassword" placeholder="Password" />
+			</form>
+			<h3 id="interest">What are you most interested in?</h3>
+			<div class="radio">
+				<input type="radio" id="buy" name="buy" value="buy"><label for="huey">Buying</label>
+				<input type="radio" id="sell" name="sell" value="sell"><label for="huey">Selling</label>
+				<input type="radio" id="both" name="both" value="both"><label for="huey">Both</label>
+			</div>
+			<button class="loginSignupBtn" id="signup" onclick="login()">Sign up</button>
 
-		<button class="defaultButton" onclick="createUserEvent()">SignUp</button>
-		<p>Already have an account? <a href="#/login">Login here!</a></p>
+			<div class="signoptions" style="margin-top: 80px">
+				<h3 id="smoler">Already have an account? <a id="signlink" href="#/login">Log in</a></h3>
+			</div>
+			
+			
+			<!-- An element to toggle between password visibility
+			<input type="checkbox" onclick="TogglePasswordVisibility()" />Show
+			Password -->
+
+
+			<!--<a href="">Forgot password?</a>
+			<p>Don't have an account? <a href="#/signup">Sign up here!</a></p>-->
+		</div>
+		</div>
 	</section>
 	<!-- Browse Page -->
 	<section id="browsePage" class="page">
