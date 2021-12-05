@@ -140,7 +140,7 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 25px auto;
     width: 275px;
     border-radius: 50px;
 }
@@ -234,7 +234,7 @@ body {
 
 #landinglogin{
     position: absolute;
-    bottom: 18vh;
+    bottom: 17vh;
     left: 0;
     right: 0;
     width: 300px;
@@ -246,7 +246,7 @@ body {
 
 #landingsignup{
     position: absolute;
-    bottom: 7vh;
+    bottom: 5vh;
     left: 0;
     right: 0;
     margin-top: 10px;
