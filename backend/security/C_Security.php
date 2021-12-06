@@ -8,7 +8,6 @@ class Security
     private $logOut;
     public $userSettings;
     public $searchFilter;
-    public $userSearch;
 
     public function __construct($mySQL)
     {
@@ -22,8 +21,6 @@ class Security
         $this->userSignUp = new SignUp();
         // Log Out class
         $this->LogOut = new LogOut();
-        // Instantiate Search
-        $this->userSearch = new UserSearch();
     }
     // --------------------------- Sign Up ----------------------- //
     // Sign Up Form password encryption
@@ -45,10 +42,4 @@ class Security
         // Logout
         $this->LogOut->LogOut($this->mySQL);
     }
-    // ---------------------------- Set Current User ------------------------ //
-    public function SearchUser($sql)
-    {
-        $this->userSearch->searchUser($this->mySQL, $sql);
-    }
 }
-?>

@@ -4,6 +4,15 @@ const _baseUrl = 'backend/applicationService.php/';
 // The SercurityService handles Authentication, Account Creation, Logout, Tracking User State(Online, Offline), etc
 // The MessageService will handle Inbox :)
 /* ---- Global Variables ---- */
+let _selectedProductID;
+// ========== Usability Function ==========
+async function checkActiveUser() {
+	const url = _security + '?action=activeUser';
+	const response = await fetch(url);
+	const data = await response.json();
+	_currentUserID = data;
+	console.log(_currentUserID);
+}
 
 // ========== Navigation Controls ==========
 // Show Home Page
@@ -21,6 +30,12 @@ function showSignUpPage() {
 // Show Home Page
 function showHomePage() {
 	navigateTo('#/browse');
+	loadFood();
+}
+// Show Store Page
+function showMyStorePage() {
+	navigateTo('#/myStore');
+	loadMyStoreFood();
 }
 // Add New Product Page
 function showAddNewProductPage() {
@@ -181,23 +196,265 @@ async function LogOut() {
 
 // I have one other fun feature to add but lets get the CRUD working on items :D
 
+// ========== Data Retrieval Services ==========
+/* Fetch all food data from php backend services, except the users */
+async function loadFood() {
+	const url = _baseUrl + '?action=getFood';
+	const response = await fetch(url);
+	const data = await response.json();
+	_foods = data;
+	appendMeals(_foods);
+}
+
+/* Fetch only food uploaded by the user */
+async function loadMyStoreFood() {
+	const url = _baseUrl + '?action=getUserFood';
+	const response = await fetch(url);
+	const data = await response.json();
+	_userFoods = data;
+	appendMyStore(_userFoods);
+}
+
+async function loadMessages() {
+	const url = _messageUrl + '?action=getMessages';
+	const response = await fetch(url);
+	const data = await response.json();
+	_messages = data;
+	appendMessages(_messages);
+}
+
+// ========== Appending Data Services ==========
+// Adds meals to the DOM Browse
+function appendMeals(allFood) {
+	let htmlTemplate = '';
+	for (const food of allFood) {
+		htmlTemplate += /*html*/ `
+			<article onclick="showDetails(${food.food_id})" class="foodComponent">
+					<div class="foodHeader">
+						<img
+							class="foodImage"
+							src="assets/tmp_food.png"
+							alt="${food.foodImageDir}"
+						/>
+						<div class="foodPrice">Price: ${food.foodPrice}</div>
+					</div>
+					<div class="foodContent">
+						<div class="foodDescription">
+							<p>${food.foodDescription}</p>
+						</div>
+						<div class="foodDescription">
+							<p>From: ${food.foodOwner}</p>
+							<p>Uploaded: ${food.dateAdded}</p>
+							<p>Best before: ${food.bestBeforeDate}</p>
+						</div>
+						<div class="foodFunctions">
+							<button class="defaultButton">Buy</button>
+						</div>
+					</div>
+				</article>
+		`;
+	}
+	document.querySelector('#listedItems').innerHTML = htmlTemplate;
+}
+
+// Show Selected Meal Details
+async function showDetails(id) {
+	_selectedProductID = id;
+	localStorage.setItem('selectedFoodId', _selectedProductID);
+	const selectedMeal = _foods.find((food) => food.food_id == id);
+	appendFood(selectedMeal);
+	navigateTo('#/selectedMeal');
+}
+
+// append single Food Item
+function appendFood(food) {
+	let htmlTemplate = '';
+	htmlTemplate += /*html*/ `
+			<article class="user-item">
+			<h3>ID: ${food.food_id}</h3>
+			<p>Food Name: ${food.foodName}</p>
+			<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
+			<p>ImageURL: ${food.foodImageDir} </p>
+			<p>Description: ${food.foodDescription}</p>
+			<p>Has a container: ${food.foodContainer}</p>
+			<p>Price: ${food.foodPrice}</p>
+			<p>Uploaded By: ${food.foodOwner}</p>
+			<p>Pickup Location: ${food.foodLocation}</p>
+			<p>Date Added: ${food.dateAdded}</p>
+			<p>Best Before Date: ${food.bestBeforeDate}</p>
+			<button class="defaultButton" onclick="purchaseFood(${food.food_id})">Buy</button>
+			<button class="defaultButton">Message</button>
+			</article>
+		`;
+	document.querySelector('#selected-meal').innerHTML = htmlTemplate;
+}
+
+// ========== My Store Functions ==========
+// Appends Meals to MyStore and only shows items I uploaded
+function appendMyStore(foods) {
+	let htmlTemplate = '';
+	for (food of foods) {
+		htmlTemplate += /*html*/ `
+			<article class="foodComponent">
+			<div class="foodHeader">
+						<img
+							class="foodImage"
+							src="assets/tmp_food.png"
+							alt=" ${food.foodImageDir}"
+						/>
+						<div class="foodPrice">Price:  ${food.foodPrice}</div>
+					</div>
+				<div class="foodContent">
+						<div class="foodDescription">
+							<p>Name: ${food.foodName}</p>
+							<p>Description: ${food.foodDescription}</p>
+							<p>Has a container: ${food.foodContainer}</p>
+							<p>Pickup Location: ${food.foodLocation}</p>
+							<p>Added: ${food.dateAdded}</p>
+							<p>Best before date: ${food.bestBeforeDate}</p>
+						</div>
+						<div class="foodFunctions">
+							<button class="greenActionButton" onclick="showFoodDetails(${food.food_id})" >Update</button>
+							<button class="redActionButton" onclick="deleteFood(${food.food_id})" >Delete</button>
+						</div>
+					</div>
+			</article>
+		`;
+	}
+	document.querySelector('#myStoreItems').innerHTML = htmlTemplate;
+}
+
+// Show Selected Food (User Owned) Details
+async function showFoodDetails(id) {
+	_selectedProductID = id;
+	localStorage.setItem('selectedFoodId', _selectedProductID);
+	const selectedMeal = _userFoods.find((food) => food.food_id == id);
+	// references to the input fields
+	let nameInput = document.querySelector('#name-update');
+	let descriptionInput = document.querySelector('#description-update');
+	let priceInput = document.querySelector('#price-update');
+	let locationInput = document.querySelector('#location-update');
+	// let bestBeforeInput = document.querySelector('#best-before-update');
+	// set indout values with selected user values
+	nameInput.value = selectedMeal.foodName;
+	descriptionInput.value = selectedMeal.foodDescription;
+	priceInput.value = selectedMeal.foodPrice;
+	locationInput.value = selectedMeal.foodLocation;
+	navigateTo('#/updateFood');
+}
+
+// Delete Food Item (User Owned)
+async function deleteFood(foodID) {
+	const url = _baseUrl + '?action=deleteFood&value=' + foodID;
+	const response = await fetch(url);
+	// Load My Store Page once successful delete
+	// Do something better with response data
+	showMyStorePage();
+}
+
+// ========== Update Functions ==========
+/* Updates Food Product with values from input fields*/
+async function updateFood() {
+	//showLoader(true);
+	// references to input fields
+	let nameInput = document.querySelector('#name-update');
+	let descriptionInput = document.querySelector('#description-update');
+	let priceInput = document.querySelector('#price-update');
+	let locationInput = document.querySelector('#location-update');
+	// find user to update by given user id
+	//const foodToUpdate = _userFoods.find(
+	//	(food) => food.food_id === _selectedProductID
+	// );
+	// update values of user in array
+	//foodToUpdate.foodName = nameInput.value;
+	//foodToUpdate.foodDescription = descriptionInput.value;
+	//foodToUpdate.foodPrice = priceInput.value;
+	//foodToUpdate.foodLocation = locationInput.value;
+	// Create Updated food object with new data
+	const params = {
+		FoodID: _selectedProductID,
+		FoodName: nameInput.value,
+		FoodDescription: descriptionInput.value,
+		FoodPrice: priceInput.value,
+		FoodLocation: locationInput.value,
+	};
+	// wait for update
+	const options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json; charset=utf-8',
+		},
+		body: JSON.stringify(params),
+	};
+	// Put new data to server
+	// waiting for the result
+	await fetch(_baseUrl + '?action=updateMeal', options).then((response) => {
+		let result = response.json();
+		console.log(result);
+		// Check if upload was success of not, notify user on each case
+	});
+	// reset
+	nameInput.value = '';
+	descriptionInput.value = '';
+	priceInput.value = '';
+	locationInput.value = '';
+	//navigating back
+	// navigateTo('#/myStore');
+}
+
+// ========== Search Function ==========
+async function search(searchString) {
+	const options = {
+		method: 'GET',
+	};
+	let response = await fetch(
+		_baseUrl + '?action=search&value=' + searchString,
+		options
+	);
+	let data = await response.json();
+	appendMeals(data);
+}
+
+// ========== Add Food Product ==========
 async function AddFoodProduct() {
-	foodName = document.getElementById('foodName').value;
-	foodDescription = document.getElementById('foodDescription').value;
+	foodName = document.getElementById('newProductName').value;
+	foodDescription = document.getElementById('newProductDescription').value;
+	foodLocation = document.getElementById('newProductPickUpLoc').value;
+	foodContainer = document.getElementById('newProductFoodContainer').checked;
+	if (foodContainer == true) {
+		foodContainer = 1;
+	} else {
+		foodContainer = 0;
+	}
 	// Multiple choice, must be an array
 	foodCategory = [];
-	foodCategory = document.getElementById('foodCategory').value;
+	// foodCategory = document.getElementById('foodCategory').value;
 	// Multiple choice, must be an array
 	foodAllergies = [];
-	foodAllergies = document.getElementById('foodAllgeries').value;
-	foodImage = document.getElementById('foodImage').value;
+	// Call a different JS Function to loop through allergies and categories selected
+	// And add them to the database
+	// foodAllergies = document.getElementById('foodAllgeries').value;
+	foodPrice = document.getElementById('newProductPrice').value;
+	foodImage = 'A directory';
+	bestBeforeDay = document.getElementById('bestBeforeDate').value;
+	// Convert Date to string
+	let bestBeforeDate = bestBeforeDay.toString();
+	foodFree = document.getElementById('newProductIsFree').checked;
+	if (foodFree == true) {
+		foodFree = 1;
+	} else {
+		foodFree = 0;
+	}
 	// Create the relevant inputs for each.
 	const params = {
 		FoodName: foodName,
-		FoodDescription: foodDescription,
-		FoodDescription: foodCategory,
-		FoodAllergies: foodAllergies,
 		FoodImage: foodImage,
+		FoodDescription: foodDescription,
+		FoodContainer: foodContainer,
+		FoodPrice: foodPrice,
+		FoodLocation: foodLocation,
+		FoodBestBeforeDate: bestBeforeDate,
+		FoodFreeLastDay: foodFree,
 	};
 	const options = {
 		method: 'POST',
@@ -208,6 +465,8 @@ async function AddFoodProduct() {
 	};
 	await fetch(_baseUrl + '?action=addNewFood', options).then((response) => {
 		let result = response.json();
+		// Check if upload was success of not, notify user on each case
+		showHomePage();
 	});
 }
 
@@ -233,3 +492,17 @@ function predictFood() {
 		});
 	});
 }
+
+// ========== INIT APP ==========
+function init() {
+	// checkActiveUser();
+	if (location.hash === '#/') {
+		showStartPage();
+	} else if (location.hash === '#/browse') {
+		showHomePage();
+	} else if (location.hash === '#/myStore') {
+		loadMyStoreFood();
+	}
+}
+
+init();

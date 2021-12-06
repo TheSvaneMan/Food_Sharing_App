@@ -16,7 +16,7 @@ require "security/signup/C_SignUp.php";
 // Logout Class
 require "security/logout/C_Logout.php";
 // Search Class
-require "userAccount/C_Search.php";
+require "dataRetrieval/C_Search.php";
 // New Account Class
 require "security/newAcc/C_NewAccount.php";
 

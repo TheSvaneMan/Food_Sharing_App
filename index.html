@@ -14,8 +14,6 @@
 			<button class="defaultButton" onclick="window.history.back()">
 				Back
 			</button>
-			<button class="defaultButton">History</button>
-			<button class="defaultButton">Cart</button>
 			<button class="defaultButton">Inbox</button>
 		</section>
 		<!-- Landing Page -->
@@ -132,46 +130,21 @@
 		<section id="browsePage" class="page">
 			<h1>BROWSE</h1>
 			<button class="defaultButton">Filters</button>
-			<input type="text" placeholder="Search" class="inputFunction" />
+			<input
+				onkeyup="search(this.value)"
+				type="text"
+				placeholder="Search"
+				class="inputFunction"
+			/>
 			<p>Current Filters: Price</p>
 			<!-- Loop through Food Objects -->
 			<!-- Listed Items -->
-			<section id="listedItems">
-				<article class="foodComponent">
-					<div class="foodHeader">
-						<img
-							class="foodImage"
-							src="assets/tmp_food.png"
-							alt="Food Picture"
-						/>
-						<div class="foodPrice">Price: 40dkk</div>
-					</div>
-					<div class="foodContent">
-						<div class="foodDescription">
-							<p>Food Description (Short)</p>
-						</div>
-						<div class="foodFunctions">
-							<button class="defaultButton">Delete</button>
-							<button class="defaultButton">Update</button>
-						</div>
-					</div>
-				</article>
-			</section>
+			<section id="listedItems" class="foodArrayDisplay"></section>
 		</section>
 
 		<!-- Item Page -->
 		<section id="itemPage" class="page">
-			<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
-			<p>Price: 50dkk</p>
-			<h1>Food Title</h1>
-			<h2>From Penda</h2>
-			<p>Location</p>
-			<p>Date Uploaded</p>
-			<b>Description</b>
-			<p>Description about the meal.</p>
-			<b>Location</b>
-			<button class="defaultButton">Buy</button
-			><button class="defaultButton">Message</button>
+			<section id="selected-meal"></section>
 		</section>
 		<!-- My Store-->
 		<section id="myStorePage" class="page">
@@ -179,33 +152,49 @@
 			<h4>Items on the market</h4>
 			<!-- Store Functions -->
 			<section>
-				<button class="defaultButton" onclick="showAddNewProductPage()">
+				<button class="greenActionButton" onclick="showAddNewProductPage()">
 					Add +
 				</button>
 				<button class="defaultButton">Active</button>
 				<button class="defaultButton">Sold</button>
 			</section>
-			<!-- Listed Items -->
-			<section id="listedItems">
-				<article class="foodComponent">
-					<div class="foodHeader">
-						<img
-							class="foodImage"
-							src="assets/tmp_food.png"
-							alt="Food Picture"
-						/>
-						<div class="foodPrice">Price: 40dkk</div>
-					</div>
-					<div class="foodContent">
-						<div class="foodDescription">
-							<p>Food Description (Short)</p>
-						</div>
-						<div class="foodFunctions">
-							<button class="defaultButton">Delete</button>
-							<button class="defaultButton">Update</button>
-						</div>
-					</div>
-				</article>
+			<!-- My Food Items -->
+			<section id="myStoreItems" class="foodArrayDisplay"></section>
+		</section>
+		<!-- Update Food Page -->
+		<section id="updateMyFood" class="page">
+			<h1>Selected Food From Store</h1>
+			<p>Need better UI to convey this easier</p>
+			<section id="myFood">
+					<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
+					<input
+						type="text"
+						id="name-update"
+						placeholder="Type new Name"
+						required
+					/>
+					<input
+						type="text"
+						id="description-update"
+						placeholder="Type new Description"
+						required
+					/>
+					<input
+						type="number"
+						id="price-update"
+						placeholder="New Price"
+						required
+					/>
+					<input
+						type="text"
+						id="location-update"
+						placeholder="New Picup location"
+						required
+					/>
+					<button type="activeGreenButton" name="button" onclick="updateFood()">
+						Update Meal
+					</button>
+					<button class="defaultButton" onclick="deleteFood()">Delete</button>
 			</section>
 		</section>
 		<!-- Add New Product -->
@@ -241,6 +230,8 @@
 				placeholder="Location of pickup"
 				class="inputFunction"
 			/>
+			<p>Is the meal packed in a container?</p>
+			<input type="checkbox" id="newProductFoodContainer" /><b>Yes</b>
 			<p>Allergens</p>
 			<p>Help keep people safe by identifying key ingredients</p>
 			<input type="checkbox" /><b>Peanuts</b> <input type="checkbox" /><b
@@ -253,15 +244,37 @@
 				placeholder="Price of the meal"
 				class="inputFunction"
 			/>
-			<form action="backend/uploadFiles/B_UploadFile.php"  method="post" enctype="multipart/form-data">
+			<form
+				action="backend/uploadFiles/B_UploadFile.php"
+				method="post"
+				enctype="multipart/form-data"
+			>
 				<h3>Add an image</h3>
-				<input type="file" name="fileToUpload" id="fileToUpload" placeholder="Image of the meal" />
-				<input type="submit" name="action" value="upload">
+				<input
+					type="file"
+					name="fileToUpload"
+					id="fileToUpload"
+					placeholder="Image of the meal"
+				/>
+				<input type="submit" name="action" value="upload" />
 			</form>
 			<!-- Display Image -->
-			<img src="local/food/food19.jpg" alt="The recently uploaded image" id="testImg">
-			<button class="defaultButton" onclick="predictFood()">Predict Image</button>
-			<button class="defaultButton" >Share Meal</button>
+			<img
+				src="local/food/food29.jpg"
+				alt="The recently uploaded image"
+				id="testImg"
+			/>
+			<button class="defaultButton" onclick="predictFood()">
+				Predict Image
+			</button>
+			<input type="date" id="bestBeforeDate" placeholder="yyyy-mm-dd" />
+
+			<input type="checkbox" id="newProductIsFree" /><b
+				>Free on the last day?</b
+			>
+			<button class="defaultButton" onclick="AddFoodProduct()">
+				Share Meal
+			</button>
 		</section>
 		<!-- Bought Items -->
 		<section id="boughtItemsPage" class="page">
@@ -278,6 +291,8 @@
 			<p>Change email</p>
 			<p>email</p>
 			<p>Password</p>
+			<button class="defaultButton">Transcation History</button>
+
 			<button class="defaultButton">Delect Account</button>
 			<button class="defaultButton" onclick="LogOut()">Sign Out</button>
 		</section>
@@ -290,10 +305,12 @@
 					<a href="#/browse" class="nav-link">Discover</a>
 				</li>
 				<li class="defaultButton">
-					<a href="#/browse" class="nav-link">Browse</a>
+					<a href="#/browse" class="nav-link" onclick="loadFood()">Browse</a>
 				</li>
 				<li class="defaultButton">
-					<a href="#/myStore" class="nav-link">My Store</a>
+					<a href="#/myStore" class="nav-link" onclick="loadMyStoreFood()"
+						>My Store</a
+					>
 				</li>
 				<li class="defaultButton">
 					<a href="#/account" class="nav-link">Account</a>
@@ -302,9 +319,9 @@
 		</nav>
 		<!-- Image Recognition feature -->
 		<!-- Load TensorFlow.js. This is required to use MobileNet. -->
-		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"></script> -->
 		<!-- Load the MobileNet model. -->
-		<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"></script> -->
 		<!-- Google Maps -->
 		<!-- Blocked for now, security reasons -->
 		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=[Value]=myMap"></script> -->

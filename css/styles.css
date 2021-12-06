@@ -3,11 +3,12 @@
     --white: white;
     --black: black;
     --grey: grey;
+    --green: rgb(16, 124, 143);
     --red: red;
     --shadow: black 5px 5px 10px;
-    --button: #075f5f;
-    --background: #071a1d;
-    --darker-background: #062e2c;
+    --button: #f5772e;
+    --background: #ffffff;
+    --darker-background: #108181;
     --border-radius: 10px;
     --padding-sm: 5px;
 }
@@ -92,7 +93,7 @@ footer {
 body {
     margin: 0 auto;
     height: 100vh;
-    color: var(--white);
+    color: var(--black);
     background-color: var(--background);
 }
 
@@ -116,7 +117,7 @@ body {
     margin-bottom: var(--padding-sm);
     padding: var(--padding-sm);
     width: 80%;
-    color: var(--white);
+    color: var(--black);
     background: var(--background);
     border-radius: var(--border-radius);
 }
@@ -145,14 +146,46 @@ body {
     border-style: var(--white);
 }
 
+.greenActionButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    height: 28px;
+    width: 72px;
+    margin: 4px;
+    font-size: 1rem;
+    padding: var(--padding-sm);
+    background-color: var(--green);
+    border-radius: var(--border-radius);
+    border-style: var(--white);
+}
+
+.redActionButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    height: 28px;
+    width: 72px;
+    margin: 4px;
+    font-size: 1rem;
+    padding: var(--padding-sm);
+    background-color: var(--red);
+    border-radius: var(--border-radius);
+    border-style: var(--white);
+}
+
 /* ------------- Food Component ---------- */
 .foodComponent {
     display: grid;
     position: relative;
-    height: 280px;
+    height: 340px;
     margin: 5px;
+    padding: var(--padding-sm);
     width: 180px;
-    background-color: var(--darker-background);
+    background-color: var(--background);
+    border: #1d4d6d 1px solid;
     border-radius: var(--border-radius);
 }
 
@@ -167,7 +200,7 @@ body {
     position: absolute;
     right: 2%;
     top: 30%;
-    background-color: black;
+    background-color: var(--darker-background);
     padding: var(--padding-sm);
 }
 
@@ -182,7 +215,7 @@ body {
 }
 
 /* ------------- My Store ---------- */
-#listedItems {
+.foodArrayDisplay {
     display: grid;
     height: 60vh;
     grid-template-columns: 50% 50%;

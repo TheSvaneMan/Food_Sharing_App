@@ -1,5 +1,5 @@
 <?php
-class UserSearch
+class SearchClass
 {
     public function searchData($mySQL, $sql)
     {
