@@ -83,7 +83,7 @@
 		<img class="landImg" src="local/food/sri-lanka-KSa66AYiqnk-unsplash.png">
 		<!-- Logo -->
 		<div class="landing" id="loginPage">
-			<h1>Sign up</h1>
+			<h1 style="margin-bottom: 25px;">Sign up</h1>
 			<div class="signoptions">
 				<button class="logoptionsbtn"><i class="fab fa-facebook" id="fb"></i></button>
 				<button class="logoptionsbtn"><i class="fab fa-google" id="google"></i></button>
@@ -96,9 +96,9 @@
 			</form>
 			<h3 id="interest">What are you most interested in?</h3>
 			<div class="radio">
-				<input type="radio" id="buy" name="buy" value="b"><label for="buy">Buying</label>
-				<input type="radio" id="sell" name="sell" value="s"><label for="sell">Selling</label>
-				<input type="radio" id="both" name="both" value="x"><label for="both">Both</label>
+				<input type="radio" id="buy" name="interest" value="b"><label for="buy">Buying</label>
+				<input type="radio" id="sell" name="interest" value="s"><label for="sell">Selling</label>
+				<input type="radio" id="both" name="interest" value="x"><label for="both">Both</label>
 			</div>
 			<button class="loginSignupBtn" id="signup" onclick="createUserEvent()">Sign up</button>
 
@@ -120,7 +120,7 @@
 
 
 	<!-- Browse Page -->
-	<section id="browsePage" class="page">
+	<section id="browsePage" class="page" >
 		<h1 id="browse">Browse</h1>
 		<input type="text" placeholder="Search" class="inputFunction" id="searchbar" />
 		<i id="search" class="fas fa-search"></i>
@@ -155,20 +155,22 @@
 				</div>
 			</article>
 		</section>
-		<article class="icons">
-			<div>
-				<i class="fas fa-map"></i>
-			</div>
-			<div>
-				<i class="fas fa-search"></i>
-			</div>
-			<div>
-				<i class="fas fa-shopping-basket"></i>
-			</div>
-			<div>
-				<i class="fas fa-user"></i>
-			</div>
-		</article>
+		<div class="iconfooter">
+			<article class="icons">
+				<div>
+					<i class="fas fa-map"></i>
+				</div>
+				<div>
+					<i class="fas fa-search"></i>
+				</div>
+				<div>
+					<i class="fas fa-shopping-basket"></i>
+				</div>
+				<div>
+					<i class="fas fa-user"></i>
+				</div>
+			</article>
+		</div>
 
 	</section>
 
