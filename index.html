@@ -120,13 +120,13 @@
 
 
 	<!-- Browse Page -->
-	<section id="browsePage" class="page" >
+	<section id="browsePage" class="page">
 		<h1 id="browse">Browse</h1>
 		<input type="text" placeholder="Search" class="inputFunction" id="searchbar" />
 		<i id="search" class="fas fa-search"></i>
 		<i id="sliders" class="fas fa-sliders-h"></i>
 		<i id="message" class="far fa-comment"></i>
-		<p style="padding-left: 20px;">Filtered by: Price</p>
+		<p style="padding-left: 20px; color: #40514E">Filtered by: Price</p>
 		<!-- Loop through Food Objects -->
 		<!-- Listed Items -->
 		<section id="listedItems">
@@ -155,7 +155,7 @@
 				</div>
 			</article>
 		</section>
-		<div class="iconfooter">
+		<div class="iconfooter" id="border">
 			<article class="icons">
 				<div>
 					<i class="fas fa-map"></i>
@@ -258,17 +258,70 @@
 			<p>Date Sold: 12th November 2021</p>
 		</article>
 	</section>
+
+
 	<!-- Account Page -->
 	<section id="userAccountPage" class="page">
-		<img src="assets/tmp_profilePic.png" alt="Profile Picture" width="72px" />
-		<p>Change email</p>
-		<p>email</p>
-		<p>Password</p>
-		<button class="defaultButton">Delect Account</button>
-		<button class="defaultButton" onclick="LogOut()">Sign Out</button>
+		<h1 id="account">My account</h1>
+		<i id="message" class="far fa-comment"></i>
+		<img class="profile" src="assets/tmp_profilePic.png">
+		<p class="userName">Penda Svane</p>
+		<!-- Loop through Food Objects -->
+		<!-- Listed Items -->
+		<section id="accounttemplate">
+			<article class="accountcard" id="leftcard" style="margin-top: 7px;">
+				<div class="accountcardcontent">
+					<h4 id="accountcontent">Contribution weeks</h3>
+						<h3 id="streak">6</h3>
+						<i id="fire" class="fas fa-fire-alt"></i>
+				</div>
+			</article>
+			<article class="accountcard" id="rightcard" style="margin-top: 7px;">
+				<div class="accountcardcontent">
+					<h4 id="accountcontent">Meals saved</h3>
+						<h3 id="streak">9</h3>
+						<i id="fire" class="fas fa-fire-alt"></i>
+				</div>
+				</div>
+			</article>
+			<article class="accountcard" id="leftcard" style="margin-bottom: 7px;">
+				<div class="accountcardcontent">
+					<i id="accountcardicon" class="fas fa-cog"></i>
+					<p id="cardtext">Settings</p>
+				</div>
+			</article>
+			<article class="accountcard" id="rightcard" style="margin-bottom: 7px;">
+				<div class="accountcardcontent">
+					<i id="accountcardicon" class="fas fa-sign-out-alt"></i>
+					<p id="cardtext">Log out</p>
+				</div>
+			</article>
+
+		</section>
+		<div class="iconfooter">
+			<article class="icons">
+				<div>
+					<i class="fas fa-map"></i>
+				</div>
+				<div>
+					<i class="fas fa-search"></i>
+				</div>
+				<div>
+					<i class="fas fa-shopping-basket"></i>
+				</div>
+				<div>
+					<i class="fas fa-user"></i>
+				</div>
+			</article>
+		</div>
+
 	</section>
+
+
 	<!-- Message Page -->
 	<section id="inboxPage" class="page"></section>
+
+
 	<!-- Navigation -->
 	<!--<nav>
 			<ul>

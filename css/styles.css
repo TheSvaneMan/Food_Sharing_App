@@ -80,10 +80,18 @@ footer {
 }
 
 .iconfooter{
-    background-color: #1d4b42;
+    background-color: var(--white);
     margin: 0 auto;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     padding-top: 1px;
+    z-index: 10;
+    box-shadow: 0px 0px 20px -10px #40514E;
+}
+
+#border{
+    border-top: solid;
+    border-color: rgba(64, 81, 78, 0.2);
+    border-radius: 10px;
 }
 
 .icons{
@@ -93,7 +101,7 @@ footer {
     font-size: 1.5rem;
     margin-top: 10px;
     padding-left: 50px;
-    color:#fff;
+    color:rgba(64, 81, 78, 0.4);
     cursor: pointer;
 }
 
@@ -169,6 +177,19 @@ body {
 .landImg{
     max-width: 100%;
     max-height: 100%;
+}
+
+.profile{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+
+}
+
+.userName{
+    text-align: center;
+    color: #40514E;
 }
 
 /* ------------- Placeholder ---------- */
@@ -387,7 +408,7 @@ body {
 
 #search{
     font-size: 1.5rem;
-    color: #8c9795;
+    color: #aaaaaa;
     position: absolute;
     left: 40px;
     top: 74px;
@@ -395,7 +416,7 @@ body {
 
 #sliders{
     font-size: 1.5rem;
-    color: #8c9795;
+    color: #aaaaaa;
     position: absolute;
     right: 45px;
     top: 74px;
@@ -464,6 +485,13 @@ input[type='radio']:checked:after {
     color: #40514E;
 }
 
+#account{
+    padding-left: 30px;
+    font-size: 1.6rem;
+    color: #40514E;
+    margin-bottom: 30px;
+}
+
 /* ------------- Food Component ---------- */
 .foodComponent {
     display: grid;
@@ -493,7 +521,13 @@ input[type='radio']:checked:after {
 }
 
 .foodcontent {
-    background-color: var(--white);
+    background-color: #fff;
+    border-radius: inherit;
+    text-align: left;   
+}
+
+.accountcardcontent {
+    background-color: #fff;
     border-radius: inherit;
     text-align: left;   
 }
@@ -526,4 +560,73 @@ input[type='radio']:checked:after {
     padding: 0;
     margin: 0 auto;
 }
+
+#accounttemplate {
+    display: grid;
+    height: 54vh;
+    grid-template-columns: 50% 50%;
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0 auto;
+}
+
+.accountcard {
+    display: grid;
+    position: relative;
+    height: 150px;
+    margin: 0 auto;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 3px 40px rgba(64, 81, 78, 0.1);
+}
+
+#leftcard{
+    margin-left: 25px;
+}
+
+#rightcard{
+    margin-right: 25px;
+}
+
+#accountcontent{
+    padding: 15px;
+    margin: 0 auto;
+    color: #40514E;
+}
+
+#streak{
+    position: absolute;
+    margin: 0 auto;
+    font-size: 3.5rem;
+    bottom: -5px;
+    right: 40px;
+    color: #11999E;
+    padding-right: 3px;
+    
+}
+
+#fire{
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 16.5px;
+    right: 20px;
+    color: #11999E;
+}
+
+#accountcardicon{
+    font-size: 3rem;
+    position: absolute;
+    top: 25%;
+    left: 34.5%;
+    color: #40514E;
+}
+
+#cardtext{
+    text-align: center;
+    margin-top: 90px;
+    color: #40514E;
+
+}
+
 
