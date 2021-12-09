@@ -571,6 +571,26 @@ input[type='radio']:checked:after {
     color: #40514E;
 }
 
+.storeheadline{
+    padding-left: 25px;
+    font-size: 1.6rem;
+    color: #11999E;
+}
+
+.storesub{
+    padding-left: 25px;
+    font-size: 1.2rem;
+    color: #11999E; 
+    display: inline-block;
+}
+
+#see{
+    margin-left: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.4;
+}
+
 #account{
     padding-left: 30px;
     font-size: 1.6rem;
@@ -587,11 +607,17 @@ input[type='radio']:checked:after {
     width: 175px;
     background-color: var(--white);
     border-radius: 10px;
-    box-shadow: 1px 1px 5px #293634;
+    box-shadow: 1px 1px 5px rgba(64, 81, 78, 0.4);
+}
+
+#mystorecomp{
+    height: 240px;
+    box-shadow: none;
+    margin-bottom: 50px;
 }
 
 .foodImage {
-    height: 150px;
+    height: 130px;
     width: 100%;
     object-fit: cover;
     border-radius: inherit;
@@ -612,6 +638,10 @@ input[type='radio']:checked:after {
     text-align: left;   
 }
 
+#mystore h3, h4{
+    color: #11999E;
+}
+
 .accountcardcontent {
     background-color: #fff;
     border-radius: inherit;
@@ -621,6 +651,12 @@ input[type='radio']:checked:after {
 .description{
     padding-left: 10px;
     margin: 0 auto;
+    font-size: 1rem;
+}
+
+.storeprice{
+    padding-left: 10px;
+    margin: -10px auto;
     font-size: 1rem;
 }
 
@@ -634,6 +670,36 @@ input[type='radio']:checked:after {
 
 .foodFunctions {
     display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 5px;
+    margin-top: 20px;
+}
+
+#storebtn{
+    width: 80px;
+    padding: 7px 0;
+    color:#11999E;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: #fff;
+    border: 1.5px solid rgba(17, 153, 158, 0.2);
+    border-radius: 7px;
+}
+
+#plus{
+    position: absolute;
+    font-size: 2rem;
+    bottom: 20vh;
+    left: 33%; 
+    color: #11999E;
+}
+
+#additem{
+    position: absolute;
+    bottom: 16.5vh;
+    left: 43%; 
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /* ------------- My Store ---------- */
@@ -649,7 +715,7 @@ input[type='radio']:checked:after {
 
 #accounttemplate {
     display: grid;
-    height: 54vh;
+    height: 56vh;
     grid-template-columns: 50% 50%;
     background-color: rgb(255, 255, 255);
     padding: 0;
@@ -665,6 +731,10 @@ input[type='radio']:checked:after {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 3px 40px rgba(64, 81, 78, 0.1);
+}
+
+#browse h3, h4{
+    color: #40514E;
 }
 
 #leftcard{

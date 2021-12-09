@@ -131,7 +131,7 @@
 		<!-- Listed Items -->
 		<section id="listedItems">
 			<article class="foodComponent">
-				<div class="foodcontent">
+				<div class="foodcontent" id="browse">
 					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
 					<h3 class="description">Vegetable rice</h3>
 					<h4 class="seller">From Penda Svane</h4>
@@ -139,7 +139,7 @@
 				</div>
 			</article>
 			<article class="foodComponent">
-				<div class="foodcontent">
+				<div class="foodcontent" id="browse">
 					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
 					<h3 class="description">Vegetable rice</h3>
 					<h4 class="seller">From Penda Svane</h4>
@@ -147,7 +147,7 @@
 				</div>
 			</article>
 			<article class="foodComponent">
-				<div class="foodcontent">
+				<div class="foodcontent" id="browse">
 					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
 					<h3 class="description">Vegetable rice</h3>
 					<h4 class="seller">From Penda Svane</h4>
@@ -193,60 +193,90 @@
 				<img class="foodImage" src="assets/Rectangle 67.png" alt="Food Image" />
 			</div>
 			<section class="buttongrid">
-				<button id="buybtn" class="defaultButton">Buy</button><button id="messagebtn" class="defaultButton">Message</button>
+				<button id="buybtn" class="defaultButton">Buy</button><button id="messagebtn"
+					class="defaultButton">Message</button>
 			</section>
-			
+
+		</div>
+		<div class="iconfooter">
+			<article class="icons">
+				<div>
+					<i class="fas fa-map"></i>
+				</div>
+				<div>
+					<i class="fas fa-search"></i>
+				</div>
+				<div>
+					<i class="fas fa-shopping-basket"></i>
+				</div>
+				<div>
+					<i class="fas fa-user"></i>
+				</div>
+			</article>
 		</div>
 
 	</section>
 
-	<div class="iconfooter">
-		<article class="icons">
-			<div>
-				<i class="fas fa-map"></i>
-			</div>
-			<div>
-				<i class="fas fa-search"></i>
-			</div>
-			<div>
-				<i class="fas fa-shopping-basket"></i>
-			</div>
-			<div>
-				<i class="fas fa-user"></i>
-			</div>
-		</article>
-	</div>
+
 
 	<!-- My Store-->
 	<section id="myStorePage" class="page">
-		<h1>MY STORE</h1>
-		<h4>Items on the market</h4>
-		<!-- Store Functions -->
+		<h1 class="storeheadline">My store</h1>
+		<h4 class="storesub">Items on the market</h4>
+		<h3 class="storesub" id="see">See all</h3>
+		
+		<!-- Store Functions
 		<section>
-			<button class="defaultButton" onclick="showAddNewProductPage()">
-				Add +
-			</button>
-			<button class="defaultButton">Active</button>
-			<button class="defaultButton">Sold</button>
-		</section>
+			<button class="defaultButton" onclick="showAddNewProductPage()">Add +</button>
+		</section> -->
+
 		<!-- Listed Items -->
 		<section id="listedItems">
-			<article class="foodComponent">
-				<div class="foodHeader">
-					<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
-					<div class="foodPrice">Price: 40dkk</div>
-				</div>
-				<div class="foodContent">
-					<div class="foodDescription">
-						<p>Food Description (Short)</p>
-					</div>
+			<article class="foodComponent" id="mystorecomp">
+				<div class="foodcontent" id="mystore">
+					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
+					<h3 class="description">Vegetable rice</h3>
+					<h4 class="seller">Selling since December 9, 2021</h4>
+					<h4 class="storeprice">29kr</h4>
 					<div class="foodFunctions">
-						<button class="defaultButton">Delete</button>
-						<button class="defaultButton">Update</button>
+						<button class="defaultButton" id="storebtn" style="margin-right: 7px;">Delete</button>
+						<button class="defaultButton" id="storebtn">Edit</button>
+					</div>
+				</div>
+				
+			</article>
+			<article class="foodComponent" id="mystorecomp">
+				<div class="foodcontent" id="mystore">
+					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
+					<h3 class="description">Vegetable rice</h3>
+					<h4 class="seller">Selling since December 9, 2021</h4>
+					<h4 class="storeprice">29kr</h4>
+					<div class="foodFunctions">
+						<button class="defaultButton" id="storebtn" style="margin-right: 7px;">Delete</button>
+						<button class="defaultButton" id="storebtn">Edit</button>
 					</div>
 				</div>
 			</article>
+			<i id="plus" class="fas fa-plus"></i>
+			<h4 id="additem">Add new</h4>
 		</section>
+
+		<div class="iconfooter">
+			<article class="icons">
+				<div>
+					<i class="fas fa-map"></i>
+				</div>
+				<div>
+					<i class="fas fa-search"></i>
+				</div>
+				<div>
+					<i class="fas fa-shopping-basket"></i>
+				</div>
+				<div>
+					<i class="fas fa-user"></i>
+				</div>
+			</article>
+		</div>
 	</section>
 
 
@@ -276,11 +306,15 @@
 			<input type="file" name="fileToUpload" id="fileToUpload" placeholder="Image of the meal" />
 			<input type="submit" name="action" value="upload">
 		</form>
+
+
 		<!-- Display Image -->
 		<img src="local/food/food19.jpg" alt="The recently uploaded image" id="testImg">
 		<button class="defaultButton" onclick="predictFood()">Predict Image</button>
 		<button class="defaultButton">Share Meal</button>
 	</section>
+
+
 	<!-- Bought Items -->
 	<section id="boughtItemsPage" class="page">
 		<article>
