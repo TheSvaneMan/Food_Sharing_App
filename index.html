@@ -121,7 +121,7 @@
 
 	<!-- Browse Page -->
 	<section id="browsePage" class="page">
-		<h1 id="browse">Browse</h1>
+		<h1 id="headline">Browse</h1>
 		<input type="text" placeholder="Search" class="inputFunction" id="searchbar" />
 		<i id="search" class="fas fa-search"></i>
 		<i id="sliders" class="fas fa-sliders-h"></i>
@@ -176,17 +176,47 @@
 
 	<!-- Item Page -->
 	<section id="itemPage" class="page">
-		<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
-		<p>Price: 50dkk</p>
-		<h1>Food Title</h1>
-		<h2>From Penda</h2>
-		<p>Location</p>
-		<p>Date Uploaded</p>
-		<b>Description</b>
-		<p>Description about the meal.</p>
-		<b>Location</b>
-		<button class="defaultButton">Buy</button><button class="defaultButton">Message</button>
+		<i id="backarrow" class="fas fa-arrow-left"></i>
+		<i id="message" class="far fa-comment" style="font-size: 1.8rem; margin: 20px 10px;"></i>
+		<div class="imgcontainer">
+			<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
+		</div>
+		<div class="itemcontent">
+			<h1>Food Title</h1>
+			<p id="subtitle">From Penda</p>
+			<p>A very important description describing how awesome this food is</p>
+			<h3 id="itemprice">29kr</h3>
+			<hr class="solid">
+			<h3>Location</h3>
+			<p id="subtitle" style="margin-bottom: 10px;">Ringvej Syd 104</p>
+			<div class="imgcontainer">
+				<img class="foodImage" src="assets/Rectangle 67.png" alt="Food Image" />
+			</div>
+			<section class="buttongrid">
+				<button id="buybtn" class="defaultButton">Buy</button><button id="messagebtn" class="defaultButton">Message</button>
+			</section>
+			
+		</div>
+
 	</section>
+
+	<div class="iconfooter">
+		<article class="icons">
+			<div>
+				<i class="fas fa-map"></i>
+			</div>
+			<div>
+				<i class="fas fa-search"></i>
+			</div>
+			<div>
+				<i class="fas fa-shopping-basket"></i>
+			</div>
+			<div>
+				<i class="fas fa-user"></i>
+			</div>
+		</article>
+	</div>
+
 	<!-- My Store-->
 	<section id="myStorePage" class="page">
 		<h1>MY STORE</h1>
@@ -218,6 +248,8 @@
 			</article>
 		</section>
 	</section>
+
+
 	<!-- Add New Product -->
 	<section id="addNewProductPage" class="page">
 		<h1>ADD NEW PRODUCT</h1>
@@ -262,7 +294,7 @@
 
 	<!-- Account Page -->
 	<section id="userAccountPage" class="page">
-		<h1 id="account">My account</h1>
+		<h1 id="headline">My account</h1>
 		<i id="message" class="far fa-comment"></i>
 		<img class="profile" src="assets/tmp_profilePic.png">
 		<p class="userName">Penda Svane</p>

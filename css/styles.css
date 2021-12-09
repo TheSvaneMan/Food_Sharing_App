@@ -179,6 +179,51 @@ body {
     max-height: 100%;
 }
 
+.imgcontainer{
+    width: 270px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 7px;
+}
+
+.imgcontainer img{
+    max-height: 140px;
+}
+
+.itemcontent{
+    position: relative;
+    margin: 0 auto;
+    width: 72%;
+    color: #40514E;
+}
+
+.itemcontent p{
+    font-size: 0.7rem;
+   
+}
+
+.itemcontent h1, h3{
+    padding: 0;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding-top: 5px;
+}
+
+#subtitle{
+    padding: 0;
+    margin: 0 auto;
+    color: rgba(64, 81, 78, 0.4);
+    font-size: 0.8rem;
+}
+
+#itemprice{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2rem;
+}
+
 .profile{
     display: flex;
     width: 100px;
@@ -190,6 +235,13 @@ body {
 .userName{
     text-align: center;
     color: #40514E;
+}
+
+hr.solid{
+    color:#40514E;
+    margin: 0 auto;
+    border: none;
+    border-top: 2px solid rgba(64, 81, 78, 0.1);
 }
 
 /* ------------- Placeholder ---------- */
@@ -328,6 +380,34 @@ body {
     border-radius: 15px;
 }
 
+.buttongrid{
+    display: grid;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    grid-template-columns: 60% 40%;
+}
+#buybtn{
+    margin-left: 0;
+    padding: 15px 60px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#messagebtn{
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #fff;
+    color: #11999E;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 15px;
+    border-color:#11999E;
+
+}
+
 .logoptions{
     position: relative;
     margin-top: 14vh;
@@ -430,6 +510,12 @@ body {
     top: 0;
 }
 
+#backarrow{
+    font-size: 2rem;
+    color:#40514E;
+    margin: 20px 25px;
+}
+
 #interest{
     color: #40514E;
     text-align: center;
@@ -479,7 +565,7 @@ input[type='radio']:checked:after {
     border: 2px solid white;
 }
 
-#browse{
+#headline{
     padding-left: 30px;
     font-size: 1.6rem;
     color: #40514E;
