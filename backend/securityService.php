@@ -12,7 +12,7 @@ require "security/C_Security.php";
 // Login Class
 require "security/login/C_Login.php";
 // Signup Class
-require "security/signup/C_SignUp.php";
+ require "security/signup/C_Signup.php";
 // Logout Class
 require "security/logout/C_Logout.php";
 // Search Class

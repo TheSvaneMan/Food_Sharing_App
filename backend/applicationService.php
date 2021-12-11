@@ -49,7 +49,7 @@ if (isset($_GET['action'])) {
     } else if ($_GET['action'] == 'deleteFood') {
         // SQL Call to delete the selected food item
         $selectedMealID = $_GET['value'];
-        $sql = "DELETE FROM Food WHERE food_id = '$selectedMealID'";
+        $sql = "DELETE FROM food WHERE food_id = '$selectedMealID'";
         // Need to create a Food Class that handles this function but for now it is okay
         // Make a check that ther userID assigned to that meal is the same as the ID of the currently logged in user
         $mySQL->query($sql);

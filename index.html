@@ -9,6 +9,8 @@
 		<link href="ico/favicon.ico" rel="icon" />
 	</head>
 	<body>
+		<!-- Authentication Backend -->
+		<script src="backend/security/auth/B_Auth.php"></script>
 		<!-- Features -->
 		<section id="featureSection">
 			<button class="defaultButton" onclick="window.history.back()">
@@ -166,35 +168,35 @@
 			<h1>Selected Food From Store</h1>
 			<p>Need better UI to convey this easier</p>
 			<section id="myFood">
-					<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
-					<input
-						type="text"
-						id="name-update"
-						placeholder="Type new Name"
-						required
-					/>
-					<input
-						type="text"
-						id="description-update"
-						placeholder="Type new Description"
-						required
-					/>
-					<input
-						type="number"
-						id="price-update"
-						placeholder="New Price"
-						required
-					/>
-					<input
-						type="text"
-						id="location-update"
-						placeholder="New Picup location"
-						required
-					/>
-					<button type="activeGreenButton" name="button" onclick="updateFood()">
-						Update Meal
-					</button>
-					<button class="defaultButton" onclick="deleteFood()">Delete</button>
+				<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
+				<input
+					type="text"
+					id="name-update"
+					placeholder="Type new Name"
+					required
+				/>
+				<input
+					type="text"
+					id="description-update"
+					placeholder="Type new Description"
+					required
+				/>
+				<input
+					type="number"
+					id="price-update"
+					placeholder="New Price"
+					required
+				/>
+				<input
+					type="text"
+					id="location-update"
+					placeholder="New Picup location"
+					required
+				/>
+				<button type="activeGreenButton" name="button" onclick="updateFood()">
+					Update Meal
+				</button>
+				<button class="defaultButton" onclick="deleteFood()">Delete</button>
 			</section>
 		</section>
 		<!-- Add New Product -->
@@ -325,11 +327,10 @@
 		<!-- Google Maps -->
 		<!-- Blocked for now, security reasons -->
 		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=[Value]=myMap"></script> -->
+
 		<!-- Router -->
 		<script src="js/router.js"></script>
 		<!-- Main app.js -->
 		<script src="js/app.js"></script>
-		<!-- Authentication Backend -->
-		<script src="backend/security/auth/B_Auth.php"></script>
 	</body>
 </html>
