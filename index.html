@@ -130,7 +130,7 @@
 		<!-- Loop through Food Objects -->
 		<!-- Listed Items -->
 		<section id="listedItems">
-			<article class="foodComponent">
+			<article class="foodComponent" id="browsecomp">
 				<div class="foodcontent" id="browse">
 					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
 					<h3 class="description">Vegetable rice</h3>
@@ -138,7 +138,7 @@
 					<h4 class="description">29kr</h4>
 				</div>
 			</article>
-			<article class="foodComponent">
+			<article class="foodComponent" id="browsecomp">
 				<div class="foodcontent" id="browse">
 					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
 					<h3 class="description">Vegetable rice</h3>
@@ -146,7 +146,7 @@
 					<h4 class="description">29kr</h4>
 				</div>
 			</article>
-			<article class="foodComponent">
+			<article class="foodComponent" id="browsecomp">
 				<div class="foodcontent" id="browse">
 					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
 					<h3 class="description">Vegetable rice</h3>
@@ -155,7 +155,7 @@
 				</div>
 			</article>
 		</section>
-		<div class="iconfooter" id="border">
+		<div class="iconfooter">
 			<article class="icons">
 				<div>
 					<i class="fas fa-map"></i>
@@ -222,16 +222,20 @@
 	<!-- My Store-->
 	<section id="myStorePage" class="page">
 		<h1 class="storeheadline">My store</h1>
-		<h4 class="storesub">Items on the market</h4>
-		<h3 class="storesub" id="see">See all</h3>
-		
+
 		<!-- Store Functions
 		<section>
 			<button class="defaultButton" onclick="showAddNewProductPage()">Add +</button>
 		</section> -->
 
 		<!-- Listed Items -->
-		<section id="listedItems">
+		<section id="storeItems">
+
+			<article class="subheadline">
+				<h4 class="storesub">Items on the market</h4>
+				<h3 class="storesub" id="see">See all</h3>
+			</article>
+
 			<article class="foodComponent" id="mystorecomp">
 				<div class="foodcontent" id="mystore">
 					<img class="foodImage" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg" alt="Food Picture" />
@@ -243,7 +247,7 @@
 						<button class="defaultButton" id="storebtn">Edit</button>
 					</div>
 				</div>
-				
+
 			</article>
 			<article class="foodComponent" id="mystorecomp">
 				<div class="foodcontent" id="mystore">
@@ -257,11 +261,48 @@
 					</div>
 				</div>
 			</article>
-			<i id="plus" class="fas fa-plus"></i>
-			<h4 id="additem">Add new</h4>
+
+			<article class="addnew">
+				<i id="addplus" class="fas fa-plus plus"></i>
+				<h4 class="plus" id="additemtext">Add new</h4>
+			</article>
+
+
+
+			<h3 class="soldstoresub" id="sold">Sold items</h3>
+			<h3 class="soldstoresub" id="see" style="margin-left: 87px; margin-top: 22px;">See all</h3>
+			<article class="foodComponent" id="soldcomp">
+				<div class="foodcontent" id="mystore">
+					<img class="foodImage" id="soldimg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg"
+						alt="Food Picture" />
+					<h3 class="description" id="solditem">Vegetable rice</h3>
+					<h4 class="seller" id="solditem">Sold on December 9, 2021</h4>
+					<h4 class="storeprice" id="solditem">29kr</h4>
+				</div>
+			</article>
+			<article class="foodComponent" id="soldcomp">
+				<div class="foodcontent" id="mystore">
+					<img class="foodImage" id="soldimg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg"
+						alt="Food Picture" />
+					<h3 class="description" id="solditem">Vegetable rice</h3>
+					<h4 class="seller" id="solditem">Sold on December 9, 2021</h4>
+					<h4 class="storeprice" id="solditem">29kr</h4>
+				</div>
+			</article>
+			<article class="foodComponent" id="soldcomp">
+				<div class="foodcontent" id="mystore">
+					<img class="foodImage" id="soldimg" src="local/food/diana-oborska-eS07Cany2g4-unsplash.jpg"
+						alt="Food Picture" />
+					<h3 class="description" id="solditem">Vegetable rice</h3>
+					<h4 class="seller" id="solditem">Sold on December 9, 2021</h4>
+					<h4 class="storeprice" id="solditem">29kr</h4>
+				</div>
+			</article>
+
 		</section>
 
-		<div class="iconfooter">
+
+		<div class="iconfooter" style="box-shadow: 0px 0px 20px -10px #40514E">
 			<article class="icons">
 				<div>
 					<i class="fas fa-map"></i>

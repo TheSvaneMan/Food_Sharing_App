@@ -12,10 +12,6 @@
 }
 
 /* ---------- scrollbar ---------- */
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
 
 /* Track */
 ::-webkit-scrollbar-track {
@@ -80,6 +76,7 @@ footer {
 }
 
 .iconfooter{
+    position: relative;
     background-color: var(--white);
     margin: 0 auto;
     padding-bottom: 8px;
@@ -88,11 +85,6 @@ footer {
     box-shadow: 0px 0px 20px -10px #40514E;
 }
 
-#border{
-    border-top: solid;
-    border-color: rgba(64, 81, 78, 0.2);
-    border-radius: 10px;
-}
 
 .icons{
     display: grid;
@@ -191,6 +183,12 @@ body {
     max-height: 140px;
 }
 
+#soldimg{
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
 .itemcontent{
     position: relative;
     margin: 0 auto;
@@ -215,6 +213,11 @@ body {
     margin: 0 auto;
     color: rgba(64, 81, 78, 0.4);
     font-size: 0.8rem;
+}
+
+.subheadline{
+    grid-column: span 2;
+    padding: 0;
 }
 
 #itemprice{
@@ -383,7 +386,7 @@ hr.solid{
 .buttongrid{
     display: grid;
     margin-top: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
     grid-template-columns: 60% 40%;
 }
 #buybtn{
@@ -575,6 +578,7 @@ input[type='radio']:checked:after {
     padding-left: 25px;
     font-size: 1.6rem;
     color: #11999E;
+    margin-bottom: 15px;
 }
 
 .storesub{
@@ -582,6 +586,28 @@ input[type='radio']:checked:after {
     font-size: 1.2rem;
     color: #11999E; 
     display: inline-block;
+    margin: 10px auto;
+}
+
+.soldstoresub{
+    padding-top: 0;
+    padding-left: 25px;
+    font-size: 1.2rem;
+    color: #11999E; 
+    display: inline-block;
+
+}
+
+#solditem{
+    opacity: 0.5;
+}
+
+#sold{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    font-size: 1.3rem;
+    color: #11999E;
 }
 
 #see{
@@ -590,6 +616,33 @@ input[type='radio']:checked:after {
     font-weight: 500;
     opacity: 0.4;
 }
+
+.addnew{
+    grid-column: span 2;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.plus{
+    display: inline-block;
+}
+
+#additemtext{
+    display: inline;
+    color: #11999E;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 50px;
+}
+
+#addplus{
+    display: inline;
+    color:#11999E;
+    font-size: 1.3rem;
+    margin-right: 5px;
+}
+
+
 
 #account{
     padding-left: 30px;
@@ -610,10 +663,19 @@ input[type='radio']:checked:after {
     box-shadow: 1px 1px 5px rgba(64, 81, 78, 0.4);
 }
 
+#browsecomp{
+    height: 240px;
+    margin-bottom: 10px;
+}
 #mystorecomp{
     height: 240px;
     box-shadow: none;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+}
+
+#soldcomp{
+    height: 240px;
+    box-shadow: none;
 }
 
 .foodImage {
@@ -686,21 +748,6 @@ input[type='radio']:checked:after {
     border-radius: 7px;
 }
 
-#plus{
-    position: absolute;
-    font-size: 2rem;
-    bottom: 20vh;
-    left: 33%; 
-    color: #11999E;
-}
-
-#additem{
-    position: absolute;
-    bottom: 16.5vh;
-    left: 43%; 
-    font-size: 1.2rem;
-    font-weight: 500;
-}
 
 /* ------------- My Store ---------- */
 #listedItems {
@@ -710,6 +757,16 @@ input[type='radio']:checked:after {
     overflow-y: scroll;
     background-color:#fff;
     padding: 0;
+    margin: 0 auto;
+}
+
+#storeItems {
+    display: grid;
+    height: 80.5vh;
+    grid-template-columns: 50% 50%;
+    overflow-y: scroll;
+    background-color:#fff;
+    padding-bottom: 0;
     margin: 0 auto;
 }
 
