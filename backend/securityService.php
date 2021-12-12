@@ -51,6 +51,11 @@ if (isset($_GET['action'])) {
     } else if ($_GET['action'] == 'logOut') {
         // Logout function
         $security->LogOut();
+    } else if ($_GET['action'] == "activeUser") {
+        // Returns the current active user ID found in online DB
+        $id = $_SESSION['userInfo']['userID'];
+        // Find user name of this id
+        echo $id;
     }
 } else {
     echo "None of the above runs";

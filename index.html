@@ -16,7 +16,7 @@
 			<button class="defaultButton" onclick="window.history.back()">
 				Back
 			</button>
-			<button class="defaultButton">Inbox</button>
+			<a class="defaultButton" href="#/inbox" onclick="loadMessages()">Inbox</a>
 		</section>
 		<!-- Landing Page -->
 		<section id="landingPage" class="page">
@@ -131,14 +131,75 @@
 		<!-- Browse Page -->
 		<section id="browsePage" class="page">
 			<h1>BROWSE</h1>
-			<button class="defaultButton">Filters</button>
+			<button class="greenActionButton">Filters</button>
+			<form method="GET">
+				<button
+					id="button"
+					type="button"
+					class="defaultButton"
+					onclick="clearFilters()"
+				>
+					No Filter
+				</button>
+				<button
+					id="button"
+					type="button"
+					value="foodContainer"
+					class="defaultButton"
+					onclick="filterFood(this.value)"
+				>
+					Container
+				</button>
+				<br />
+				<button
+					id="button"
+					type="button"
+					value="noFoodContainer"
+					class="defaultButton"
+					onclick="filterFood(this.value)"
+				>
+					No container
+				</button>
+				<br />
+				<button
+					id="button"
+					type="button"
+					value="lowToHigh"
+					class="defaultButton"
+					onclick="filterFood(this.value)"
+				>
+					L2H
+				</button>
+				<br />
+				<button
+					id="button"
+					type="button"
+					value="highToLow"
+					class="defaultButton"
+					onclick="filterFood(this.value)"
+				>
+					H2L
+				</button>
+			</form>
+			<div id="selectedFilter"><p>No filter selected</p></div>
+			<!-- Slightly dynamic search function, can be improved but ye.. Proof of concept -->
+			<select
+				name="selectSearch"
+				id="selectSearch"
+				onchange="SetSearch(this.value)"
+			>
+				<option value="search">Name of Product</option>
+				<option value="searchDescription">Description of Product</option>
+				<option value="searchPrice">Price of Product</option>
+				<option value="searchLocation">Location of Product</option>
+			</select>
+			<div id="selectedSearch"><p>No search criteria selected</p></div>
 			<input
 				onkeyup="search(this.value)"
 				type="text"
 				placeholder="Search"
 				class="inputFunction"
 			/>
-			<p>Current Filters: Price</p>
 			<!-- Loop through Food Objects -->
 			<!-- Listed Items -->
 			<section id="listedItems" class="foodArrayDisplay"></section>
@@ -218,11 +279,14 @@
 			/>
 			<p>Category</p>
 			<p>Choose tags that describe your product</p>
-			<input type="checkbox" /><b>Fruit</b> <input type="checkbox" /><b
-				>Vegetable</b
-			>
-			<input type="checkbox" /><b>Grain</b> <input type="checkbox" /><b>Meat</b>
-			<input type="checkbox" /><b>Cooked Meal</b>
+			<input type="checkbox" id="catDairy" /><b>Dairy</b>
+			<input type="checkbox" id="catFruit" /><b>Fruit</b>
+			<input type="checkbox" id="catGrain" /><b>Grain</b>
+			<input type="checkbox" id="catBeans" /><b>Beans</b>
+			<input type="checkbox" id="catMeat" /><b>Meat</b>
+			<input type="checkbox" id="catConfections" /><b>Confections (Sweets)</b>
+			<input type="checkbox" id="catVegetable" /><b>Vegetables</b>
+			<input type="checkbox" id="catWater" /><b>Water</b>
 			<p>Pick up location</p>
 			<!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
 
@@ -234,11 +298,29 @@
 			/>
 			<p>Is the meal packed in a container?</p>
 			<input type="checkbox" id="newProductFoodContainer" /><b>Yes</b>
+			<p>Is the meal cooked?</p>
+			<input type="checkbox" id="newProductFoodCooked" /><b>Yes</b>
 			<p>Allergens</p>
-			<p>Help keep people safe by identifying key ingredients</p>
-			<input type="checkbox" /><b>Peanuts</b> <input type="checkbox" /><b
-				>Lactose</b
-			>
+			<p>
+				Help keep people safe by identifying key ingredients that they may be
+				allergic to.
+			</p>
+			<input type="checkbox" id="allergyMilk" /><b>Dairy Milk</b>
+			<input type="checkbox" id="allergyEggs" /><b>Eggs</b>
+			<input type="checkbox" id="allergyFish" /><b>Fish</b>
+			<input type="checkbox" id="allergyShellFish" /><b>Shell Fish</b>
+			<input type="checkbox" id="allergyAlmonds" /><b>Almonds</b>
+			<input type="checkbox" id="allergyPecans" /><b>Pecans</b>
+			<input type="checkbox" id="allergyPeanuts" /><b>Peanuts</b>
+			<input type="checkbox" id="allergyWheat" /><b>Wheat</b>
+			<input type="checkbox" id="allergySoybeans" /><b>Soybeans</b>
+			<input type="checkbox" id="allergySesame" /><b>Sesame</b>
+			<input type="checkbox" id="allergyBrazilNuts" /><b>Brazil Nuts</b>
+			<input type="checkbox" id="allergyCashews" /><b>Cashews</b>
+			<input type="checkbox" id="allergyPistachios" /><b>Pistachious</b>
+			<input type="checkbox" id="allergyWalnuts" /><b>Walnuts</b>
+			<input type="checkbox" id="allergyHazelnuts" /><b>Hazelnuts</b>
+			<input type="checkbox" id="allergyCinnamon" /><b>Cinnamon</b>
 			<p>Price</p>
 			<input
 				type="number"
@@ -247,28 +329,35 @@
 				class="inputFunction"
 			/>
 			<form
-				action="backend/uploadFiles/B_UploadFile.php"
+				action="backend/applicationService.php"
 				method="post"
 				enctype="multipart/form-data"
+				required
 			>
 				<h3>Add an image</h3>
 				<input
 					type="file"
+					accept="image/"
 					name="fileToUpload"
 					id="fileToUpload"
 					placeholder="Image of the meal"
 				/>
+				<!-- Display Image -->
+				<img
+					src="local/food/food29.jpg"
+					alt="The recently uploaded image"
+					id="clientImage"
+					class="testImage"
+					alt="your uploaded food image"
+				/>
+
 				<input type="submit" name="action" value="upload" />
 			</form>
-			<!-- Display Image -->
-			<img
-				src="local/food/food29.jpg"
-				alt="The recently uploaded image"
-				id="testImg"
-			/>
+			<!-- Predict Image Content -->
 			<button class="defaultButton" onclick="predictFood()">
 				Predict Image
 			</button>
+
 			<input type="date" id="bestBeforeDate" placeholder="yyyy-mm-dd" />
 
 			<input type="checkbox" id="newProductIsFree" /><b
@@ -298,8 +387,37 @@
 			<button class="defaultButton">Delect Account</button>
 			<button class="defaultButton" onclick="LogOut()">Sign Out</button>
 		</section>
-		<!-- Message Page -->
-		<section id="inboxPage" class="page"></section>
+		<!-- Inbox Page -->
+		<section id="inboxPage" class="page">
+			<div class="inboxHeader">
+				<h4>Inbox</h4>
+			</div>
+			<!-- Put all messages between one user in one div -->
+			<!-- Display all Messages for User  -->
+			<section id="user-inbox"></section>
+			<div id="send-Message-Box"></div>
+		</section>
+		<!-- Pop Up Message Dialogue -->
+		<section id="chatBox">
+			<div class="chatBoxHeader">
+				<h1>Message User</h1>
+				<button class="redActionButton" onclick="toggleChatBox()">Close</button>
+			</div>
+			<input
+				class="messageInput"
+				id="messageData"
+				type="text"
+				name="messageData"
+				maxlength="140"
+				placeholder="Type Message here"
+			/>
+			<button class="greenActionButton" onclick="sendMessage()">
+				Send Message
+			</button>
+			<button class="defaultButton" onclick="confirmReceiver()">
+				Confirm Receiver
+			</button>
+		</section>
 		<!-- Navigation -->
 		<nav>
 			<ul>

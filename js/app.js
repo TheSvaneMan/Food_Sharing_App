@@ -1,10 +1,13 @@
 /* ---------- Backend Services --------- */
 // ApplicationService will deal with Data manipulation: Loading, Filters, Images, etc
 const _baseUrl = 'backend/applicationService.php/';
+// MessageSystem handles all messages
+const _messageUrl = 'backend/messagingSystem/B_MessageService.php';
 // The SercurityService handles Authentication, Account Creation, Logout, Tracking User State(Online, Offline), etc
 // The MessageService will handle Inbox :)
 /* ---- Global Variables ---- */
 let _selectedProductID;
+let _searchMetric = "search";
 // ========== Usability Function ==========
 async function checkActiveUser() {
 	const url = _security + '?action=activeUser';
@@ -22,6 +25,7 @@ function showStartPage() {
 // Show Login Page
 function showLoginPage() {
 	navigateTo('#/login');
+	checkActiveUser();
 }
 // Show Signup Page
 function showSignUpPage() {
@@ -223,6 +227,13 @@ async function loadMessages() {
 	appendMessages(_messages);
 }
 
+async function loadCatAndAllergyData(id) {
+	const url = _baseUrl + '?action=getCategoryAndAllergies&value=' + id;
+	const response = await fetch(url);
+	const data = await response.json();
+	_catAndAllergyData = data;
+}
+
 // ========== Appending Data Services ==========
 // Adds meals to the DOM Browse
 function appendMeals(allFood) {
@@ -262,6 +273,7 @@ async function showDetails(id) {
 	_selectedProductID = id;
 	localStorage.setItem('selectedFoodId', _selectedProductID);
 	const selectedMeal = _foods.find((food) => food.food_id == id);
+	await loadCatAndAllergyData(id);
 	appendFood(selectedMeal);
 	navigateTo('#/selectedMeal');
 }
@@ -269,6 +281,19 @@ async function showDetails(id) {
 // append single Food Item
 function appendFood(food) {
 	let htmlTemplate = '';
+	// Front-end data tidying, maybe not best practice
+	let foodContainer = '';
+	if (food.foodContainer == 1) {
+		foodContainer = 'Yes';
+	} else {
+		foodContainer = 'No';
+	}
+	let foodCooked = '';
+	if (food.foodCooked == 1) {
+		foodCooked = 'Yes';
+	} else {
+		foodCooked = 'No';
+	}
 	htmlTemplate += /*html*/ `
 			<article class="user-item">
 			<h3>ID: ${food.food_id}</h3>
@@ -276,17 +301,52 @@ function appendFood(food) {
 			<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
 			<p>ImageURL: ${food.foodImageDir} </p>
 			<p>Description: ${food.foodDescription}</p>
-			<p>Has a container: ${food.foodContainer}</p>
+			<p>Has a container: ${foodContainer}</p>
+			<p>The meal is cooked: ${foodCooked}</p>
 			<p>Price: ${food.foodPrice}</p>
 			<p>Uploaded By: ${food.foodOwner}</p>
 			<p>Pickup Location: ${food.foodLocation}</p>
 			<p>Date Added: ${food.dateAdded}</p>
 			<p>Best Before Date: ${food.bestBeforeDate}</p>
+			<p>Categories</p>
+			<section class="foodTag" id="selected-meal-cat"></section>
+			<p>Allergies</p>
+			<section class="foodTag" id="selected-meal-allergy"></section>
 			<button class="defaultButton" onclick="purchaseFood(${food.food_id})">Buy</button>
-			<button class="defaultButton">Message</button>
+			<button class="defaultButton" onclick="messageUser(${food.foodOwner})">Message</button>
 			</article>
 		`;
+	// Create local array that contains the food cat items
+	let htmlTemplateCat = '';
+	if (_catAndAllergyData.category.length == 0) {
+		htmlTemplateCat += /*html*/ `
+		<div class="foodTagWarning" >No category implicitly defined</div>
+		`;
+	} else {
+		_catAndAllergyData.category.forEach((element) => {
+			htmlTemplateCat += /*html*/ `
+		<div class="foodCategory">${element.foodGroup}</div>
+		`;
+		});
+	}
+	// Create local array that contains the food allergy items
+	let htmlTemplateAllergy = '';
+	if (_catAndAllergyData.allergy.length == 0) {
+		htmlTemplateAllergy += /*html*/ `
+		<div class="foodTagWarning" >No allergies implicitly defined, make sure to read description :)</div>
+		`;
+	} else {
+		_catAndAllergyData.allergy.forEach((element) => {
+			htmlTemplateAllergy += /*html*/ `
+		<div class="foodAllergy">${element.allergyName}</div>
+		`;
+		});
+	}
+
 	document.querySelector('#selected-meal').innerHTML = htmlTemplate;
+	document.querySelector('#selected-meal-cat').innerHTML = htmlTemplateCat;
+	document.querySelector('#selected-meal-allergy').innerHTML =
+		htmlTemplateAllergy;
 }
 
 // ========== My Store Functions ==========
@@ -343,6 +403,7 @@ async function showFoodDetails(id) {
 	navigateTo('#/updateFood');
 }
 
+// ========== Delete Functions ==========
 // Delete Food Item (User Owned)
 async function deleteFood(foodID) {
 	const url = _baseUrl + '?action=deleteFood&value=' + foodID;
@@ -350,6 +411,35 @@ async function deleteFood(foodID) {
 	// Load My Store Page once successful delete
 	// Do something better with response data
 	showMyStorePage();
+}
+
+// ========== Filter Functions ==========
+// Filters
+async function filterFood(value) {
+	htmlTemplate = '';
+	const options = {
+		method: 'GET',
+	};
+	let response = await fetch(_baseUrl + '?action=filterFood&value=' + value, options);
+	let data = await response.json();
+	console.log(data);
+	appendMeals(data);
+	// Update UI to notify User which filter they have selected
+	htmlTemplate += /*html*/ `
+			<p>Current Filter: ${value}</p>
+		`;
+	document.querySelector('#selectedFilter').innerHTML = htmlTemplate;
+}
+
+// Clear Filters
+async function clearFilters() {
+	htmlTemplate = '';
+	await loadFood();
+	// Update UI to notify User which filter they have selected
+	htmlTemplate += /*html*/ `
+			<p>No filter selected</p>
+		`;
+	document.querySelector('#selectedFilter').innerHTML = htmlTemplate;
 }
 
 // ========== Update Functions ==========
@@ -403,18 +493,36 @@ async function updateFood() {
 }
 
 // ========== Search Function ==========
+function SetSearch(value) {
+	htmlTemplate = '';
+	_searchMetric = value;
+	// Update UI to notify User of current Search Criteria
+	htmlTemplate += /*html*/ `
+			<p>Currently Searching by: ${value}</p>
+		`;
+	document.querySelector('#selectedSearch').innerHTML = htmlTemplate;
+}
+// Dynamic Search Function
 async function search(searchString) {
 	const options = {
 		method: 'GET',
 	};
 	let response = await fetch(
-		_baseUrl + '?action=search&value=' + searchString,
+		_baseUrl + '?action=' + _searchMetric + '&value=' + searchString,
 		options
 	);
 	let data = await response.json();
 	appendMeals(data);
-}
+	
+} 
 
+// ========== Search Function ==========
+fileToUpload.onchange = (event) => {
+	const [file] = fileToUpload.files;
+	if (file) {
+		clientImage.src = URL.createObjectURL(file);
+	}
+};
 // ========== Add Food Product ==========
 async function AddFoodProduct() {
 	foodName = document.getElementById('newProductName').value;
@@ -426,14 +534,70 @@ async function AddFoodProduct() {
 	} else {
 		foodContainer = 0;
 	}
-	// Multiple choice, must be an array
-	foodCategory = [];
-	// foodCategory = document.getElementById('foodCategory').value;
-	// Multiple choice, must be an array
-	foodAllergies = [];
-	// Call a different JS Function to loop through allergies and categories selected
-	// And add them to the database
-	// foodAllergies = document.getElementById('foodAllgeries').value;
+	foodCooked = document.getElementById('newProductFoodCooked').checked;
+	if (foodCooked == true) {
+		foodCooked = 1;
+	} else {
+		foodCooked = 0;
+	}
+	// Food Category
+	catDairy = document.getElementById('catDairy').checked;
+	catFruit = document.getElementById('catFruit').checked;
+	catGrain = document.getElementById('catGrain').checked;
+	catBeans = document.getElementById('catBeans').checked;
+	catMeat = document.getElementById('catMeat').checked;
+	catConfections = document.getElementById('catConfections').checked;
+	catVegetable = document.getElementById('catVegetable').checked;
+	catWater = document.getElementById('catWater').checked;
+	// Food Category Object
+	foodCategory = {
+		Dairy: catDairy,
+		Fruit: catFruit,
+		Grains: catGrain,
+		Beans: catBeans,
+		Meat: catMeat,
+		Confections: catConfections,
+		Vegetables: catVegetable,
+		Water: catWater,
+	};
+
+	// Food Allergies
+	allergyMilk = document.getElementById('allergyMilk').checked;
+	allergyEggs = document.getElementById('allergyEggs').checked;
+	allergyFish = document.getElementById('allergyFish').checked;
+	allergyShellFish = document.getElementById('allergyShellFish').checked;
+	allergyAlmonds = document.getElementById('allergyAlmonds').checked;
+	allergyPecans = document.getElementById('allergyPecans').checked;
+	allergyPeanuts = document.getElementById('allergyPeanuts').checked;
+	allergyWheat = document.getElementById('allergyWheat').checked;
+	allergySoybeans = document.getElementById('allergySoybeans').checked;
+	allergyBrazilNuts = document.getElementById('allergyBrazilNuts').checked;
+	allergySesame = document.getElementById('allergySesame').checked;
+	allergyCashews = document.getElementById('allergyCashews').checked;
+	allergyPistachios = document.getElementById('allergyPistachios').checked;
+	allergyWalnuts = document.getElementById('allergyWalnuts').checked;
+	allergyHazelnuts = document.getElementById('allergyHazelnuts').checked;
+	allergyCinnamon = document.getElementById('allergyCinnamon').checked;
+	// Food Allergy Object
+	foodAllergy = {
+		milk: allergyMilk,
+		eggs: allergyEggs,
+		fish: allergyFish,
+		shellfish: allergyShellFish,
+		almonds: allergyAlmonds,
+		pecans: allergyPecans,
+		peanuts: allergyPeanuts,
+		wheat: allergyWheat,
+		soybeans: allergySoybeans,
+		sesame: allergySesame,
+		brazilNuts: allergyBrazilNuts,
+		cashew: allergyCashews,
+		pistachios: allergyPistachios,
+		walnutsAllergy: allergyWalnuts,
+		hazelnutsAllergy: allergyHazelnuts,
+		cinnamonAllergy: allergyCinnamon,
+	};
+	// Food Price
 	foodPrice = document.getElementById('newProductPrice').value;
 	foodImage = 'A directory';
 	bestBeforeDay = document.getElementById('bestBeforeDate').value;
@@ -451,6 +615,9 @@ async function AddFoodProduct() {
 		FoodImage: foodImage,
 		FoodDescription: foodDescription,
 		FoodContainer: foodContainer,
+		FoodCooked: foodCooked,
+		FoodCategory: foodCategory,
+		FoodAllergy: foodAllergy,
 		FoodPrice: foodPrice,
 		FoodLocation: foodLocation,
 		FoodBestBeforeDate: bestBeforeDate,
@@ -464,8 +631,7 @@ async function AddFoodProduct() {
 		body: JSON.stringify(params),
 	};
 	await fetch(_baseUrl + '?action=addNewFood', options).then((response) => {
-		let result = response.json();
-		// Check if upload was success of not, notify user on each case
+		result = response.json();
 		showHomePage();
 	});
 }
@@ -480,8 +646,7 @@ async function AddFoodProduct() {
 } */
 
 // ========== Image Recognition Feature ==========
-const img = document.getElementById('testImg');
-
+const img = document.getElementById('clientImage');
 function predictFood() {
 	// Load the model.
 	mobilenet.load().then((model) => {
@@ -493,15 +658,119 @@ function predictFood() {
 	});
 }
 
+
+// ========== Inbox System ==========
+// Sort messages into chats
+function appendMessages(messages) {
+	console.log(messages);
+	let htmlTemplateInbox = '';
+	for (const message of messages) {
+		// Filter messages into received and sent
+		if (message.sentby == _currentUserID) {
+			// Outbox
+			htmlTemplateInbox += /*html*/ `
+				<div class="messageComponent">
+					<div class="messageHeader">	
+						<p>From: ${message.sentby} </p>
+						<p>To: ${message.sentto}</p>
+						<p>${message.created}</p>
+					</div>
+					<div class="messageContentSent">
+						<p>${message.message} </p>
+					</div>
+				</div>
+			`;
+		} else if (message.sentto == _currentUserID){
+			// Inbox
+			htmlTemplateInbox += /*html*/ `
+				<div class="messageComponent">
+					<div class="messageHeader">	
+						<p>From: ${message.sentby} </p>
+						<p>To: ${message.sentto}</p>
+						<p>${message.created}</p>
+					</div>
+					<div class="messageContentReceive">
+						<p>${message.message} </p>
+					</div>
+				</div>
+			`;
+		}
+	}
+	document.querySelector('#user-inbox').innerHTML = htmlTemplateInbox;
+	
+	let htmlTemplateChatComponent = '';
+	htmlTemplateChatComponent += /*html*/ `
+				<button class='defaultButton' onclick='messageUser()'>Message</button>
+			`;
+	document.querySelector('#send-Message-Box').innerHTML =
+		htmlTemplateChatComponent;
+}
+
+function messageUser(id) {
+	let chatBox = document.getElementById('chatBox');
+	chatBox.style.display = 'grid';
+	_messageUserId = id;
+}
+
+function toggleChatBox() {
+	let chatBox = document.getElementById('chatBox');
+	chatBox.style.display = 'none';
+}
+
+function messageUser(id) {
+	let chatBox = document.getElementById('chatBox');
+	chatBox.style.display = 'grid';
+	_messageUserId = id;
+}
+
+function confirmReceiver() {
+	// Prints out the Receiver ID to confirm you selected the right person
+	// Debugging purposes
+	console.log(_messageUserId);
+}
+
+async function sendMessage(receiverID) {
+	// Message data collection
+	let messageData = document.getElementById('messageData').value;
+	// Message Parameters
+	const params = {
+		receiver: _messageUserId,
+		message: messageData,
+	};
+	const options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json; charset=utf-8',
+		},
+		body: JSON.stringify(params),
+	};
+
+	await fetch(_messageUrl + '?action=sendMessage', options).then((response) => {
+		let result = response.json();
+	});
+}
+
+// Get the active user from Server
+async function checkActiveUser() {
+	const url = _security + '?action=activeUser';
+	const response = await fetch(url);
+	const data = await response.json();
+	_currentUserID = data;
+	console.log(_currentUserID);
+}
+
 // ========== INIT APP ==========
 function init() {
-	// checkActiveUser();
+	checkActiveUser();
 	if (location.hash === '#/') {
 		showStartPage();
 	} else if (location.hash === '#/browse') {
 		showHomePage();
 	} else if (location.hash === '#/myStore') {
 		loadMyStoreFood();
+	} else if (location.hash === '#/inbox') {
+		checkActiveUser();
+		loadMessages();
 	}
 }
 

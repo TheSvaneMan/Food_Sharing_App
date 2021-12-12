@@ -8,7 +8,7 @@
     --shadow: black 5px 5px 10px;
     --button: #f5772e;
     --background: #ffffff;
-    --darker-background: #108181;
+    --darker-background: #106181;
     --border-radius: 10px;
     --padding-sm: 5px;
 }
@@ -111,6 +111,10 @@ body {
     /* Firefox */
 }
 
+.testImage {
+    width: 72px;
+}
+
 /* ------------- Input Function ---------- */
 .inputFunction {
     height: 32px;
@@ -137,7 +141,7 @@ body {
     align-items: center;
     color: var(--white);
     height: 28px;
-    width: 72px;
+    width: 100%;
     margin: 4px;
     font-size: 1rem;
     padding: var(--padding-sm);
@@ -152,7 +156,7 @@ body {
     align-items: center;
     color: var(--white);
     height: 28px;
-    width: 72px;
+    width: 100%;
     margin: 4px;
     font-size: 1rem;
     padding: var(--padding-sm);
@@ -167,7 +171,7 @@ body {
     align-items: center;
     color: var(--white);
     height: 28px;
-    width: 72px;
+    width: 100%;
     margin: 4px;
     font-size: 1rem;
     padding: var(--padding-sm);
@@ -214,10 +218,134 @@ body {
     display: grid;
 }
 
+.foodTag {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.foodTagWarning {
+    background-color: #1d4d6d;
+    width: 100%;
+    color: var(--white);
+}
+
+.foodCategory {
+    background-color: #108181;
+    width: 80px;
+    color: var(--white);
+    border-radius: var(--border-radius);
+    margin: var(--padding-sm);
+    padding: var(--padding-sm);
+}
+
+.foodAllergy {
+    background-color: #c55d20;
+    width: 80px;
+    color: var(--white);
+    border-radius: var(--border-radius);
+    margin: var(--padding-sm);
+    padding: var(--padding-sm);
+}
+
 /* ------------- My Store ---------- */
 .foodArrayDisplay {
     display: grid;
     height: 60vh;
     grid-template-columns: 50% 50%;
     overflow-y: scroll;
+}
+
+/* ----------- Inbox Page -------- */
+.inboxHeader {
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 5px;
+    border-radius: var(--border-radius);
+    background-color: var(--darker-background);
+}
+
+/* Inbox */
+#user-inbox {
+    overflow-y: scroll;
+    display: grid;
+    height: 75vh;
+    width: 100%;
+}
+
+.messageComponent {
+    display: grid;
+    color: black;
+    height: 128px;
+    width: 360px;
+    margin: 10px;
+    background-color: rgb(200, 200, 200);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.212);
+    border-radius: var(--border-radius);
+}
+
+.messageHeader {
+    display: flex;
+    color: black;
+    margin: 0 auto;
+    height: 16px;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    padding: var(--padding-sm);
+    border-radius: var(--border-radius);
+    align-items: center;
+    background-color: rgb(141, 142, 144);
+}
+
+.messageContentSent {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 80%;
+    height: 32px;
+    padding: var(--padding-sm);
+    border-radius: var(--border-radius);
+    background-color: var(--darker-background);
+}
+
+.messageContentReceive {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 80%;
+    height: 32px;
+    padding: var(--padding-sm);
+    border-radius: var(--border-radius);
+    background-color: rgb(61, 61, 61);
+}
+
+/* ------ Message Box Component ---------- */
+#chatBox {
+    display: none;
+    z-index: 5;
+    position: fixed;
+    padding: 20px;
+    right: 80px;
+    bottom: 60px;
+    width: 240px;
+    height: 360px;
+    border-radius: var(--border-radius);
+    box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.472);
+    background-color: var(--darker-background);
+}
+
+.messageInput {
+    border-radius: var(--border-radius);
+}
+
+.chatBoxHeader {
+    display: flex;
+    color: white;
+    justify-content: space-between;
 }

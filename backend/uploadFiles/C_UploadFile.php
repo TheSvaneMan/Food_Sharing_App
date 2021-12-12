@@ -118,6 +118,7 @@ class UploadFile
                 // What to do if upload is a success
                 $sql = "CALL UploadImageData('$fileName', '$targetFile')";
                 $mySQL->query($sql);
+                echo $targetFile;
             }
         }
 

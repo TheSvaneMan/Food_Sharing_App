@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Gain access to the MySQL Class
-require "../mysql.php";
+require "../C_MySQL.php";
 require "C_Inbox.php";
 $Inbox = new Inbox($mySQL);
 

@@ -14,7 +14,7 @@ const _routes = {
 	'#/updateFood': 'updateMyFood',
 	'#/transactionHistory': 'boughtItemsPage',
 	'#/account': 'userAccountPage',
-	'#/inbox': 'inboxPAge',
+	'#/inbox': 'inboxPage',
 };
 const _pages = document.querySelectorAll('.page');
 const _basePath = location.pathname.replace('index.html', ''); // Remove index.html from path
