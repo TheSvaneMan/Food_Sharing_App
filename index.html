@@ -183,9 +183,12 @@
 		</section>
 		<!-- Browse Page -->
 		<section id="browsePage" class="page">
-			<h1>BROWSE</h1>
-			<button class="defaultButton">Filters</button>
-			<form method="GET">
+			<h1 id="headline">Browse</h1>
+
+			<button class="filterButton" onclick="ToggleFilters()"><i id="sliders" class="fas fa-sliders-h"></i></button>
+			<div id="filterComponent" >
+				<h4 class="filterHeader">Filters</h4>
+				<form class="filterForm" method="GET">
 				<button
 					id="button"
 					type="button"
@@ -203,7 +206,6 @@
 				>
 					Container
 				</button>
-				<br />
 				<button
 					id="button"
 					type="button"
@@ -213,7 +215,6 @@
 				>
 					No container
 				</button>
-				<br />
 				<button
 					id="button"
 					type="button"
@@ -223,7 +224,6 @@
 				>
 					L2H
 				</button>
-				<br />
 				<button
 					id="button"
 					type="button"
@@ -234,6 +234,7 @@
 					H2L
 				</button>
 			</form>
+			</div>
 			<div id="selectedFilter"><p>No filter selected</p></div>
 			<!-- Slightly dynamic search function, can be improved but ye.. Proof of concept -->
 			<select
@@ -412,20 +413,38 @@
 		</section>
 		<!-- Account Page -->
 		<section id="userAccountPage" class="page">
-			<img src="assets/tmp_profilePic.png" alt="Profile Picture" width="72px" />
-			<p>Change email</p>
-			<p>email</p>
-			<p>Password</p>
-			<button class="defaultButton">Transcation History</button>
-
-			<button class="defaultButton">Delect Account</button>
-			<button class="defaultButton" onclick="LogOut()">Sign Out</button>
-			<!-- Footer -->
-			<footer>
-				<p>
-					Copyright Food Share 2021 - A wholesome web app to reduce food waste
-				</p>
-			</footer>
+			<h1 id="headline">My account</h1>
+			<img class="profile" src="assets/tmp_profilePic.png">
+			<p class="userName">Penda Svane</p>
+			<section id="accounttemplate">
+				<article class="accountcard" id="leftcard">
+					<div class="accountcardcontent">
+						<h4 id="accountcontent">Contribution weeks</h3>
+							<h3 id="streak">6</h3>
+							<i id="fire" class="fas fa-fire-alt"></i>
+					</div>
+				</article>
+				<article class="accountcard" id="rightcard">
+					<div class="accountcardcontent">
+						<h4 id="accountcontent">Meals saved</h3>
+							<h3 id="streak">9</h3>
+							<i id="fire" class="fas fa-fire-alt"></i>
+					</div>
+					</div>
+				</article>
+				<article class="accountcard" id="leftcard">
+					<div class="accountcardcontent">
+						<i id="accountcardicon" class="fas fa-cog"></i>
+						<p id="cardtext">Settings</p>
+					</div>
+				</article>
+				<article onclick="LogOut()" class="accountcard" id="rightcard">
+					<div class="accountcardcontent">
+						<i id="accountcardicon" class="fas fa-sign-out-alt"></i>
+						<p id="cardtext" >Log out</p>
+					</div>
+				</article>
+				</section>
 		</section>
 		<!-- Inbox Page -->
 		<section id="inboxPage" class="page">

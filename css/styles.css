@@ -5,7 +5,7 @@
     --grey: grey;
     --red: red;
     --shadow: black 5px 5px 10px;
-    --button: #075f5f;
+    --button: #11999E;
     --background: #ffffff;
     --darker-background: #062e2c;
     --border-radius: 10px;
@@ -108,7 +108,7 @@ body {
 
 .page {
     display: none;
-    height: 80vh;
+    height: 50vh;
     width: 100%;
     margin: 0 auto;
     background: var(--light-grey);
@@ -302,9 +302,9 @@ hr.solid {
     justify-content: center;
     align-items: center;
     color: var(--white);
-    margin: 0 auto;
+    margin-bottom: 5px;
     font-size: 1rem;
-    padding: var(--padding-sm);
+    padding: 5px;
     background-color: var(--button);
     border-radius: var(--border-radius);
     border-style: var(--white);
@@ -313,11 +313,12 @@ hr.solid {
 .loginSignupBtn {
     display: flex;
     justify-content: center;
+    height: 72px;
     width: 270px;
     color: var(--white);
     margin: 0 auto;
     font-size: 1rem;
-    padding: 12px 10px;
+    padding: 10px;
     font-size: 1.2rem;
     font-weight: bold;
     border-radius: 15px;
@@ -666,6 +667,99 @@ hr.solid {
     margin-top: 30px;
 }
 
+.filterHeader {
+    color: #40514e;
+}
+
+.filterButton {
+    background-color: transparent;
+    border: none;
+}
+
+#filterComponent {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 280px;
+    width: 90%;
+    border-radius: 30px;
+    margin: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.600);
+    z-index: 99;
+}
+
+/* ------------- Custom Check boxes Page ---------- */
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 20px;
+}
+
+ul.ks-cboxtags li {
+    display: inline;
+}
+
+ul.ks-cboxtags li label {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked+label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked+label {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+    display: absolute;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:focus+label {
+    border: 2px solid #e9a1ff;
+}
+
 /* ------------- Food Component ---------- */
 .foodComponent {
     display: grid;
@@ -762,9 +856,13 @@ hr.solid {
 }
 
 /* ----------- Account Page -------- */
+#userAccountPage {
+    padding-top: 20px;
+}
+
 #accounttemplate {
     display: grid;
-    height: 56vh;
+    height: 50vh;
     grid-template-columns: 50% 50%;
     background-color: rgb(255, 255, 255);
     padding: 0;
@@ -775,7 +873,7 @@ hr.solid {
     display: grid;
     position: relative;
     height: 150px;
-    margin: 0 auto;
+    margin: 10px;
     width: 150px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -785,14 +883,6 @@ hr.solid {
 #browse h3,
 h4 {
     color: #40514e;
-}
-
-#leftcard {
-    margin-left: 25px;
-}
-
-#rightcard {
-    margin-right: 25px;
 }
 
 #accountcontent {

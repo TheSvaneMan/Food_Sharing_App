@@ -158,6 +158,16 @@ function TogglePasswordVisibility() {
 	}
 }
 
+// Toggle Filter Component Visibility
+function ToggleFilters() {
+	let filterBar = document.getElementById('filterComponent');
+	if (filterBar.style.display === 'none') {
+		filterBar.style.display = 'grid';
+	} else {
+		filterBar.style.display = 'none';
+	}
+}
+
 // ========== Logout Procedure ==========
 async function LogOut() {
 	const options = {
