@@ -323,34 +323,56 @@
 
 	<!-- Add New Product -->
 	<section id="addNewProductPage" class="page">
-		<h1>ADD NEW PRODUCT</h1>
-		<p>Name of the Meal</p>
-		<input type="text" class="inputFunction" id="newProductName" placeholder="Name of Meal" />
-		<p>Short Description of Food Contents</p>
-		<input type="text" class="inputFunction" id="newProductDescription" placeholder="Description of Meal" />
-		<p>Category</p>
-		<p>Choose tags that describe your product</p>
-		<input type="checkbox" /><b>Fruit</b> <input type="checkbox" /><b>Vegetable</b>
-		<input type="checkbox" /><b>Grain</b> <input type="checkbox" /><b>Meat</b>
-		<input type="checkbox" /><b>Cooked Meal</b>
-		<p>Pick up location</p>
-		<!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
+		<h1 id="headline">Add product</h1>
+		<i id="close" class="fas fa-times"></i>
 
-		<input type="text" id="newProductPickUpLoc" placeholder="Location of pickup" class="inputFunction" />
-		<p>Allergens</p>
-		<p>Help keep people safe by identifying key ingredients</p>
-		<input type="checkbox" /><b>Peanuts</b> <input type="checkbox" /><b>Lactose</b>
-		<p>Price</p>
-		<input type="number" id="newProductPrice" placeholder="Price of the meal" class="inputFunction" />
+		<p class="inputheader">Name of the product</p>
+		<input type="text" class="inputFunction newproductinput" id="newProductName" placeholder="" />
+
+		<p class="inputheader">Short description</p>
+		<input type="text" class="inputFunction newproductinput" id="newProductDescription"
+			style="margin-bottom: -20px;" placeholder="" />
+
+		<p class="details">Try to write a detailed description about the product's contents. Consider allergens etc.</p>
+
+		<p class="inputheader">Pickup location</p>
+		<input type="text" class="inputFunction newproductinput" id="newProductName" placeholder="" />
+
+		<p class="inputheader" style="margin-bottom: -5px;">Category</p>
+		<span class="tags">(Choose tags that describe your product)</span>
+		<div class="container">
+			<ul class="categories">
+				<li><input type="checkbox" id="fruit" value="fruit"><label for="fruit">Fruit</label></li>
+				<li><input type="checkbox" id="cooked" value="cooked" checked><label for="cooked">Cooked meal</label></li>
+				<li class="moretags">See more</li>
+			</ul>
+		</div>
+
+		<p class="inputheader" style="margin-bottom: -5px; margin-top: -15px;">Allergens</p>
+		<span class="tags">(Choose tags that describe your product)</span>
+		<div class="container">
+			<ul class="categories allergens">
+				<li><input type="checkbox" id="peanuts" value="peanuts"><label for="peanuts">Peanuts</label></li>
+				<li><input type="checkbox" id="lactose" value="lactose" checked><label for="lactose">Lactose</label></li>
+				<li class="moretags">See more</li>
+			</ul>
+		</div>
+
+		<p class="inputheader" style="margin-top: -10px;">Price</p>
+		<input type="text" class="inputFunction newproductinput" id="newProductName" placeholder="" />
+		
+
+		<!-- Display Image-->
+		<p class="inputheader">Add an image</p>
+		<div class="imgcontainer" id="addimgcon">
+			<i id="addimgplus" class="fas fa-plus"></i>
+			<!--<img src="local/food/food19.jpg" alt="The recently uploaded image" id="testImg">-->
+		</div>
 		<form action="backend/uploadFiles/B_UploadFile.php" method="post" enctype="multipart/form-data">
-			<h3>Add an image</h3>
+			
 			<input type="file" name="fileToUpload" id="fileToUpload" placeholder="Image of the meal" />
 			<input type="submit" name="action" value="upload">
 		</form>
-
-
-		<!-- Display Image -->
-		<img src="local/food/food19.jpg" alt="The recently uploaded image" id="testImg">
 		<button class="defaultButton" onclick="predictFood()">Predict Image</button>
 		<button class="defaultButton">Share Meal</button>
 	</section>
