@@ -44,6 +44,7 @@ function showMyStorePage() {
 // Add New Product Page
 function showAddNewProductPage() {
 	navigateTo('#/addNewProduct');
+	loadCheckList();
 }
 
 // ========== Sign Up Procedure ==========
@@ -232,6 +233,51 @@ async function loadCatAndAllergyData(id) {
 	const response = await fetch(url);
 	const data = await response.json();
 	_catAndAllergyData = data;
+}
+
+function loadCheckList() {
+	let categories = ["Dairy", "Fruit", "Grain", "Beans", "Meat", "Confections", "Vegetable", "Water"];
+	let htmlTemplateCategory = '';
+	for (const cat of categories) {
+		htmlTemplateCategory += /*html*/ `
+			<label class="checkContainer">
+				<input type="checkbox" id="cat${cat}" />${cat}
+				<span class="checkmark"></span>
+			</label>
+		`;
+	}
+	let allergies = [
+		'Grain',
+		'Milk',
+		'Eggs',
+		'Fish',
+		'ShellFish',
+		'Almonds',
+		'Pecans',
+		'Peanuts',
+		'Wheat',
+		'Soybeans',
+		'Sesame',
+		'BrazilNuts',
+		'Cashews',
+		'Pistachios',
+		'Walnuts',
+		'Hazelnuts',
+		'Cinnamon',
+	];
+	
+	let htmlTemplateAllergies = '';
+	for (const allergy of allergies) {
+		htmlTemplateAllergies += /*html*/ `
+			<label class="checkContainer">
+				<input type="checkbox" id="allergy${allergy}" />${allergy}
+				<span class="checkmark"></span>
+			</label>
+		`;
+	}
+	document.querySelector('#foodCategories').innerHTML = htmlTemplateCategory;
+	document.querySelector('#foodAllergies').innerHTML = htmlTemplateAllergies;
+
 }
 
 // ========== Appending Data Services ==========
@@ -768,6 +814,8 @@ function init() {
 		showHomePage();
 	} else if (location.hash === '#/myStore') {
 		loadMyStoreFood();
+	} else if (location.hash === '#/addNewProduct') {
+		loadCheckList();
 	} else if (location.hash === '#/inbox') {
 		checkActiveUser();
 		loadMessages();

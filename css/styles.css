@@ -3,22 +3,15 @@
     --white: white;
     --black: black;
     --grey: grey;
-    --green: rgb(16, 124, 143);
     --red: red;
     --shadow: black 5px 5px 10px;
-    --button: #f5772e;
+    --button: #075f5f;
     --background: #ffffff;
-    --darker-background: #106181;
+    --darker-background: #062e2c;
     --border-radius: 10px;
-    --padding-sm: 5px;
 }
 
 /* ---------- scrollbar ---------- */
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
 /* Track */
 ::-webkit-scrollbar-track {
     background: var(--darker-background);
@@ -35,38 +28,41 @@
     background: var(--background);
 }
 
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 /* ------------- Navigation ---------- */
-nav {
+a {
+    color: var(--color);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--darker-background);
-    height: 5vh;
-    width: 100%;
-}
-
-nav ul {
-    display: flex;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-nav a {
-    color: var(--white);
     text-decoration: none;
 }
 
-#featureSection {
+.backButton {
+    border: none;
+    background-color: white;
+}
+
+#backArrowIcon {
+    font-size: 2rem;
+    color: #40514E;
+}
+
+.topNav {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    margin: auto 0;
+    top: 0;
     width: 100%;
+    background-color: var(--white);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0px 0px 20px -10px #40514e;
     height: 5vh;
-    background-color: var(--darker-background);
 }
 
 /* ------------- Footer ---------- */
@@ -78,61 +74,227 @@ footer {
     height: 2vh;
 }
 
+nav {
+    display: grid;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 5vh;
+    background-color: var(--white);
+    margin: auto 0;
+    box-shadow: 0px 0px 20px -10px #40514e;
+}
+
+.icons {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 25% 25% 25% 25%;
+    position: relative;
+    font-size: 1.5rem;
+    color: rgba(64, 81, 78, 0.4);
+    cursor: pointer;
+}
+
 /* ------------- Page ---------- */
+body {
+    margin: auto 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .page {
     display: none;
+    height: 80vh;
+    width: 100%;
     margin: 0 auto;
-    /*min heigh is screen heigh minus height of tab and top bar */
-    min-height: 88vh;
     background: var(--light-grey);
     animation: fadeIn 0.4s;
-    padding: var(--padding-sm);
+}
+
+/* ------------- Landing Page ---------- */
+
+.landing {
+    display: grid;
+    height: 60vh;
+    overflow-y: scroll;
+    justify-content: center;
+    width: auto;
+    border-radius: 50px;
+}
+
+.loginform {
+    margin-left: 30px;
+    padding: 0;
+}
+
+input {
+    color: #000;
+}
+
+label {
+    color: #40514e;
+}
+
+#loginPage h1 {
+    margin-left: 40px;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #40514e;
+    margin-bottom: 10px;
 }
 
 /* ------------- Body ---------- */
 body {
     margin: 0 auto;
-    height: 100vh;
+    height: auto;
     color: var(--black);
     background-color: var(--background);
 }
 
 /* ------------- Logo ---------- */
 .logo {
-    width: 72px;
-    border-radius: 50px;
+    margin: 20px 0 20px 0;
+    width: 180px;
+    border-radius: 20px;
+}
+
+.imgcontainer {
+    width: 270px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 7px;
+}
+
+.landImg {
+    height: 100%;
+    width: 100vw;
+    object-fit: cover;
+    border-radius: 0 0 40px 40px;
+}
+
+.imageContainer {
+    height: 40vh;
+    /*Set any dimensions you like*/
+    min-width: 100%;
+}
+
+.imgcontainer img {
+    max-height: 140px;
+}
+
+#soldimg {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.itemcontent {
+    position: relative;
+    margin: 0 auto;
+    width: 72%;
+    color: #40514e;
+}
+
+.itemcontent p {
+    font-size: 0.7rem;
+}
+
+.itemcontent h1,
+h3 {
+    padding: 0;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding-top: 5px;
+}
+
+#subtitle {
+    padding: 0;
+    margin: 0 auto;
+    color: rgba(64, 81, 78, 0.4);
+    font-size: 0.8rem;
+}
+
+.subheadline {
+    grid-column: span 2;
+    padding: 0;
+}
+
+#itemprice {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2rem;
+}
+
+.profile {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.userName {
+    text-align: center;
+    color: #40514e;
+}
+
+hr.solid {
+    color: #40514e;
+    margin: 0 auto;
+    border: none;
+    border-top: 2px solid rgba(64, 81, 78, 0.1);
 }
 
 /* ------------- Placeholder ---------- */
 ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white;
+    color: #bababa;
     opacity: 1;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
     /* Firefox */
-}
-
-.testImage {
-    width: 72px;
 }
 
 /* ------------- Input Function ---------- */
 .inputFunction {
-    height: 32px;
+    height: 40px;
+    margin-top: 10px;
     margin-bottom: var(--padding-sm);
-    padding: var(--padding-sm);
-    width: 80%;
-    color: var(--black);
+    padding: 5px 0;
+    width: 85%;
+    color: #40514e;
     background: var(--background);
     border-radius: var(--border-radius);
+    border-style: none;
 }
 
-/* ------------- Account Control Panel ---------- */
-#accountControlPanel {
+.inputFunction:focus {
+    outline: none !important;
+    border: 1px solid #bababa;
+}
+
+#searchbar {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin: 0 auto;
+    border-radius: 50px;
 }
+
+#searchbar::placeholder {
+    padding-left: 45px;
+}
+
+.loginform input {
+    padding-left: 20px;
+}
+
 
 /* ------------- Buttons ---------- */
 .defaultButton {
@@ -140,9 +302,7 @@ body {
     justify-content: center;
     align-items: center;
     color: var(--white);
-    height: 28px;
-    width: 100%;
-    margin: 4px;
+    margin: 0 auto;
     font-size: 1rem;
     padding: var(--padding-sm);
     background-color: var(--button);
@@ -150,34 +310,360 @@ body {
     border-style: var(--white);
 }
 
-.greenActionButton {
+.loginSignupBtn {
     display: flex;
     justify-content: center;
-    align-items: center;
+    width: 270px;
     color: var(--white);
-    height: 28px;
-    width: 100%;
-    margin: 4px;
+    margin: 0 auto;
     font-size: 1rem;
-    padding: var(--padding-sm);
-    background-color: var(--green);
+    padding: 12px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999e;
+    background-color: var(--button);
     border-radius: var(--border-radius);
     border-style: var(--white);
+    cursor: pointer;
 }
 
-.redActionButton {
+#signup {
+    position: absolute;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    width: 270px;
+    padding: 12px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999e;
+}
+
+#landinglogin {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--white);
-    height: 28px;
     width: 100%;
-    margin: 4px;
+    padding: 5px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    background-color: #11999e;
+}
+
+#landingsignup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 5px;
+    background-color: #fff;
+    color: #11999e;
+    border-color: #11999e;
+    border-style: solid;
+    border-radius: 15px;
+}
+
+.buttongrid {
+    display: grid;
+    margin-top: 10px;
+    margin-bottom: 35px;
+    grid-template-columns: 60% 40%;
+}
+
+#buybtn {
+    margin-left: 0;
+    padding: 15px 60px;
     font-size: 1rem;
-    padding: var(--padding-sm);
-    background-color: var(--red);
-    border-radius: var(--border-radius);
-    border-style: var(--white);
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999e;
+}
+
+#messagebtn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #fff;
+    color: #11999e;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 15px;
+    border-color: #11999e;
+}
+
+.logoptions {
+    position: relative;
+    margin: 10vh 0 10vh;
+    text-align: center;
+    color: #bababa;
+}
+
+.logoptions h3 {
+    font-weight: 300;
+    font-size: 1rem;
+    color: #40514e;
+    opacity: 0.8;
+}
+
+.signoptions {
+    position: relative;
+    margin-top: -10px;
+    text-align: center;
+    color: #bababa;
+}
+
+.signoptions h3 {
+    font-weight: 300;
+    font-size: 1rem;
+    color: #40514e;
+    opacity: 0.8;
+}
+
+#smol {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    opacity: 1;
+    font-weight: 600;
+}
+
+#smoler {
+    font-size: 0.8rem;
+    opacity: 1;
+    font-weight: 500;
+}
+
+#signlink {
+    color: #293634;
+    font-weight: 600;
+}
+
+.logoptionsbtn {
+    padding: 7px 25px;
+    border-radius: 10px;
+    border-color: #bababa;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #fff;
+    margin: 0 2px;
+}
+
+#fb {
+    font-size: 1.7rem;
+    color: #1977f3;
+}
+
+#google {
+    font-size: 1.7rem;
+    color: #1977f3;
+    background: conic-gradient(from -45deg,
+            #ea4335 110deg,
+            #4285f4 90deg 180deg,
+            #34a853 180deg 270deg,
+            #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+#apple {
+    font-size: 1.7rem;
+    color: #000;
+}
+
+#search {
+    font-size: 1.2rem;
+    color: #aaaaaa;
+}
+
+#sliders {
+    font-size: 1.5rem;
+    color: #aaaaaa;
+    position: absolute;
+    right: 45px;
+    top: 74px;
+}
+
+#messageIcon {
+    font-size: 2rem;
+    color: #40514e;
+}
+
+#backarrow {
+    font-size: 2rem;
+    color: #40514e;
+    margin: 20px 25px;
+}
+
+#interest {
+    color: #40514e;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* -------------- Check Box Handling --------------- */
+/* Customize the label (the container) */
+.checkContainer {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    margin-left: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkContainer:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkContainer input:checked~.checkmark {
+    background-color: #1d4d6d;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkContainer input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkContainer .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* -------------- Check Box Handling Ending --------------- */
+
+#headline {
+    padding-left: 30px;
+    font-size: 1.6rem;
+    color: #40514e;
+}
+
+.storeheadline {
+    padding-left: 25px;
+    font-size: 1.6rem;
+    color: #11999e;
+    margin-bottom: 15px;
+}
+
+.storesub {
+    padding-left: 25px;
+    font-size: 1.2rem;
+    color: #11999e;
+    display: inline-block;
+    margin: 10px auto;
+}
+
+.soldstoresub {
+    padding-top: 0;
+    padding-left: 25px;
+    font-size: 1.2rem;
+    color: #11999e;
+    display: inline-block;
+}
+
+#solditem {
+    opacity: 0.5;
+}
+
+#sold {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    font-size: 1.3rem;
+    color: #11999e;
+}
+
+#see {
+    margin-left: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.4;
+}
+
+.addnew {
+    grid-column: span 2;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.plus {
+    display: inline-block;
+}
+
+#additemtext {
+    display: inline;
+    color: #11999e;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 50px;
+}
+
+#addplus {
+    display: inline;
+    color: #11999e;
+    font-size: 1.3rem;
+    margin-right: 5px;
+}
+
+#account {
+    padding-left: 30px;
+    font-size: 1.6rem;
+    color: #40514e;
+    margin-bottom: 30px;
+}
+
+/* ------------- Browse Page ---------- */
+#browsePage {
+    margin-top: 30px;
 }
 
 /* ------------- Food Component ---------- */
@@ -200,11 +686,13 @@ body {
 }
 
 .foodPrice {
+    color: white;
+    padding: 5px;
     z-index: 5;
     position: absolute;
     right: 2%;
     top: 30%;
-    background-color: var(--darker-background);
+    background-color: #1d4d6d;
     padding: var(--padding-sm);
 }
 
@@ -247,15 +735,106 @@ body {
     padding: var(--padding-sm);
 }
 
+/* ------------- Add New Product Page Store ---------- */
+#addNewProductPage {
+    padding: 20px;
+}
+
 /* ------------- My Store ---------- */
-.foodArrayDisplay {
+#listedItems {
     display: grid;
-    height: 60vh;
+    height: 63.3vh;
     grid-template-columns: 50% 50%;
     overflow-y: scroll;
+    background-color: #fff;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#storeItems {
+    display: grid;
+    height: 80.5vh;
+    grid-template-columns: 50% 50%;
+    overflow-y: scroll;
+    background-color: #fff;
+    padding-bottom: 0;
+    margin: 0 auto;
+}
+
+/* ----------- Account Page -------- */
+#accounttemplate {
+    display: grid;
+    height: 56vh;
+    grid-template-columns: 50% 50%;
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0 auto;
+}
+
+.accountcard {
+    display: grid;
+    position: relative;
+    height: 150px;
+    margin: 0 auto;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 3px 40px rgba(64, 81, 78, 0.1);
+}
+
+#browse h3,
+h4 {
+    color: #40514e;
+}
+
+#leftcard {
+    margin-left: 25px;
+}
+
+#rightcard {
+    margin-right: 25px;
+}
+
+#accountcontent {
+    padding: 15px;
+    margin: 0 auto;
+    color: #40514e;
+}
+
+#streak {
+    position: absolute;
+    margin: 0 auto;
+    font-size: 3.5rem;
+    bottom: -5px;
+    right: 40px;
+    color: #11999e;
+    padding-right: 3px;
+}
+
+#fire {
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 16.5px;
+    right: 20px;
+    color: #11999e;
+}
+
+#accountcardicon {
+    font-size: 3rem;
+    position: absolute;
+    top: 25%;
+    left: 34.5%;
+    color: #40514e;
+}
+
+#cardtext {
+    text-align: center;
+    margin-top: 90px;
+    color: #40514e;
 }
 
 /* ----------- Inbox Page -------- */
+
 .inboxHeader {
     display: flex;
     height: 32px;
