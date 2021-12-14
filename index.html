@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Food Share</title>
 		<link rel="stylesheet" href="css/styles.css" />
+		<link rel="stylesheet" href="css/stylesBB.css" />
 		<link href="ico/favicon.ico" rel="icon" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -315,90 +316,73 @@
 				<button class="defaultButton" onclick="deleteFood()">Delete</button>
 			</section>
 		</section>
+
 		<!-- Add New Product -->
 		<section id="addNewProductPage" class="page">
-			<h1>ADD NEW PRODUCT</h1>
-			<p>Name of the Meal</p>
-			<input
-				type="text"
-				class="inputFunction"
-				id="newProductName"
-				placeholder="Name of Meal"
-			/>
-			<p>Short Description of Food Contents</p>
-			<input
-				type="text"
-				class="inputFunction"
-				id="newProductDescription"
-				placeholder="Description of Meal"
-			/>
-			<p>Category</p>
-			<p>Choose tags that describe your product</p>
-			<!-- Food Category Tags Auto populated by JS ;) -->
-			<div id="foodCategories"></div>
-			<p>Pick up location</p>
-			<!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
+			<h1 id="headline">Add product</h1>
+			<i id="close" class="fas fa-times"></i>
+			<p class="inputheader">Name of the product</p>
+			<input type="text" class="inputFunction newproductinput" id="newProductName" placeholder="" />
 
-			<input
-				type="text"
-				id="newProductPickUpLoc"
-				placeholder="Location of pickup"
-				class="inputFunction"
-			/>
-			<p>Is the meal packed in a container?</p>
-			<input type="checkbox" id="newProductFoodContainer" /><b>Yes</b>
-			<p>Is the meal cooked?</p>
-			<input type="checkbox" id="newProductFoodCooked" /><b>Yes</b>
-			<p>Allergens</p>
-			<p>
-				Help keep people safe by identifying key ingredients that they may be
-				allergic to.
+			<p class="inputheader">Short description</p>
+			<input type="text" class="inputFunction newproductinput" id="newProductDescription"
+				style="margin-bottom: -20px;" placeholder="" />
+			
+			
+			<p class="details">Try to write a detailed description about the product's contents. Consider allergens etc.
 			</p>
+			<div class="pickup">
+				<p class="inputheader">Pickup location</p>
+				<input type="text" class="inputFunction newproductinput" id="newProductPickUpLoc" placeholder="" />
+				<i id="location" class="fas fa-location-arrow"></i>
+			</div>
+
+			<p class="inputheader" style="margin-bottom: -5px;">Category</p>
+			<span class="tags">(Choose tags that describe your product)</span>
+			<div class="container">
+				<ul class="categories">
+					<div id="foodCategories"></div>
+				</ul>
+			</div>
+
+			<p class="inputheader" style="margin-bottom: -5px; margin-top: -15px;">Allergens</p>
+			<span class="tags">(Help keep people safe by identifying allergens)</span>
+			<div class="container">
+				<ul class="categories allergens mb-0">
+					<div id="foodAllergies"></div>
+				</ul>
+			</div>
+
+			<p class="inputheader">Is the meal packed in a container?</p>
+			<input type="checkbox" id="newProductFoodContainer" /><b>Yes</b>
+			<p class="inputheader mt-1">Is the meal cooked?</p>
+			<input type="checkbox" class="mb-5" id="newProductFoodCooked" /><b>Yes</b>
 			<!-- Food Allergies Tags Auto populated by JS ;) -->
-			<div id="foodAllergies"></div>
-			<p>Price</p>
-			<input
-				type="number"
-				id="newProductPrice"
-				placeholder="Price of the meal"
-				class="inputFunction"
-			/>
-			<form
-				action="backend/applicationService.php"
-				method="post"
-				enctype="multipart/form-data"
-				required
-			>
-				<h3>Add an image</h3>
-				<input
-					type="file"
-					accept="image/"
-					name="fileToUpload"
-					id="fileToUpload"
-					placeholder="Image of the meal"
-				/>
+
+			<p class="inputheader">Price</p>
+			<input type="number" class="inputFunction newproductinput" id="newProductPrice" placeholder="" />
+
+			<form action="backend/applicationService.php" method="post" enctype="multipart/form-data" required>
+				<p class="inputheader">Add an image</p>
+				<div class="imgcontainer" id="addimgcon">
+					<img src="" alt="" id="clientImage" class="testImage" alt="your uploaded food image" />
+				</div>
+				<input type="file" accept="image/" name="fileToUpload" id="fileToUpload"
+					placeholder="Image of the meal" />
 				<!-- Display Image -->
-				<img
-					src="local/food/food29.jpg"
-					alt="The recently uploaded image"
-					id="clientImage"
-					class="testImage"
-					alt="your uploaded food image"
-				/>
 
-				<input type="submit" name="action" value="upload" />
+				<!--<input type="submit" name="action" value="upload" />-->
 			</form>
-			<!-- Predict Image Content -->
-			<button class="defaultButton" onclick="predictFood()">
-				Predict Image
-			</button>
+			<!-- Predict Image Content 
+		<button class="defaultButton" onclick="predictFood()">
+			Predict Image
+		</button>-->
 
-			<input type="date" id="bestBeforeDate" placeholder="yyyy-mm-dd" />
+			<input style="margin-top: 20px;margin-left: 20px" type="date" id="bestBeforeDate"
+				placeholder="yyyy-mm-dd" />
 
-			<input type="checkbox" id="newProductIsFree" /><b
-				>Free on the last day?</b
-			>
-			<button class="defaultButton" onclick="AddFoodProduct()">
+			<input type="checkbox" id="newProductIsFree" /><b>Free on the last day?</b>
+			<button class="defaultButton" id="addproductbtn" onclick="AddFoodProduct()">
 				Share Meal
 			</button>
 		</section>

@@ -250,10 +250,7 @@ function loadCheckList() {
 	let htmlTemplateCategory = '';
 	for (const cat of categories) {
 		htmlTemplateCategory += /*html*/ `
-			<label class="checkContainer">
-				<input type="checkbox" id="cat${cat}" />${cat}
-				<span class="checkmark"></span>
-			</label>
+		<li><input type="checkbox" id=cat${cat} value=${cat}><label for=cat${cat}>${cat}</label></li></li>
 		`;
 	}
 	let allergies = [
@@ -279,11 +276,9 @@ function loadCheckList() {
 	let htmlTemplateAllergies = '';
 	for (const allergy of allergies) {
 		htmlTemplateAllergies += /*html*/ `
-			<label class="checkContainer">
-				<input type="checkbox" id="allergy${allergy}" />${allergy}
-				<span class="checkmark"></span>
-			</label>
-		`;
+					<li><input type="checkbox" id=allergy${allergy} value=${allergy}><label for=allergy${allergy}>${allergy}</label></li></li>
+		`
+				
 	}
 	document.querySelector('#foodCategories').innerHTML = htmlTemplateCategory;
 	document.querySelector('#foodAllergies').innerHTML = htmlTemplateAllergies;

@@ -1,0 +1,1029 @@
+/* ------------ Root Variables ----------------- */
+:root {
+    --white: white;
+    --black: black;
+    --grey: grey;
+    --red: red;
+    --shadow: black 5px 5px 10px;
+    --button: #075f5f;
+    --background: #ffffff;
+    --darker-background: #062e2c;
+    --border-radius: 10px;
+}
+
+
+
+/* ---------- scrollbar ---------- */
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--darker-background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--background);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--background);
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ------------- Navigation ---------- */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--darker-background);
+    height: 5vh;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+#featureSection {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 5vh;
+    background-color: var(--darker-background);
+}
+
+/* ------------- Footer ---------- */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    height: 2vh;
+}
+
+.iconfooter{
+    position: relative;
+    background-color: var(--white);
+    margin: 0 auto;
+    padding-bottom: 8px;
+    padding-top: 1px;
+    z-index: 10;
+    box-shadow: 0px 0px 20px -10px #40514E;
+}
+
+
+.icons{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    position: relative;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    padding-left: 50px;
+    color:rgba(64, 81, 78, 0.4);
+    cursor: pointer;
+}
+
+/* ------------- Page ---------- */
+.page {
+    display: none;
+    margin: 0 auto;
+    /*min heigh is screen heigh minus height of tab and top bar */
+    min-height: 88vh;
+    background: var(--light-grey);
+    animation: fadeIn 0.4s;
+   
+}
+
+
+
+.landing{
+    background-color: #fff;
+    height: 420px;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -80px;
+    border-radius: 30px;   
+}
+
+#loginPage{
+    height: 500px;
+}
+
+
+.loginform{
+    margin-left: 30px;
+    padding: 0;
+    
+}
+
+input{
+    color: #000;
+}
+
+
+label{
+    color:#40514E;
+}
+#loginPage h1{
+    margin-left: 40px;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #40514E;
+    margin-bottom: 10px;
+}
+/* ------------- Body ---------- */
+body {
+    margin: 0 auto;
+    height: auto;
+    color: var(--black);
+    background-color: var(--background);
+    position: relative;
+}
+
+/* ------------- Logo ---------- */
+.logo {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto;
+    width: 275px;
+    border-radius: 50px;
+}
+
+.landImg{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.imgcontainer{
+    width: 270px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 7px;
+}
+
+#addimgcon{
+    position: relative;
+    height: 150px;
+    width: 250px;
+    margin-bottom: 10px;
+    border: 2px solid rgba(104, 104, 104, 0.2);
+}
+
+#addimgplus{
+    position: absolute;
+    top: 39%;
+    left: 43.5%;
+    font-size: 2.5rem;
+    color: rgba(104, 104, 104, 0.4);
+}
+
+#fileToUpload{
+    text-align: center;
+    margin-left: 75px;
+}
+
+#close{
+    position: absolute;
+    right: 25px;
+    top: 6px;
+    font-size: 1.5rem;
+    color: rgba(64, 81, 78);
+}
+
+.imgcontainer img{
+    max-height: 140px;
+}
+
+#addimgcon img{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: fill;
+}
+
+#soldimg{
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.itemcontent{
+    position: relative;
+    margin: 0 auto;
+    width: 72%;
+    color: #40514E;
+}
+
+.itemcontent p{
+    font-size: 0.7rem;
+   
+}
+
+.itemcontent h1, h3{
+    padding: 0;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding-top: 5px;
+}
+
+#subtitle{
+    padding: 0;
+    margin: 0 auto;
+    color: rgba(64, 81, 78, 0.4);
+    font-size: 0.8rem;
+}
+
+.subheadline{
+    grid-column: span 2;
+    padding: 0;
+}
+
+#itemprice{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2rem;
+}
+
+.profile{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+
+}
+
+.userName{
+    text-align: center;
+    color: #40514E;
+}
+
+hr.solid{
+    color:#40514E;
+    margin: 0 auto;
+    border: none;
+    border-top: 2px solid rgba(64, 81, 78, 0.1);
+}
+
+/* ------------- Placeholder ---------- */
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #BABABA;
+    opacity: 1;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* Firefox */
+}
+
+
+/* ------------- Input Function ---------- */
+.inputFunction {
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: var(--padding-sm);
+    padding: 5px 0;
+    width: 85%;
+    color: #40514E;
+    background: var(--background);
+    border-radius: var(--border-radius);
+    border-style: none;
+}
+
+.inputFunction:focus {
+    outline: none !important;
+    border:1px solid #BABABA;
+  }
+
+#searchbar{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    border-radius: 50px;
+    
+}
+
+#searchbar::placeholder{
+    padding-left: 45px;
+}
+
+
+.loginform input {
+    padding-left: 20px;
+    
+}
+
+/* ------------- Account Control Panel ---------- */
+#accountControlPanel {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------- Buttons ---------- */
+.defaultButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: var(--padding-sm);
+    background-color: var(--button);
+    border-radius: var(--border-radius);
+    border-style: var(--white);
+}
+
+.loginSignupBtn {
+    display: flex;
+    justify-content: center;
+    color: var(--white);
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: var(--padding-sm);
+    background-color: var(--button);
+    border-radius: var(--border-radius);
+    border-style: var(--white);
+    cursor: pointer;
+}
+
+#login{
+    position: absolute;
+    bottom: 33vh;
+    left: 0;
+    right: 0;
+    width: 270px;
+    padding: 12px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#signup{
+    position: absolute;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    width: 270px;
+    padding: 12px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#landinglogin{
+    position: absolute;
+    bottom: 17vh;
+    left: 0;
+    right: 0;
+    width: 300px;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#landingsignup{
+    position: absolute;
+    bottom: 5vh;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    width: 300px;
+    font-size: 1.5rem;
+    padding: 15px;
+    background-color: #fff;
+    color: #11999E;
+    border-color: #11999E;
+    border-style: solid;
+    border-radius: 15px;
+}
+
+.buttongrid{
+    display: grid;
+    margin-top: 10px;
+    margin-bottom: 35px;
+    grid-template-columns: 60% 40%;
+}
+#buybtn{
+    margin-left: 0;
+    padding: 15px 60px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#addproductbtn{
+    margin-top: 20px;
+    padding: 15px 60px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #11999E;
+}
+
+#messagebtn{
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #fff;
+    color: #11999E;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 15px;
+    border-color:#11999E;
+
+}
+
+.logoptions{
+    position: relative;
+    margin-top: 14vh;
+    text-align: center;
+    color: #BABABA;
+}
+
+
+.logoptions h3{
+    font-weight: 300;
+    font-size: 1rem;
+    color: #40514E;
+    opacity: 0.8;
+}
+
+.signoptions{
+    position: relative;
+    margin-top: -10px;
+    text-align: center;
+    color: #BABABA;
+}
+
+
+.signoptions h3{
+    font-weight: 300;
+    font-size: 1rem;
+    color: #40514E;
+    opacity: 0.8;
+}
+
+#smol{
+    margin-top: 25px;
+    font-size: 0.8rem;
+    opacity: 1;
+    font-weight: 600;
+}
+
+#smoler{
+    font-size: 0.8rem;
+    opacity: 1;
+    font-weight: 500;
+}
+
+#signlink{
+    color: #293634;
+    font-weight: 600;
+}
+
+.logoptionsbtn{
+    padding: 7px 25px;
+    border-radius: 10px;
+    border-color: #BABABA;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #fff;
+    margin: 0 2px;
+}
+
+#fb{
+    font-size: 1.7rem;
+    color: #1977f3;
+}
+
+#google{
+    font-size: 1.7rem;
+    color: #1977f3;  
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;    
+}
+
+#apple{
+    font-size: 1.7rem;
+    color: #000;
+}
+
+#search{
+    font-size: 1.5rem;
+    color: #aaaaaa;
+    position: absolute;
+    left: 40px;
+    top: 74px;
+}
+
+#sliders{
+    font-size: 1.5rem;
+    color: #aaaaaa;
+    position: absolute;
+    right: 45px;
+    top: 74px;
+}
+
+#message{
+    font-size: 2rem;
+    color: #40514E;
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+
+#backarrow{
+    font-size: 2rem;
+    color:#40514E;
+    margin: 20px 25px;
+}
+
+#interest{
+    color: #40514E;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.radio{
+    position: relative;
+    margin-top: -10px;
+    text-align: center;
+    color: #40514E;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.radio label{
+    margin-left: 5px;
+}
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #11999E;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+#headline{
+    padding-left: 25px;
+    font-size: 1.6rem;
+    color: #40514E;
+}
+
+.storeheadline{
+    padding-left: 25px;
+    font-size: 1.6rem;
+    color: #11999E;
+    margin-bottom: 15px;
+}
+
+.storesub{
+    padding-left: 25px;
+    font-size: 1.2rem;
+    color: #11999E; 
+    display: inline-block;
+    margin: 10px auto;
+}
+
+.soldstoresub{
+    padding-top: 0;
+    padding-left: 25px;
+    font-size: 1.2rem;
+    color: #11999E; 
+    display: inline-block;
+
+}
+
+#solditem{
+    opacity: 0.5;
+}
+
+#sold{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    font-size: 1.3rem;
+    color: #11999E;
+}
+
+#see{
+    margin-left: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.4;
+}
+
+#addNewProductPage p{
+    padding-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#newProductFoodContainer, #newProductFoodCooked{
+    margin-left: 25px;
+}
+
+.inputheader{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.tags{
+    font-size: 0.7rem;
+    padding-left: 25px;
+    padding-top: -10px;
+    font-weight: 500;
+}
+
+.details{
+    text-align: center;
+    font-size: 0.7rem;
+    padding-left: 35px;
+    padding-right: 30px;
+    opacity: 0.6;
+}
+
+.newproductinput{
+    margin-top: 0;
+    margin-left: 25px;
+    padding: 0 10px;
+    width: 80%;
+    border: 2px solid rgba(104, 104, 104, 0.2);
+}
+
+.addnew{
+    grid-column: span 2;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.addimg{
+    padding-left: 25px;
+    margin-top: 25px;
+}
+
+.plus{
+    display: inline-block;
+}
+
+#additemtext{
+    display: inline;
+    color: #11999E;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 50px;
+}
+
+#addplus{
+    display: inline;
+    color:#11999E;
+    font-size: 1.3rem;
+    margin-right: 5px;
+}
+
+
+
+#account{
+    padding-left: 30px;
+    font-size: 1.6rem;
+    color: #40514E;
+    margin-bottom: 30px;
+}
+
+/* ------------- Food Component ---------- */
+.foodComponent {
+    display: grid;
+    position: relative;
+    height: 250px;
+    margin: 5px 7px;
+    width: 175px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(64, 81, 78, 0.4);
+}
+
+#browsecomp{
+    height: 240px;
+    margin-bottom: 10px;
+}
+#mystorecomp{
+    height: 240px;
+    box-shadow: none;
+    margin-bottom: 60px;
+}
+
+#soldcomp{
+    height: 240px;
+    box-shadow: none;
+}
+
+.foodImage {
+    height: 130px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.foodPrice {
+    z-index: 5;
+    position: absolute;
+    right: 2%;
+    top: 30%;
+    background-color: black;
+    padding: var(--padding-sm);
+}
+
+.foodcontent {
+    background-color: #fff;
+    border-radius: inherit;
+    text-align: left;   
+}
+
+#mystore h3, h4{
+    color: #11999E;
+}
+
+.accountcardcontent {
+    background-color: #fff;
+    border-radius: inherit;
+    text-align: left;   
+}
+
+.description{
+    padding-left: 10px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+.storeprice{
+    padding-left: 10px;
+    margin: -10px auto;
+    font-size: 1rem;
+}
+
+.seller{
+    padding-left: 12px;
+    margin: 0 auto;
+    font-size: 0.7rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.foodFunctions {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 5px;
+    margin-top: 20px;
+}
+
+#storebtn{
+    width: 80px;
+    padding: 7px 0;
+    color:#11999E;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: #fff;
+    border: 1.5px solid rgba(17, 153, 158, 0.2);
+    border-radius: 7px;
+}
+
+
+/* ------------- My Store ---------- */
+#listedItems {
+    display: grid;
+    height: 63.3vh;
+    grid-template-columns: 50% 50%;
+    overflow-y: scroll;
+    background-color:#fff;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#storeItems {
+    display: grid;
+    height: 80.5vh;
+    grid-template-columns: 50% 50%;
+    overflow-y: scroll;
+    background-color:#fff;
+    padding-bottom: 0;
+    margin: 0 auto;
+}
+
+#accounttemplate {
+    display: grid;
+    height: 56vh;
+    grid-template-columns: 50% 50%;
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0 auto;
+}
+
+.accountcard {
+    display: grid;
+    position: relative;
+    height: 150px;
+    margin: 0 auto;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 3px 40px rgba(64, 81, 78, 0.1);
+}
+
+#browse h3, h4{
+    color: #40514E;
+}
+
+#leftcard{
+    margin-left: 25px;
+}
+
+#rightcard{
+    margin-right: 25px;
+}
+
+#accountcontent{
+    padding: 15px;
+    margin: 0 auto;
+    color: #40514E;
+}
+
+#streak{
+    position: absolute;
+    margin: 0 auto;
+    font-size: 3.5rem;
+    bottom: -5px;
+    right: 40px;
+    color: #11999E;
+    padding-right: 3px;
+    
+}
+
+#fire{
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: 16.5px;
+    right: 20px;
+    color: #11999E;
+}
+
+.pickup{
+    position: relative;
+}
+
+#location{
+    position: absolute;
+    right: 40px;
+    margin-top: 12px;
+    font-size: 1.3rem;
+    color: rgba(104, 104, 104, 0.6);
+}
+
+#accountcardicon{
+    font-size: 3rem;
+    position: absolute;
+    top: 25%;
+    left: 34.5%;
+    color: #40514E;
+}
+
+#cardtext{
+    text-align: center;
+    margin-top: 90px;
+    color: #40514E;
+
+}
+
+.container {
+    max-width: 640px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    margin-top: -25px;
+}
+
+ul.categories {
+    list-style: none;
+    padding: 20px 20px 10px 20px;
+    
+}
+ul.categories li{
+  display: inline;
+}
+ul.categories li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.categories li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.categories li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.categories li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.categories li input[type="checkbox"]:checked + label {
+    border: 2px solid #11999E;
+    background-color: #11999E;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.allergens li input[type="checkbox"]:checked + label {
+    border: 2px solid #7c0b42;
+    background-color: #7c0b42;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.categories li input[type="checkbox"] {
+  display: absolute;
+}
+ul.categories li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.moretags{
+    padding-left: 10px;
+}
+
+

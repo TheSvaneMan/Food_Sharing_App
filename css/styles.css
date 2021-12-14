@@ -831,7 +831,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
 
 /* ------------- Add New Product Page Store ---------- */
 #addNewProductPage {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 /* ------------- My Store ---------- */
