@@ -63,6 +63,7 @@ a {
     border-radius: 0 0 20px 20px;
     box-shadow: 0px 0px 20px -10px #40514e;
     height: 5vh;
+    z-index: 99;
 }
 
 /* ------------- Footer ---------- */
@@ -80,7 +81,7 @@ nav {
     position: absolute;
     width: 100%;
     bottom: 0;
-    height: 5vh;
+    height: 8vh;
     background-color: var(--white);
     margin: auto 0;
     box-shadow: 0px 0px 20px -10px #40514e;
@@ -162,43 +163,22 @@ body {
     border-radius: 20px;
 }
 
-.imgcontainer {
-    width: 270px;
-    height: auto;
-    margin: 0 auto;
-    padding: 0;
-    border-radius: 7px;
-}
-
-.landImg {
-    height: 100%;
+/* ------------- Item Page ---------- */
+#itemPage {
+    height: 100vh;
     width: 100vw;
-    object-fit: cover;
-    border-radius: 0 0 40px 40px;
 }
 
-.imageContainer {
-    height: 40vh;
-    /*Set any dimensions you like*/
-    min-width: 100%;
-}
-
-.imgcontainer img {
-    max-height: 140px;
-}
-
-#soldimg {
-    -webkit-filter: grayscale(100%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-    opacity: 0.5;
-}
-
-.itemcontent {
-    position: relative;
-    margin: 0 auto;
-    width: 72%;
-    color: #40514e;
+#selected-meal {
+    display: grid;
+    margin: auto 0;
+    overflow-y: scroll;
+    padding-top: 60px;
+    padding-bottom: 5vh;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    width: 100%;
 }
 
 .itemcontent p {
@@ -232,16 +212,37 @@ h3 {
     font-size: 1.2rem;
 }
 
-.profile {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    margin: auto;
+
+.imgcontainer {
+    width: 270px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 7px;
 }
 
-.userName {
-    text-align: center;
-    color: #40514e;
+.landImg {
+    height: 100%;
+    width: 100vw;
+    object-fit: cover;
+    border-radius: 0 0 40px 40px;
+}
+
+.imageContainer {
+    height: 40vh;
+    /*Set any dimensions you like*/
+    min-width: 100%;
+}
+
+.imgcontainer img {
+    max-height: 140px;
+}
+
+#soldimg {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity: 0.5;
 }
 
 hr.solid {
@@ -301,6 +302,7 @@ hr.solid {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 42px;
     color: var(--white);
     margin-bottom: 5px;
     font-size: 1rem;
@@ -376,8 +378,8 @@ hr.solid {
 }
 
 #buybtn {
-    margin-left: 0;
-    padding: 15px 60px;
+    margin-right: 10px;
+    padding: 5px 10px;
     font-size: 1rem;
     font-weight: bold;
     border-radius: 15px;
@@ -385,7 +387,7 @@ hr.solid {
 }
 
 #messagebtn {
-    padding: 10px 15px;
+    padding: 5px 10px;
     font-size: 1rem;
     font-weight: bold;
     background-color: #fff;
@@ -584,7 +586,7 @@ hr.solid {
 
 #headline {
     padding-left: 30px;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     color: #40514e;
 }
 
@@ -664,7 +666,28 @@ hr.solid {
 
 /* ------------- Browse Page ---------- */
 #browsePage {
-    margin-top: 30px;
+    height: 100%;
+}
+
+.browseHeader {
+    height: 20vh;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.filterSearchBox {
+    font-size: 0.8rem;
+    margin-left: 50px;
+}
+
+#listedItems {
+    display: grid;
+    height: 60vh;
+    grid-template-columns: 50% 50%;
+    overflow-y: scroll;
+    background-color: #fff;
+    padding: 0;
+    margin: 0 auto;
 }
 
 .filterHeader {
@@ -678,6 +701,8 @@ hr.solid {
 
 #filterComponent {
     display: none;
+    position: absolute;
+    background-color: white;
     justify-content: center;
     align-items: center;
     height: 280px;
@@ -764,29 +789,30 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
 .foodComponent {
     display: grid;
     position: relative;
-    height: 340px;
+    height: 300px;
     margin: 5px;
-    padding: var(--padding-sm);
-    width: 180px;
-    background-color: var(--background);
-    border: #1d4d6d 1px solid;
-    border-radius: var(--border-radius);
+    padding: 5px;
+    width: 150px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(64, 81, 78, 0.4);
+}
+
+.foodDescription {
+    padding-left: 10px;
+    margin: 0 auto;
+    font-size: 1rem;
 }
 
 .foodImage {
     height: 120px;
-    width: 100%;
+    width: 150px;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .foodPrice {
     color: white;
     padding: 5px;
-    z-index: 5;
-    position: absolute;
-    right: 2%;
-    top: 30%;
-    background-color: #1d4d6d;
     padding: var(--padding-sm);
 }
 
@@ -794,15 +820,37 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 10px;
+    margin: 0 auto;
+    font-size: 0.8rem;
 }
 
 .foodFunctions {
     display: grid;
 }
 
+.foodBuyButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    width: 72px;
+    color: var(--white);
+    font-size: 0.6rem;
+    padding: 2px;
+    background-color: var(--button);
+    border-radius: var(--border-radius);
+    border-style: var(--white);
+}
+
 .foodTag {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 50% 50%;
+    row-gap: 20px;
+}
+
+#browse h3, h4 {
+    color: #40514E;
 }
 
 .foodTagWarning {
@@ -812,21 +860,25 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
 }
 
 .foodCategory {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
     background-color: #108181;
-    width: 80px;
-    color: var(--white);
-    border-radius: var(--border-radius);
-    margin: var(--padding-sm);
-    padding: var(--padding-sm);
+    width: 100px;
+    color: white;
+    border-radius: 10px;
 }
 
 .foodAllergy {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
     background-color: #c55d20;
-    width: 80px;
-    color: var(--white);
-    border-radius: var(--border-radius);
-    margin: var(--padding-sm);
-    padding: var(--padding-sm);
+    width: 100px;
+    color: white;
+    border-radius: 10px;
 }
 
 /* ------------- Add New Product Page Store ---------- */
@@ -834,20 +886,37 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     padding: 20px;
 }
 
+.userUploadedImage {
+    max-width: 360px;
+}
+
 /* ------------- My Store ---------- */
-#listedItems {
+#myStorePage {
     display: grid;
-    height: 63.3vh;
-    grid-template-columns: 50% 50%;
-    overflow-y: scroll;
-    background-color: #fff;
-    padding: 0;
-    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+.myStoreHeaderMain {
+    display: grid;
+    width: 100%;
+    margin-top: 5vh;
+}
+
+.myStoreHeaderMain h1, h5 {
+    margin: 5px;
+}
+
+.myStoreHeader {
+    display: flex;
+    width: 100%;
 }
 
 #storeItems {
     display: grid;
     height: 80.5vh;
+    width: 100%;
     grid-template-columns: 50% 50%;
     overflow-y: scroll;
     background-color: #fff;
@@ -855,9 +924,31 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     margin: 0 auto;
 }
 
+#myStoreItems {
+    display: grid;
+    height: 70vh;
+    grid-template-columns: 50% 50%;
+    overflow-y: scroll;
+    background-color: #fff;
+    padding: 0;
+    margin: 0 auto;
+}
+
 /* ----------- Account Page -------- */
 #userAccountPage {
     padding-top: 20px;
+}
+
+.profile {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.userName {
+    text-align: center;
+    color: #40514e;
 }
 
 #accounttemplate {
@@ -924,16 +1015,20 @@ h4 {
 }
 
 /* ----------- Inbox Page -------- */
+#inboxPage {
+    display: grid;
+    height: 90vh;
+    padding-top: 40px;
+}
 
 .inboxHeader {
     display: flex;
     height: 32px;
     justify-content: center;
     align-items: center;
+    margin: 20px;
     color: white;
     margin-bottom: 5px;
-    border-radius: var(--border-radius);
-    background-color: var(--darker-background);
 }
 
 /* Inbox */
@@ -947,10 +1042,10 @@ h4 {
 .messageComponent {
     display: grid;
     color: black;
-    height: 128px;
+    height: 72px;
     width: 360px;
     margin: 10px;
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(241, 241, 241);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.212);
     border-radius: var(--border-radius);
 }
@@ -959,14 +1054,32 @@ h4 {
     display: flex;
     color: black;
     margin: 0 auto;
-    height: 16px;
+    height: 14px;
     justify-content: space-evenly;
-    margin-top: 10px;
+    margin-top: 5px;
     padding: var(--padding-sm);
     border-radius: var(--border-radius);
     align-items: center;
-    background-color: rgb(141, 142, 144);
 }
+
+.chatBoxMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeMessageButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+}
+
+#closeButton {
+    color: white;
+}
+
 
 .messageContentSent {
     display: flex;
@@ -978,7 +1091,7 @@ h4 {
     height: 32px;
     padding: var(--padding-sm);
     border-radius: var(--border-radius);
-    background-color: var(--darker-background);
+    background-color: #11999e;
 }
 
 .messageContentReceive {
@@ -991,7 +1104,7 @@ h4 {
     height: 32px;
     padding: var(--padding-sm);
     border-radius: var(--border-radius);
-    background-color: rgb(61, 61, 61);
+    background-color: #c55d20;
 }
 
 /* ------ Message Box Component ---------- */
@@ -999,22 +1112,70 @@ h4 {
     display: none;
     z-index: 5;
     position: fixed;
-    padding: 20px;
-    right: 80px;
-    bottom: 60px;
-    width: 240px;
-    height: 360px;
+    padding: 8px;
+    right: 20px;
+    top: 10vh;
+    width: 80vw;
+    height: 180px;
     border-radius: var(--border-radius);
     box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.472);
     background-color: var(--darker-background);
 }
 
 .messageInput {
+    height: 48px;
+    padding: 0 10px 0 10px;
     border-radius: var(--border-radius);
 }
 
 .chatBoxHeader {
     display: flex;
     color: white;
+    align-items: center;
     justify-content: space-between;
+    margin-right: 20px;
+}
+
+/* ------ Feedback Box Component ---------- */
+#feedbackBox {
+    display: none;
+    z-index: 5;
+    position: fixed;
+    padding: 8px;
+    right: 20px;
+    top: 10vh;
+    width: 80vw;
+    height: 180px;
+    border-radius: var(--border-radius);
+    box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.472);
+    background-color: var(--darker-background);
+}
+
+/* ------------- Image Recognition Panel ---------- */
+#imagePredictionBox {
+    display: none;
+    z-index: 5;
+    position: fixed;
+    padding: 8px;
+    right: 20px;
+    top: 10vh;
+    width: 80vw;
+    height: 420px;
+    border-radius: var(--border-radius);
+    box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.472);
+    background-color: white;
+}
+
+.messageInput {
+    height: 48px;
+    padding: 0 10px 0 10px;
+    border-radius: var(--border-radius);
+}
+
+.imagePredictionHeader {
+    display: flex;
+    color: #40514E;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
 }

@@ -115,8 +115,10 @@ class UploadFile
                 move_uploaded_file($file["tmp_name"], $targetFolder . $fileData["fileName"]);
                 // Server File Storage
                 $fileName = $fileData["fileName"];
+                $uniqueID = $fileName . rand(0, 1000);
+                $_SESSION['userInfo']['imageID'] = $uniqueID;
                 // What to do if upload is a success
-                $sql = "CALL UploadImageData('$fileName', '$targetFile')";
+                $sql = "CALL UploadImageData('$fileName', '$targetFile', '$uniqueID')";
                 $mySQL->query($sql);
                 echo $targetFile;
             }

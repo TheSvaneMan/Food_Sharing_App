@@ -7,7 +7,8 @@ const _messageUrl = 'backend/messagingSystem/B_MessageService.php';
 // The MessageService will handle Inbox :)
 /* ---- Global Variables ---- */
 let _selectedProductID;
-let _searchMetric = "search";
+let _searchMetric = 'search';
+let _feedbackQuery = 'general';
 // ========== Usability Function ==========
 async function checkActiveUser() {
 	const url = _security + '?action=activeUser';
@@ -246,7 +247,16 @@ async function loadCatAndAllergyData(id) {
 }
 
 function loadCheckList() {
-	let categories = ["Dairy", "Fruit", "Grain", "Beans", "Meat", "Confections", "Vegetable", "Water"];
+	let categories = [
+		'Dairy',
+		'Fruit',
+		'Grain',
+		'Beans',
+		'Meat',
+		'Confections',
+		'Vegetable',
+		'Water',
+	];
 	let htmlTemplateCategory = '';
 	for (const cat of categories) {
 		htmlTemplateCategory += /*html*/ `
@@ -275,7 +285,7 @@ function loadCheckList() {
 		'Hazelnuts',
 		'Cinnamon',
 	];
-	
+
 	let htmlTemplateAllergies = '';
 	for (const allergy of allergies) {
 		htmlTemplateAllergies += /*html*/ `
@@ -287,7 +297,6 @@ function loadCheckList() {
 	}
 	document.querySelector('#foodCategories').innerHTML = htmlTemplateCategory;
 	document.querySelector('#foodAllergies').innerHTML = htmlTemplateAllergies;
-
 }
 
 // ========== Appending Data Services ==========
@@ -297,27 +306,18 @@ function appendMeals(allFood) {
 	for (const food of allFood) {
 		htmlTemplate += /*html*/ `
 			<article onclick="showDetails(${food.food_id})" class="foodComponent">
-					<div class="foodHeader">
+					<div class="foodContent" id="browse">
 						<img
 							class="foodImage"
-							src="assets/tmp_food.png"
+							src="backend/${food.foodImageDir}"
 							alt="${food.foodImageDir}"
 						/>
-						<div class="foodPrice">Price: ${food.foodPrice}</div>
-					</div>
-					<div class="foodContent">
-						<div class="foodDescription">
-							<p>${food.foodDescription}</p>
+						<h4 class="foodDescription">${food.foodDescription}</h4>
+						<br>
+						<h5 class="foodDescription">From  ${food.foodOwner}</h5>
+						<br>
+						<h4 class="foodDescription">${food.foodPrice}kr</h4>
 						</div>
-						<div class="foodDescription">
-							<p>From: ${food.foodOwner}</p>
-							<p>Uploaded: ${food.dateAdded}</p>
-							<p>Best before: ${food.bestBeforeDate}</p>
-						</div>
-						<div class="foodFunctions">
-							<button class="defaultButton">Buy</button>
-						</div>
-					</div>
 				</article>
 		`;
 	}
@@ -351,26 +351,38 @@ function appendFood(food) {
 		foodCooked = 'No';
 	}
 	htmlTemplate += /*html*/ `
-			<article class="user-item">
-			<h3>ID: ${food.food_id}</h3>
+			<img class="foodImage" src="backend/${food.foodImageDir}" alt="Food Image" />
+			
 			<p>Food Name: ${food.foodName}</p>
-			<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
-			<p>ImageURL: ${food.foodImageDir} </p>
-			<p>Description: ${food.foodDescription}</p>
-			<p>Has a container: ${foodContainer}</p>
-			<p>The meal is cooked: ${foodCooked}</p>
-			<p>Price: ${food.foodPrice}</p>
-			<p>Uploaded By: ${food.foodOwner}</p>
-			<p>Pickup Location: ${food.foodLocation}</p>
-			<p>Date Added: ${food.dateAdded}</p>
-			<p>Best Before Date: ${food.bestBeforeDate}</p>
-			<p>Categories</p>
+			<p id="subtitle">From Penda ${food.foodOwner}</p>
+			<p>ID: ${food.food_id}</p>
+			<b>Description</b>
+			<p>${food.foodDescription}</p>
+			<b>Has a container?</b>
+			<p>${foodContainer}</p>
+			<b>The meal is cooked:</b>
+			<p>${foodCooked}</p>
+			<h3 id="itemprice">${food.foodPrice}kr</h3>
+			<hr class="solid">
+			<h3>Pickup Location</h3>
+			<p id="subtitle" style="margin-bottom: 10px;">${food.foodLocation}</p>
+			<div class="imgcontainer">
+				<img class="foodImage" src="assets/tmp_Map.png" alt="Food Image" />
+			</div>
+			<hr class="solid">
+			<b>Date Added</b>
+			<p>${food.dateAdded}</p>
+			<b>Best Before Date</b>
+			<p>${food.bestBeforeDate}</p>
+			<hr class="solid">
+			<b>Categories</b>
 			<section class="foodTag" id="selected-meal-cat"></section>
-			<p>Allergies</p>
+			<b>Allergies</b>
 			<section class="foodTag" id="selected-meal-allergy"></section>
-			<button class="defaultButton" onclick="purchaseFood(${food.food_id})">Buy</button>
-			<button class="defaultButton" onclick="messageUser(${food.foodOwner})">Message</button>
-			</article>
+			<section class="buttongrid">
+				<button id="buybtn" class="defaultButton" onclick="purchaseFood()">Buy</button>
+				<button id="messagebtn" class="defaultButton" onclick="messageUser(${food.foodOwner})">Message</button>
+			</section>
 		`;
 	// Create local array that contains the food cat items
 	let htmlTemplateCat = '';
@@ -406,17 +418,34 @@ function appendFood(food) {
 }
 
 // ========== My Store Functions ==========
-// Appends Meals to MyStore and only shows items I uploaded
+function purchaseFood() {
+	alert(
+		'Work in progress functionality. Good job buying a virtual meal. Enjoy!'
+	);
+}
+
+// ========== My Store Functions ==========
+// Appends Meals to MyStore and only shows items user uploaded
 function appendMyStore(foods) {
 	let htmlTemplate = '';
 	for (food of foods) {
 		htmlTemplate += /*html*/ `
-			<article class="foodComponent">
+			<article class="foodComponent" id="mystorecomp">
+				<div class="foodcontent" id="mystore">
+					<img class="foodImage" src="backend/${food.foodImageDir}" alt="${food.foodImageDir}" />
+					<h3 class="description">${food.foodName}</h3>
+					<div class="foodFunctions">
+						<button class="defaultButton" id="storebtn" style="margin-right: 7px;" onclick="deleteFood(${food.food_id})" >Delete</button>
+						<button class="defaultButton" id="storebtn" onclick="showFoodDetails(${food.food_id})" >Edit</button>
+					</div>
+				</div>
+			</article>
+			<!-- <article class="foodComponent">
 			<div class="foodHeader">
 						<img
 							class="foodImage"
 							src="assets/tmp_food.png"
-							alt=" ${food.foodImageDir}"
+							alt=""
 						/>
 						<div class="foodPrice">Price:  ${food.foodPrice}</div>
 					</div>
@@ -434,7 +463,7 @@ function appendMyStore(foods) {
 							<button class="redActionButton" onclick="deleteFood(${food.food_id})" >Delete</button>
 						</div>
 					</div>
-			</article>
+			</article> -->
 		`;
 	}
 	document.querySelector('#myStoreItems').innerHTML = htmlTemplate;
@@ -476,7 +505,10 @@ async function filterFood(value) {
 	const options = {
 		method: 'GET',
 	};
-	let response = await fetch(_baseUrl + '?action=filterFood&value=' + value, options);
+	let response = await fetch(
+		_baseUrl + '?action=filterFood&value=' + value,
+		options
+	);
 	let data = await response.json();
 	console.log(data);
 	appendMeals(data);
@@ -558,6 +590,10 @@ function SetSearch(value) {
 		`;
 	document.querySelector('#selectedSearch').innerHTML = htmlTemplate;
 }
+
+function SetFeedbackQuery(value) {
+	_feedbackQuery = value;
+}
 // Dynamic Search Function
 async function search(searchString) {
 	const options = {
@@ -569,8 +605,7 @@ async function search(searchString) {
 	);
 	let data = await response.json();
 	appendMeals(data);
-	
-} 
+}
 
 // ========== Search Function ==========
 fileToUpload.onchange = (event) => {
@@ -579,6 +614,29 @@ fileToUpload.onchange = (event) => {
 		clientImage.src = URL.createObjectURL(file);
 	}
 };
+
+// ========== Add New Food Product ==========
+async function AddNewFoodProduct() {
+	await UploadFoodImage();
+	await AddFoodProduct();
+}
+
+// ========== Upload Product Image ==========
+async function UploadFoodImage() {
+	let image = document.getElementById('fileToUpload');
+	let formData = new FormData();
+	formData.append(image.name, image.files[0]);
+
+	const options = {
+		method: 'POST',
+		body: formData,
+	};
+	await fetch(_baseUrl + '?action=upload', options).then((response) => {
+		result = response.json();
+		// showHomePage();
+	});
+}
+
 // ========== Add Food Product ==========
 async function AddFoodProduct() {
 	foodName = document.getElementById('newProductName').value;
@@ -714,7 +772,6 @@ function predictFood() {
 	});
 }
 
-
 // ========== Inbox System ==========
 // Sort messages into chats
 function appendMessages(messages) {
@@ -727,8 +784,8 @@ function appendMessages(messages) {
 			htmlTemplateInbox += /*html*/ `
 				<div class="messageComponent">
 					<div class="messageHeader">	
-						<p>From: ${message.sentby} </p>
-						<p>To: ${message.sentto}</p>
+						<p>From: </p><b>${message.sentby}</b>
+						<p>To:</p><b> ${message.sentto}</b>
 						<p>${message.created}</p>
 					</div>
 					<div class="messageContentSent">
@@ -736,13 +793,13 @@ function appendMessages(messages) {
 					</div>
 				</div>
 			`;
-		} else if (message.sentto == _currentUserID){
+		} else if (message.sentto == _currentUserID) {
 			// Inbox
 			htmlTemplateInbox += /*html*/ `
 				<div class="messageComponent">
 					<div class="messageHeader">	
-						<p>From: ${message.sentby} </p>
-						<p>To: ${message.sentto}</p>
+						<p>From: </p><b>${message.sentby}</b>
+						<p>To:</p><b> ${message.sentto}</b>
 						<p>${message.created}</p>
 					</div>
 					<div class="messageContentReceive">
@@ -753,13 +810,6 @@ function appendMessages(messages) {
 		}
 	}
 	document.querySelector('#user-inbox').innerHTML = htmlTemplateInbox;
-	
-	let htmlTemplateChatComponent = '';
-	htmlTemplateChatComponent += /*html*/ `
-				<button class='defaultButton' onclick='messageUser()'>Message</button>
-			`;
-	document.querySelector('#send-Message-Box').innerHTML =
-		htmlTemplateChatComponent;
 }
 
 function messageUser(id) {
@@ -768,15 +818,10 @@ function messageUser(id) {
 	_messageUserId = id;
 }
 
+// Message Chat Box
 function toggleChatBox() {
 	let chatBox = document.getElementById('chatBox');
 	chatBox.style.display = 'none';
-}
-
-function messageUser(id) {
-	let chatBox = document.getElementById('chatBox');
-	chatBox.style.display = 'grid';
-	_messageUserId = id;
 }
 
 function confirmReceiver() {
@@ -803,7 +848,79 @@ async function sendMessage(receiverID) {
 
 	await fetch(_messageUrl + '?action=sendMessage', options).then((response) => {
 		let result = response.json();
+		alert('Message Successfully sent :)');
+		toggleChatBox();
 	});
+}
+
+// -------------- FEEDBACK FEATURE ------------- //
+// Feedback Box
+function toggleFeedbackBox() {
+	let chatBox = document.getElementById('feedbackBox');
+	chatBox.style.display = 'none';
+}
+
+function OpenFeedback() {
+	let chatBox = document.getElementById('feedbackBox');
+	chatBox.style.display = 'grid';
+}
+
+async function SendFeedBack() {
+	// Message data collection
+	let queryData = _feedbackQuery;
+	let messageData = document.getElementById('feedbackMessageData').value;
+	// Message Parameters
+	const params = {
+		query: queryData,
+		message: messageData,
+	};
+	const options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json; charset=utf-8',
+		},
+		body: JSON.stringify(params),
+	};
+
+	await fetch(_messageUrl + '?action=sendFeedback', options).then(
+		(response) => {
+			let result = response.json();
+			alert('Feedback Successfully sent :)');
+			toggleFeedbackBox();
+		}
+	);
+}
+// ========== Image Recognition Feature ==========
+function predictFood() {
+	let chatBox = document.getElementById('imagePredictionBox');
+	let img = document.getElementById('clientImage');
+	chatBox.style.display = 'grid';
+	// Load the model.
+	mobilenet.load().then((model) => {
+		// Classify the image.
+		model.classify(img).then((predictions) => {
+			console.log('Predictions: ');
+			console.log(predictions);
+			let htmlTemplate = '';
+			for (const prediction of predictions) {
+				htmlTemplate += /*html*/ `
+					<li class="imageEstimates">
+						Guestimate:<b>${prediction.className}</b>
+						<br>
+						Probability:<b>${prediction.probability}</b>
+					</li>
+					
+				`;
+			}
+			document.getElementById('imagePredictions').innerHTML = htmlTemplate;
+		});
+	});
+}
+
+// Message Chat Box
+function togglePredictionBox() {
+	let chatBox = document.getElementById('imagePredictionBox');
+	chatBox.style.display = 'none';
 }
 
 // Get the active user from Server

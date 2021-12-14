@@ -65,7 +65,11 @@ if (isset($_GET['action'])) {
     } else if ($_GET['action'] == 'addNewFood') {
         // Add Meal to Database
         $newMeal = json_decode(file_get_contents("php://input"));
-        $uploadFood->UploadMeal($newMeal);
+        // Find image with uniqueID and assign it to new Food Product
+        $foodImgID = $_SESSION['userInfo']['imageID'];
+        $sql = "SELECT imgDir FROM imagetable WHERE imgUniqueID = '$foodImgID'";
+        $foodDir = $mySQL->query($sql);
+        $uploadFood->UploadMeal($newMeal, $foodDir);
         $responseObject = new ResponseObject();
         $responseObject->status = 200;
         $responseObject->message = "Upload successful";
@@ -122,7 +126,7 @@ if (isset($_GET['action'])) {
         $search = new SearchClass();
         $search->searchData($mySQL, $sql);
         exit;
-    } else if ($_POST['action'] == "upload") {
+    } else if ($_GET['action'] == "upload") {
         // File Upload
         $uploadFile = new UploadFile();
         $uploadFile->uploadFile($mySQL);

@@ -1,507 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Food Share</title>
-		<link rel="stylesheet" href="css/styles.css" />
-		<link href="ico/favicon.ico" rel="icon" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<script
-			src="https://kit.fontawesome.com/3f9455542b.js"
-			crossorigin="anonymous"
-		></script>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-	<body>
-		<!-- Authentication Backend -->
-		<script src="backend/security/auth/B_Auth.php"></script>
-		<!-- Features -->
-		<div class="topNav">
-			<button class="backButton" onclick="window.history.back()">
-				<i id="backArrowIcon" class="fa fa-arrow-left" aria-hidden="true"></i>
-			</button>
-			<a href="#/inbox" onclick="loadMessages()"
-				><i id="messageIcon" class="far fa-comment"></i
-			></a>
-		</div>
-		<!-- Landing Page -->
-		<section id="landingPage" class="page">
-			<div class="imageContainer">
-				<img class="landImg" src="assets/tmp_loginSignUpImg.png" />
-			</div>
-			<!-- Logo -->
-			<div class="landing">
-				<img src="assets/tmp_logo1.png" class="logo" />
-				<button
-					class="loginSignupBtn"
-					id="landinglogin"
-					onclick="showLoginPage()"
-				>
-					Login
-				</button>
-				<button
-					class="loginSignupBtn"
-					id="landingsignup"
-					onclick="showSignUpPage()"
-				>
-					Sign up
-				</button>
-			</div>
-		</section>
-		<!-- Login Page -->
-		<section id="loginPage" class="page">
-			<div class="imageContainer">
-				<img class="landImg" src="assets/tmp_loginSignUpImg.png" />
-			</div>
-			<!-- Login Page  -->
-			<div class="landing">
-				<h1>Login</h1>
-				<form method="POST" class="loginform">
-					<input
-						class="inputFunction"
-						type="text"
-						id="loginEmail"
-						placeholder="Email"
-					/>
-					<input
-						class="inputFunction"
-						type="password"
-						id="loginPassword"
-						placeholder="Password"
-					/>
-				</form>
-				<br />
-				<!-- An element to toggle between password visibility -->
-				<label class="checkContainer">
-					<input type="checkbox" onclick="TogglePasswordVisibility()" />Show
-					Password
-					<span class="checkmark"></span>
-				</label>
-					<button class="loginSignupBtn" id="login" onclick="login()">
-						Login
-					</button>
-				<div class="logoptions">
-					<h3>or log in with</h3>
-					<button class="logoptionsbtn">
-						<i class="fab fa-facebook" id="fb"></i>
-					</button>
-					<button class="logoptionsbtn">
-						<i class="fab fa-google" id="google"></i>
-					</button>
-					<button class="logoptionsbtn">
-						<i class="fab fa-apple" id="apple"></i>
-					</button>
-					<h3 id="smol">Forgot your password?</h3>
-					<h3 id="smoler">
-						Don't have an account yet?
-						<a id="signlink" href="#/signup">Create an account</a>
-					</h3>
-				</div>
-			</div>
-		</section>
-		<!-- Sign Up Page -->
-		<section id="signUpPage" class="page">
-			<!-- Logo -->
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Food Share</title>
+	<link rel="stylesheet" href="css/styles.css" />
+	<link href="ico/favicon.ico" rel="icon" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<script src="https://kit.fontawesome.com/3f9455542b.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+	<!-- Authentication Backend -->
+	<script src="backend/security/auth/B_Auth.php"></script>
+	<!-- Features -->
+	<div class="topNav">
+		<button class="backButton" onclick="window.history.back()">
+			<i id="backArrowIcon" class="fa fa-arrow-left" aria-hidden="true"></i>
+		</button>
+		<a href="#/inbox" onclick="loadMessages()"><i id="messageIcon" class="far fa-comment"></i></a>
+	</div>
+	<!-- Landing Page -->
+	<section id="landingPage" class="page">
+		<div class="imageContainer">
 			<img class="landImg" src="assets/tmp_loginSignUpImg.png" />
-			<div class="landing">
-				<h1 style="margin-bottom: 25px">Sign up</h1>
-				<form action="">
-					<input
-						class="inputFunction"
-						type="text"
-						id="signUpFirstName"
-						placeholder="Enter First Name"
-					/>
-					<input
-						class="inputFunction"
-						type="text"
-						id="signUpLastName"
-						placeholder="Enter Last Name"
-					/>
-					<input
-						class="inputFunction"
-						type="text"
-						id="signUpEmail"
-						placeholder="Enter Email"
-					/>
-					<input
-						class="inputFunction"
-						type="text"
-						id="signUpPassword"
-						placeholder="Enter preferred Password"
-					/>
-					<input
-						class="inputFunction"
-						type="text"
-						id="signUpCity"
-						placeholder="City"
-					/>
-					<input
-						class="inputFunction"
-						type="text"
-						id="signUpCountry"
-						placeholder="Country"
-					/>
-					<input
-						class="inputFunction"
-						type="number"
-						id="signUpPostalCode"
-						placeholder="Post Code"
-					/>
-					<!-- Programmatically assign values -->
-					<p>Birthday</p>
-					<input type="date" id="signUpBirthday" placeholder="yyyy-mm-dd" />
-					<h3>What are you interested in most on the platform?</h3>
-					<select
-						id="signUpInterestedIn"
-						name="signUpInterestedIn"
-						placeholder="Interested in?"
-					>
-						<option type="radio" value="s">Sharing</option>
-						<option type="radio" value="b">Buying</option>
-						<option type="radio" value="x">Both</option>
-					</select>
-				</form>
-			</div>
-			<button
-				class="loginSignupBtn"
-				onclick="createUserEvent()"
-			>
-				SignUp
+		</div>
+		<!-- Logo -->
+		<div class="landing">
+			<img src="assets/tmp_logo1.png" class="logo" />
+			<button class="loginSignupBtn" id="landinglogin" onclick="showLoginPage()">
+				Login
 			</button>
-			<div class="signoptions" style="margin-top: 80px">
+			<button class="loginSignupBtn" id="landingsignup" onclick="showSignUpPage()">
+				Sign up
+			</button>
+		</div>
+	</section>
+	<!-- Login Page -->
+	<section id="loginPage" class="page">
+		<div class="imageContainer">
+			<img class="landImg" src="assets/tmp_loginSignUpImg.png" />
+		</div>
+		<!-- Login Page  -->
+		<div class="landing">
+			<h1>Login</h1>
+			<form method="POST" class="loginform">
+				<input class="inputFunction" type="text" id="loginEmail" placeholder="Email" />
+				<input class="inputFunction" type="password" id="loginPassword" placeholder="Password" />
+			</form>
+			<br />
+			<!-- An element to toggle between password visibility -->
+			<label class="checkContainer">
+				<input type="checkbox" onclick="TogglePasswordVisibility()" />Show
+				Password
+				<span class="checkmark"></span>
+			</label>
+			<button class="loginSignupBtn" id="login" onclick="login()">
+				Login
+			</button>
+			<div class="logoptions">
+				<h3>or log in with</h3>
+				<button class="logoptionsbtn">
+					<i class="fab fa-facebook" id="fb"></i>
+				</button>
+				<button class="logoptionsbtn">
+					<i class="fab fa-google" id="google"></i>
+				</button>
+				<button class="logoptionsbtn">
+					<i class="fab fa-apple" id="apple"></i>
+				</button>
+				<h3 id="smol">Forgot your password?</h3>
 				<h3 id="smoler">
-					Already have an account? <a id="signlink" href="#/login">Log in</a>
+					Don't have an account yet?
+					<a id="signlink" href="#/signup">Create an account</a>
 				</h3>
 			</div>
-		</section>
-		<!-- Browse Page -->
-		<section id="browsePage" class="page">
+		</div>
+	</section>
+	<!-- Sign Up Page -->
+	<section id="signUpPage" class="page">
+		<!-- Logo -->
+		<img class="landImg" src="assets/tmp_loginSignUpImg.png" />
+		<div class="landing">
+			<h1 style="margin-bottom: 25px">Sign up</h1>
+			<form action="">
+				<input class="inputFunction" type="text" id="signUpFirstName" placeholder="Enter First Name" />
+				<input class="inputFunction" type="text" id="signUpLastName" placeholder="Enter Last Name" />
+				<input class="inputFunction" type="text" id="signUpEmail" placeholder="Enter Email" />
+				<input class="inputFunction" type="text" id="signUpPassword" placeholder="Enter preferred Password" />
+				<input class="inputFunction" type="text" id="signUpCity" placeholder="City" />
+				<input class="inputFunction" type="text" id="signUpCountry" placeholder="Country" />
+				<input class="inputFunction" type="number" id="signUpPostalCode" placeholder="Post Code" />
+				<!-- Programmatically assign values -->
+				<p>Birthday</p>
+				<input type="date" id="signUpBirthday" placeholder="yyyy-mm-dd" />
+				<h3>What are you interested in most on the platform?</h3>
+				<select id="signUpInterestedIn" name="signUpInterestedIn" placeholder="Interested in?">
+					<option type="radio" value="s">Sharing</option>
+					<option type="radio" value="b">Buying</option>
+					<option type="radio" value="x">Both</option>
+				</select>
+			</form>
+		</div>
+		<button class="loginSignupBtn" onclick="createUserEvent()">
+			SignUp
+		</button>
+		<div class="signoptions" style="margin-top: 80px">
+			<h3 id="smoler">
+				Already have an account? <a id="signlink" href="#/login">Log in</a>
+			</h3>
+		</div>
+	</section>
+	<!-- Browse Page -->
+	<section id="browsePage" class="page">
+		<div class="browseHeader">
 			<h1 id="headline">Browse</h1>
-
-			<button class="filterButton" onclick="ToggleFilters()"><i id="sliders" class="fas fa-sliders-h"></i></button>
-			<div id="filterComponent" >
+			<button class="filterButton" onclick="ToggleFilters()"><i id="sliders"
+					class="fas fa-sliders-h"></i></button>
+			<div id="filterComponent">
 				<h4 class="filterHeader">Filters</h4>
 				<form class="filterForm" method="GET">
-				<button
-					id="button"
-					type="button"
-					class="defaultButton"
-					onclick="clearFilters()"
-				>
-					No Filter
-				</button>
-				<button
-					id="button"
-					type="button"
-					value="foodContainer"
-					class="defaultButton"
-					onclick="filterFood(this.value)"
-				>
-					Container
-				</button>
-				<button
-					id="button"
-					type="button"
-					value="noFoodContainer"
-					class="defaultButton"
-					onclick="filterFood(this.value)"
-				>
-					No container
-				</button>
-				<button
-					id="button"
-					type="button"
-					value="lowToHigh"
-					class="defaultButton"
-					onclick="filterFood(this.value)"
-				>
-					L2H
-				</button>
-				<button
-					id="button"
-					type="button"
-					value="highToLow"
-					class="defaultButton"
-					onclick="filterFood(this.value)"
-				>
-					H2L
-				</button>
-			</form>
+					<button id="button" type="button" class="defaultButton" onclick="clearFilters()">
+						No Filter
+					</button>
+					<button id="button" type="button" value="foodContainer" class="defaultButton"
+						onclick="filterFood(this.value)">
+						Container
+					</button>
+					<button id="button" type="button" value="noFoodContainer" class="defaultButton"
+						onclick="filterFood(this.value)">
+						No container
+					</button>
+					<button id="button" type="button" value="lowToHigh" class="defaultButton"
+						onclick="filterFood(this.value)">
+						L2H
+					</button>
+					<button id="button" type="button" value="highToLow" class="defaultButton"
+						onclick="filterFood(this.value)">
+						H2L
+					</button>
+				</form>
 			</div>
-			<div id="selectedFilter"><p>No filter selected</p></div>
+			
 			<!-- Slightly dynamic search function, can be improved but ye.. Proof of concept -->
-			<select
-				name="selectSearch"
-				id="selectSearch"
-				onchange="SetSearch(this.value)"
-			>
+			<select name="selectSearch" id="selectSearch" onchange="SetSearch(this.value)">
 				<option value="search">Name of Product</option>
 				<option value="searchDescription">Description of Product</option>
 				<option value="searchPrice">Price of Product</option>
 				<option value="searchLocation">Location of Product</option>
 			</select>
-			<input
-				onkeyup="search(this.value)"
-				type="text"
-				placeholder="Search"
-				class="inputFunction"
-			/> <i id="search" class="fas fa-search"></i>
-			
-			<div id="selectedSearch"><p>No search criteria currently selected</p></div>
-			<!-- Loop through Food Objects -->
-			<!-- Listed Items -->
-			<section id="listedItems" class="foodArrayDisplay"></section>
-		</section>
+			<input onkeyup="search(this.value)" type="text" placeholder="Search" class="inputFunction" /> <i id="search"
+				class="fas fa-search"></i>
 
-		<!-- Item Page -->
-		<section id="itemPage" class="page">
-			<section id="selected-meal"></section>
-		</section>
-		<!-- My Store-->
-		<section id="myStorePage" class="page">
+		</div>
+		<div class="filterSearchBox">
+			<div id="selectedFilter">
+				<p>No filter selected</p>
+			</div>
+			<div id="selectedSearch">
+				<p>No search criteria currently selected</p>
+			</div>
+		</div>
+		
+		<!-- Loop through Food Objects -->
+		<!-- Listed Items -->
+		<section id="listedItems" class="foodArrayDisplay"></section>
+	</section>
+
+	<!-- Item Page -->
+	<section id="itemPage" class="page">
+		<section id="selected-meal"></section>
+	</section>
+	<!-- My Store-->
+	<section id="myStorePage" class="page">
+		<div class="myStoreHeaderMain">
 			<h1>MY STORE</h1>
-			<h4>Items on the market</h4>
+			<h5>Items on the market</h5>
+		</div>
+		<section class="myStoreHeader">
 			<!-- Store Functions -->
-			<section>
-				<button class="greenActionButton" onclick="showAddNewProductPage()">
-					Add +
-				</button>
-				<button class="defaultButton">Active</button>
-				<button class="defaultButton">Sold</button>
-			</section>
-			<!-- My Food Items -->
-			<section id="myStoreItems" class="foodArrayDisplay"></section>
+			<button class="defaultButton" onclick="showAddNewProductPage()">Add Item</button>
+			<button class="defaultButton" disabled>Active</button>
+			<button class="defaultButton" disabled>Sold</button>
 		</section>
-		<!-- Update Food Page -->
-		<section id="updateMyFood" class="page">
-			<h1>Selected Food From Store</h1>
-			<p>Need better UI to convey this easier</p>
-			<section id="myFood">
-				<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
-				<input
-					type="text"
-					id="name-update"
-					placeholder="Type new Name"
-					required
-				/>
-				<input
-					type="text"
-					id="description-update"
-					placeholder="Type new Description"
-					required
-				/>
-				<input
-					type="number"
-					id="price-update"
-					placeholder="New Price"
-					required
-				/>
-				<input
-					type="text"
-					id="location-update"
-					placeholder="New Picup location"
-					required
-				/>
-				<button type="activeGreenButton" name="button" onclick="updateFood()">
-					Update Meal
-				</button>
-				<button class="defaultButton" onclick="deleteFood()">Delete</button>
-			</section>
-		</section>
-		<!-- Add New Product -->
-		<section id="addNewProductPage" class="page">
-			<h1>ADD NEW PRODUCT</h1>
-			<p>Name of the Meal</p>
-			<input
-				type="text"
-				class="inputFunction"
-				id="newProductName"
-				placeholder="Name of Meal"
-			/>
-			<p>Short Description of Food Contents</p>
-			<input
-				type="text"
-				class="inputFunction"
-				id="newProductDescription"
-				placeholder="Description of Meal"
-			/>
-			<p>Category</p>
-			<p>Choose tags that describe your product</p>
-			<!-- Food Category Tags Auto populated by JS ;) -->
-			<div id="foodCategories"></div>
-			<p>Pick up location</p>
-			<!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
-
-			<input
-				type="text"
-				id="newProductPickUpLoc"
-				placeholder="Location of pickup"
-				class="inputFunction"
-			/>
-			<p>Is the meal packed in a container?</p>
-			<input type="checkbox" id="newProductFoodContainer" /><b>Yes</b>
-			<p>Is the meal cooked?</p>
-			<input type="checkbox" id="newProductFoodCooked" /><b>Yes</b>
-			<p>Allergens</p>
-			<p>
-				Help keep people safe by identifying key ingredients that they may be
-				allergic to.
-			</p>
-			<!-- Food Allergies Tags Auto populated by JS ;) -->
-			<div id="foodAllergies"></div>
-			<p>Price</p>
-			<input
-				type="number"
-				id="newProductPrice"
-				placeholder="Price of the meal"
-				class="inputFunction"
-			/>
-			<form
-				action="backend/applicationService.php"
-				method="post"
-				enctype="multipart/form-data"
-				required
-			>
-				<h3>Add an image</h3>
-				<input
-					type="file"
-					accept="image/"
-					name="fileToUpload"
-					id="fileToUpload"
-					placeholder="Image of the meal"
-				/>
-				<!-- Display Image -->
-				<img
-					src="local/food/food29.jpg"
-					alt="The recently uploaded image"
-					id="clientImage"
-					class="testImage"
-					alt="your uploaded food image"
-				/>
-
-				<input type="submit" name="action" value="upload" />
-			</form>
-			<!-- Predict Image Content -->
-			<button class="defaultButton" onclick="predictFood()">
-				Predict Image
+		<!-- My Food Items -->
+		<section id="myStoreItems" class="foodArrayDisplay"></section>
+	</section>
+	<!-- Update Food Page -->
+	<section id="updateMyFood" class="page">
+		<h1>Selected Food From Store</h1>
+		<p>Need better UI to convey this easier</p>
+		<section id="myFood">
+			<img class="foodImage" src="assets/tmp_food.png" alt="Food Image" />
+			<input type="text" id="name-update" placeholder="Type new Name" required />
+			<input type="text" id="description-update" placeholder="Type new Description" required />
+			<input type="number" id="price-update" placeholder="New Price" required />
+			<input type="text" id="location-update" placeholder="New Picup location" required />
+			<button type="activeGreenButton" name="button" onclick="updateFood()">
+				Update Meal
 			</button>
-
-			<input type="date" id="bestBeforeDate" placeholder="yyyy-mm-dd" />
-
-			<input type="checkbox" id="newProductIsFree" /><b
-				>Free on the last day?</b
-			>
-			<button class="defaultButton" onclick="AddFoodProduct()">
-				Share Meal
-			</button>
+			<button class="defaultButton" onclick="deleteFood()">Delete</button>
 		</section>
-		<!-- Bought Items -->
-		<section id="boughtItemsPage" class="page">
-			<article>
-				<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
-				<p>Price 40dkk</p>
-				<p>Food Description (Short)</p>
-				<p>Date Sold: 12th November 2021</p>
+	</section>
+	<!-- Add New Product -->
+	<section id="addNewProductPage" class="page">
+		<h1>ADD NEW PRODUCT</h1>
+		<p>Name of the Meal</p>
+		<input type="text" class="inputFunction" id="newProductName" placeholder="Name of Meal" />
+		<p>Short Description of Food Contents</p>
+		<input type="text" class="inputFunction" id="newProductDescription" placeholder="Description of Meal" />
+		<p>Category</p>
+		<p>Choose tags that describe your product</p>
+		<!-- Food Category Tags Auto populated by JS ;) -->
+		<div id="foodCategories"></div>
+		<p>Pick up location</p>
+		<!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
+
+		<input type="text" id="newProductPickUpLoc" placeholder="Location of pickup" class="inputFunction" />
+		<p>Is the meal packed in a container?</p>
+		<input type="checkbox" id="newProductFoodContainer" /><b>Yes</b>
+		<p>Is the meal cooked?</p>
+		<input type="checkbox" id="newProductFoodCooked" /><b>Yes</b>
+		<p>Allergens</p>
+		<p>
+			Help keep people safe by identifying key ingredients that they may be
+			allergic to.
+		</p>
+		<!-- Food Allergies Tags Auto populated by JS ;) -->
+		<div id="foodAllergies"></div>
+		<p>Price</p>
+		<input type="number" id="newProductPrice" placeholder="Price of the meal" class="inputFunction" />
+		<p>Upload an image of the food.</p>
+		<b>It is required! :)</b>
+		<form method="post" enctype="multipart/form-data" required>
+			<h3>Add an image</h3>
+			<input type="file" accept="image/" name="fileToUpload" id="fileToUpload" placeholder="Image of the meal" />
+			<!-- Display Image -->
+			<img src="local/food/food29.jpg" alt="The recently uploaded image" id="clientImage" class="userUploadedImage"
+				alt="your uploaded food image" />
+			<!-- <input type="submit" name="action" value="upload" /> -->
+		</form>
+		<!-- Predict Image Content -->
+		<button class="defaultButton" onclick="predictFood()">
+			Predict Image
+		</button>
+
+		<input type="date" id="bestBeforeDate" placeholder="yyyy-mm-dd" />
+
+		<input type="checkbox" id="newProductIsFree" /><b>Free on the last day?</b>
+		<button class="defaultButton" onclick="AddNewFoodProduct()">
+			Share Meal
+		</button>
+	</section>
+	<!-- Bought Items -->
+	<section id="boughtItemsPage" class="page">
+		<article>
+			<img class="foodImage" src="assets/tmp_food.png" alt="Food Picture" />
+			<p>Price 40dkk</p>
+			<p>Food Description (Short)</p>
+			<p>Date Sold: 12th November 2021</p>
+		</article>
+	</section>
+	<!-- Account Page -->
+	<section id="userAccountPage" class="page">
+		<h1 id="headline">My account</h1>
+		<img class="profile" src="assets/tmp_profilePic.png">
+		<p class="userName">Penda Svane</p>
+		<section id="accounttemplate">
+			<article class="accountcard" id="leftcard">
+				<div class="accountcardcontent">
+					<h4 id="accountcontent">Contribution weeks</h3>
+						<h3 id="streak">6</h3>
+						<i id="fire" class="fas fa-fire-alt"></i>
+				</div>
 			</article>
-		</section>
-		<!-- Account Page -->
-		<section id="userAccountPage" class="page">
-			<h1 id="headline">My account</h1>
-			<img class="profile" src="assets/tmp_profilePic.png">
-			<p class="userName">Penda Svane</p>
-			<section id="accounttemplate">
-				<article class="accountcard" id="leftcard">
-					<div class="accountcardcontent">
-						<h4 id="accountcontent">Contribution weeks</h3>
-							<h3 id="streak">6</h3>
-							<i id="fire" class="fas fa-fire-alt"></i>
-					</div>
-				</article>
-				<article class="accountcard" id="rightcard">
-					<div class="accountcardcontent">
-						<h4 id="accountcontent">Meals saved</h3>
-							<h3 id="streak">9</h3>
-							<i id="fire" class="fas fa-fire-alt"></i>
-					</div>
-					</div>
-				</article>
-				<article class="accountcard" id="leftcard">
-					<div class="accountcardcontent">
-						<i id="accountcardicon" class="fas fa-cog"></i>
-						<p id="cardtext">Settings</p>
-					</div>
-				</article>
-				<article onclick="LogOut()" class="accountcard" id="rightcard">
-					<div class="accountcardcontent">
-						<i id="accountcardicon" class="fas fa-sign-out-alt"></i>
-						<p id="cardtext" >Log out</p>
-					</div>
-				</article>
-				</section>
-		</section>
-		<!-- Inbox Page -->
-		<section id="inboxPage" class="page">
-			<div class="inboxHeader">
-				<h4>Inbox</h4>
-			</div>
-			<!-- Put all messages between one user in one div -->
-			<!-- Display all Messages for User  -->
-			<section id="user-inbox"></section>
-			<div id="send-Message-Box"></div>
-		</section>
-		<!-- Pop Up Message Dialogue -->
-		<section id="chatBox">
-			<div class="chatBoxHeader">
-				<h1>Message User</h1>
-				<button class="redActionButton" onclick="toggleChatBox()">Close</button>
-			</div>
-			<input
-				class="messageInput"
-				id="messageData"
-				type="text"
-				name="messageData"
-				maxlength="140"
-				placeholder="Type Message here"
-			/>
-			<button class="greenActionButton" onclick="sendMessage()">
-				Send Message
-			</button>
-			<button class="defaultButton" onclick="confirmReceiver()">
-				Confirm Receiver
-			</button>
-		</section>
-		<!-- Navigation -->
-		<nav>
-			<article class="icons">
-				<a href="#/browse" class="nav-link"><i class="fas fa-map"></i></a>
-				<a href="#/browse" class="nav-link" onclick="loadFood()"
-					><i class="fas fa-search"></i
-				></a>
-				<a href="#/myStore" class="nav-link" onclick="loadMyStoreFood()"
-					><i class="fas fa-shopping-basket"></i
-				></a>
-				<a href="#/account" class="nav-link"><i class="fas fa-user"></i></a>
+			<article class="accountcard" id="rightcard">
+				<div class="accountcardcontent">
+					<h4 id="accountcontent">Meals saved</h3>
+						<h3 id="streak">9</h3>
+						<i id="fire" class="fas fa-fire-alt"></i>
+				</div>
+				</div>
 			</article>
-		</nav>
-		<!-- Image Recognition feature -->
-		<!-- Load TensorFlow.js. This is required to use MobileNet. -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"></script> -->
-		<!-- Load the MobileNet model. -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"></script> -->
-		<!-- Google Maps -->
-		<!-- Blocked for now, security reasons -->
-		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=[Value]=myMap"></script> -->
+			<article class="accountcard" id="leftcard">
+				<div class="accountcardcontent">
+					<i id="accountcardicon" class="fas fa-cog"></i>
+					<p id="cardtext">Settings</p>
+				</div>
+			</article>
+			<article onclick="LogOut()" class="accountcard" id="rightcard">
+				<div class="accountcardcontent">
+					<i id="accountcardicon" class="fas fa-sign-out-alt"></i>
+					<p id="cardtext">Log out</p>
+				</div>
+			</article>
+			<h4>Help us improve, send feedback. :)</h4>
+			<button id="buybtn"  onclick="OpenFeedback()">Send Feedback</button>
+		</section>
+	</section>
+	<!-- Inbox Page -->
+	<section id="inboxPage" class="page">
+		<div class="inboxHeader">
+			<h4>Inbox</h4>
+		</div>
+		<!-- Put all messages between one user in one div -->
+		<!-- Display all Messages for User  -->
+		<section id="user-inbox"></section>
+	</section>
+	<!-- Pop Up Message Dialogue -->
+	<section id="chatBox">
+		<div class="chatBoxHeader">
+			<h3 class="chatBoxMain">Message User</h3>
+			<button class="closeMessageButton" onclick="toggleChatBox()"><i id="closeButton" class="fas fa-window-close fa-2x"></i></button>
+		</div>
+		<input class="messageInput" id="messageData" type="text" name="messageData" maxlength="140"
+			placeholder="Type Message here" />
+		<button id="buybtn" class="defaultButton" onclick="sendMessage()" >
+			Send Message
+		</button>
+	</section>
+	<!-- Pop Up Send Feedback Dialogue Box -->
+	<section id="feedbackBox">
+			<select name="feedbackQuery" id="feedbackQuery" onchange="SetFeedbackQuery(this.value)">
+				<option value="General">General Feedback</option>
+				<option value="UserExperience">User Experience Problem</option>
+				<option value="UserInterface">user Interface Problem</option>
+				<option value="Bug">Bug Report</option>
+			</select>
+		<div class="chatBoxHeader">
+			<h3 class="chatBoxMain">Send Feedback</h3>
+			<button class="closeMessageButton" onclick="toggleFeedbackBox()"><i id="closeButton" class="fas fa-window-close fa-2x"></i></button>
+		</div>
+		<input class="messageInput" id="feedbackMessageData" type="text" name="feedbackMessageData" maxlength="140"
+			placeholder="Type Message here" />
+		<button id="buybtn" class="defaultButton" onclick="SendFeedBack()" >
+			Send FeedBack
+		</button>
+	</section>
+		<!-- Pop Up Image Recognition Dialogue Box -->
+	<section id="imagePredictionBox">
+		<div class="imagePredictionHeader">
+			<h3 class="chatBoxMain">Image Prediction</h3>
+			<button class="closeMessageButton" onclick="togglePredictionBox()"><i id="closeButton" class="fas fa-window-close fa-2x"></i></button>
+		</div>
+		<div id="imagePredictions">
+		</div>
+	</section>
+	<nav>
+		<article class="icons">
+			<a href="#/browse" class="nav-link"><i class="fas fa-map"></i></a>
+			<a href="#/browse" class="nav-link" onclick="loadFood()"><i class="fas fa-search"></i></a>
+			<a href="#/myStore" class="nav-link" onclick="loadMyStoreFood()"><i class="fas fa-shopping-basket"></i></a>
+			<a href="#/account" class="nav-link"><i class="fas fa-user"></i></a>
+		</article>
+	</nav>
+	<!-- Image Recognition feature -->
+	<!-- Load TensorFlow.js. This is required to use MobileNet. -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"></script>
+	<!-- Load the MobileNet model. -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"></script>
+	<!-- Google Maps -->
+	<!-- Blocked for now, security reasons -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=[Value]=myMap"></script> -->
 
-		<!-- Router -->
-		<script src="js/router.js"></script>
-		<!-- Main app.js -->
-		<script src="js/app.js"></script>
-	</body>
+	<!-- Router -->
+	<script src="js/router.js"></script>
+	<!-- Main app.js -->
+	<script src="js/app.js"></script>
+</body>
+
 </html>

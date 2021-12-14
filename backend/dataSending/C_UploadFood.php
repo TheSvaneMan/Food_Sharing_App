@@ -6,11 +6,12 @@ class UploadFoodData
     {
         $this->mySQL = $mySQL;
     }
-    public function UploadMeal($rawMealData)
+    public function UploadMeal($rawMealData, $foodDir)
     {
+        $foodDirLoc = $foodDir->fetch_object();
         // Handle the food object within this function
         $name = $rawMealData->FoodName;
-        $image = $rawMealData->FoodImage;
+        $image = $foodDirLoc->imgDir;
         $description = $rawMealData->FoodDescription;
         $container = $rawMealData->FoodContainer;
         $cooked = $rawMealData->FoodCooked;
@@ -19,13 +20,15 @@ class UploadFoodData
         $owner = $_SESSION['userInfo']['userID'];
         $bestBeforeDate = $rawMealData->FoodBestBeforeDate;
         $freeLastDay = $rawMealData->FoodFreeLastDay;
-        $uniqueID = $owner . rand(0, 10000);
-        // var_dump($rawMealData);
+        $uniqueID = $owner . rand(0, 100);
         // Go through the food Items Categories
         $sql = "CALL AddNewMeal('$name', '$image', '$description', '$container', '$cooked', '$price', '$owner', '$location', NOW(), NOW(), '$bestBeforeDate', '$freeLastDay', '$uniqueID')";
         $this->mySQL->query($sql);
         // Once complete, add the food ID to the next functions
         // Search for recently uploaded meal and save ID
+        // Wait 2 seconds here to confirm data parsed successfully
+        sleep(2);
+
         $findMeal = "SELECT food_id FROM food WHERE uniqueGeneratedID = '$uniqueID'";
         $foodObject = $this->mySQL->query($findMeal);
         $foodIDobject = $foodObject->fetch_object();
