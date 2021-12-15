@@ -1261,3 +1261,7 @@ ul.categories li input[type="checkbox"] {
   position: absolute;
   opacity: 0;
 }
+
+#login{
+    padding: 23px 20px;
+}
