@@ -286,10 +286,7 @@ function loadCheckList() {
 	let htmlTemplateAllergies = '';
 	for (const allergy of allergies) {
 		htmlTemplateAllergies += /*html*/ `
-			<label class="checkContainer">
-				<input type="checkbox" id="allergy${allergy}" />${allergy}
-				<span class="checkmark"></span>
-			</label>
+		<li><input type="checkbox" id=allergy${allergy} value=${allergy}><label for=allergy${allergy}>${allergy}</label></li>
 		`;
 	}
 	document.querySelector('#foodCategories').innerHTML = htmlTemplateCategory;
