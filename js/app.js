@@ -260,10 +260,7 @@ function loadCheckList() {
 	let htmlTemplateCategory = '';
 	for (const cat of categories) {
 		htmlTemplateCategory += /*html*/ `
-			<label class="checkContainer">
-				<input type="checkbox" id="cat${cat}" />${cat}
-				<span class="checkmark"></span>
-			</label>
+		<li><input type="checkbox" id=cat${cat} value=${cat}><label for=cat${cat}>${cat}</label></li>
 		`;
 	}
 	let allergies = [
