@@ -78,7 +78,7 @@ footer {
 nav {
     display: grid;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
     height: 8vh;
@@ -121,7 +121,7 @@ body {
 .landing {
     display: grid;
     height: 60vh;
-    overflow-y: scroll;
+    
     justify-content: center;
     width: auto;
     border-radius: 50px;

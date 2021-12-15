@@ -82,12 +82,12 @@
 		</div>
 	</section>
 	<!-- Sign Up Page -->
-	<section id="signUpPage" class="page">
+	<section id="signUpPage" class="page" >
 		<!-- Logo -->
 		<img class="landImg" src="assets/tmp_loginSignUpImg.png" />
-		<div class="landing">
-			<h1 style="margin-bottom: 25px">Sign up</h1>
-			<form action="">
+		<div class="landing" style="height: 88vh">
+			<h1 style="margin-bottom: 25px; margin-left: 20px">Sign up</h1>
+			<form action="" style="margin-left: 20px">
 				<input class="inputFunction" type="text" id="signUpFirstName" placeholder="Enter First Name" />
 				<input class="inputFunction" type="text" id="signUpLastName" placeholder="Enter Last Name" />
 				<input class="inputFunction" type="text" id="signUpEmail" placeholder="Enter Email" />
@@ -106,10 +106,10 @@
 				</select>
 			</form>
 		</div>
-		<button class="loginSignupBtn" onclick="createUserEvent()">
+		<button class="loginSignupBtn" style="padding: 20px 20px; margin-top: 20px" onclick="createUserEvent()">
 			SignUp
 		</button>
-		<div class="signoptions" style="margin-top: 80px">
+		<div class="signoptions" style="margin-top: 50px">
 			<h3 id="smoler">
 				Already have an account? <a id="signlink" href="#/login">Log in</a>
 			</h3>
@@ -249,7 +249,7 @@
 			<h3>Add an image</h3>
 			<input type="file" accept="image/" name="fileToUpload" id="fileToUpload" placeholder="Image of the meal" />
 			<!-- Display Image -->
-			<img src="local/food/food29.jpg" alt="The recently uploaded image" id="clientImage" class="userUploadedImage"
+			<img alt="" id="clientImage" class="userUploadedImage"
 				alt="your uploaded food image" />
 			<!-- <input type="submit" name="action" value="upload" /> -->
 		</form>
@@ -263,7 +263,7 @@
 		<input type="checkbox" id="newProductIsFree" /><b>Free on the last day?</b>
 		<button class="defaultButton" onclick="AddNewFoodProduct()">
 			Share Meal
-		</button>
+		</button><br><br><br>
 	</section>
 	<!-- Bought Items -->
 	<section id="boughtItemsPage" class="page">
