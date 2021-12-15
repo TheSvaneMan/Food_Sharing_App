@@ -400,7 +400,7 @@ function appendFood(food) {
 	} else {
 		_catAndAllergyData.allergy.forEach((element) => {
 			htmlTemplateAllergy += /*html*/ `
-		<div class="foodAllergy">${element.allergyName}</div>
+		<div class="foodAllergy" style="color:#7c0b42; border-color: #7c0b42">${element.allergyName}</div>
 		`;
 		});
 	}
