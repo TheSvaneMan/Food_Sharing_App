@@ -78,7 +78,7 @@ class MySQL
 $mySQL = new MySQL();
 // Set the database
 // Database needs to be updated
-$mySQL->SetDatabase("food_share");
-$mySQL->SetServer("localhost", "root", "dennysek");
+$mySQL->SetDatabase("--PrivateDB--");
+$mySQL->SetServer("localhost", "root", "--UpdatePassword--");
 $mySQL->Connect();
 ?>
