@@ -36,6 +36,7 @@ function showSignUpPage() {
 function showHomePage() {
 	navigateTo('#/browse');
 	loadFood();
+	renderNavigation();
 }
 // Show Store Page
 function showMyStorePage() {
@@ -178,6 +179,8 @@ async function LogOut() {
 	const response = await fetch(_security + '?action=logOut', options);
 	// Wait for server response
 	const result = await response.json();
+	// Remove Navigation
+	removeNavigation();
 	// Show start page
 	showStartPage();
 }
@@ -931,16 +934,41 @@ function init() {
 	checkActiveUser();
 	if (location.hash === '#/') {
 		showStartPage();
+		removeNavigation();
 	} else if (location.hash === '#/browse') {
 		showHomePage();
+		renderNavigation();
+	} else if (location.hash === '#/signup') {
+		removeNavigation();
+	} else if (location.hash === '#/login') {
+		removeNavigation();
 	} else if (location.hash === '#/myStore') {
 		loadMyStoreFood();
+		renderNavigation();
 	} else if (location.hash === '#/addNewProduct') {
 		loadCheckList();
+		renderNavigation();
 	} else if (location.hash === '#/inbox') {
 		checkActiveUser();
 		loadMessages();
+		renderNavigation();
 	}
 }
+
+// ========== Render Navigation ==========
+function renderNavigation() {
+	let topNavigationComponent = document.getElementById('topNav');
+	let bottomNavigationComponent = document.getElementById('bottomNav');
+	topNavigationComponent.style.display = 'flex';
+	bottomNavigationComponent.style.display = 'grid';
+}
+
+function removeNavigation() {
+	let topNavigationComponent = document.getElementById('topNav');
+	let bottomNavigationComponent = document.getElementById('bottomNav');
+	topNavigationComponent.style.display = 'none';
+	bottomNavigationComponent.style.display = 'none';
+}
+
 
 init();

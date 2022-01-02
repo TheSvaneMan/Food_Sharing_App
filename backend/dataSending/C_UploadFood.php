@@ -27,8 +27,7 @@ class UploadFoodData
         // Once complete, add the food ID to the next functions
         // Search for recently uploaded meal and save ID
         // Wait 2 seconds here to confirm data parsed successfully
-        sleep(2);
-
+        // sleep(2);
         $findMeal = "SELECT food_id FROM food WHERE uniqueGeneratedID = '$uniqueID'";
         $foodObject = $this->mySQL->query($findMeal);
         $foodIDobject = $foodObject->fetch_object();

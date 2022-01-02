@@ -47,7 +47,7 @@ a {
 }
 
 #backArrowIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #40514E;
 }
 
@@ -55,7 +55,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    position: absolute;
+    position: fixed;
     margin: auto 0;
     top: 0;
     width: 100%;
@@ -67,21 +67,13 @@ a {
 }
 
 /* ------------- Footer ---------- */
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.6rem;
-    height: 2vh;
-}
-
 nav {
     display: grid;
     align-items: center;
     position: fixed;
     width: 100%;
     bottom: 0;
-    height: 8vh;
+    height: 5vh;
     background-color: var(--white);
     margin: auto 0;
     box-shadow: 0px 0px 20px -10px #40514e;
@@ -110,7 +102,7 @@ body {
 .page {
     display: none;
     height: 50vh;
-    width: 100%;
+    max-width: 680px;
     margin: 0 auto;
     background: var(--light-grey);
     animation: fadeIn 0.4s;
@@ -120,11 +112,10 @@ body {
 
 .landing {
     display: grid;
-    height: 60vh;
-    
+    height: 50vh;
     justify-content: center;
+    overflow-y: scroll;
     width: auto;
-    border-radius: 50px;
 }
 
 .loginform {
@@ -138,6 +129,10 @@ input {
 
 label {
     color: #40514e;
+}
+
+#loginPage {
+    height: 100vh;
 }
 
 #loginPage h1 {
@@ -223,7 +218,7 @@ h3 {
 
 .landImg {
     height: 100%;
-    width: 100vw;
+    max-width: 100%;
     object-fit: cover;
     border-radius: 0 0 40px 40px;
 }
@@ -315,7 +310,8 @@ hr.solid {
 .loginSignupBtn {
     display: flex;
     justify-content: center;
-    height: 72px;
+    align-items: center;
+    height: 48px;
     width: 270px;
     color: var(--white);
     margin: 0 auto;
@@ -379,11 +375,22 @@ hr.solid {
 
 #buybtn {
     margin-right: 10px;
-    padding: 5px 10px;
+    padding: 5px 5px;
     font-size: 1rem;
     font-weight: bold;
     border-radius: 15px;
     background-color: #11999e;
+}
+
+
+.feedbackButton {
+    border-style: none;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    border-radius: 15px;
+    background-color: #11999e;
+    box-shadow: rgb(180, 180, 180) 5px 5px 10px;
 }
 
 #messagebtn {
@@ -400,7 +407,7 @@ hr.solid {
 
 .logoptions {
     position: relative;
-    margin: 10vh 0 10vh;
+    margin-top: 2vh;
     text-align: center;
     color: #bababa;
 }
@@ -413,8 +420,8 @@ hr.solid {
 }
 
 .signoptions {
+    margin: 20px;
     position: relative;
-    margin-top: -10px;
     text-align: center;
     color: #bababa;
 }
@@ -492,7 +499,7 @@ hr.solid {
 }
 
 #messageIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #40514e;
 }
 
@@ -883,7 +890,12 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
 
 /* ------------- Add New Product Page Store ---------- */
 #addNewProductPage {
-    padding: 20px;
+    min-height: 100vh;
+}
+
+.productPage {
+    padding: 20px 10px 60px 10px;
+    overflow-y: scroll;
 }
 
 .userUploadedImage {
@@ -939,10 +951,10 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     padding-top: 20px;
 }
 
-.profile {
+.profilePicture {
     display: flex;
-    width: 100px;
-    height: 100px;
+    width: 72px;
+    height: 72px;
     margin: auto;
 }
 
@@ -963,9 +975,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
 .accountcard {
     display: grid;
     position: relative;
-    height: 150px;
+    height: 140px;
     margin: 10px;
-    width: 150px;
+    width: 140px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 3px 40px rgba(64, 81, 78, 0.1);
@@ -1193,12 +1205,14 @@ ul.categories {
     padding: 20px;
     margin-left: 0;
     margin-right: 10px;
-    
+
 }
-ul.categories li{
-  display: inline;
+
+ul.categories li {
+    display: inline;
 }
-ul.categories li label{
+
+ul.categories li label {
     display: inline-block;
     background-color: rgba(255, 255, 255, .9);
     border: 2px solid rgba(139, 139, 139, .3);
@@ -1234,20 +1248,20 @@ ul.categories li label::before {
     transition: transform .3s ease-in-out;
 }
 
-ul.categories li input[type="checkbox"]:checked + label::before {
+ul.categories li input[type="checkbox"]:checked+label::before {
     content: "\f00c";
     transform: rotate(-360deg);
     transition: transform .3s ease-in-out;
 }
 
-ul.categories li input[type="checkbox"]:checked + label {
+ul.categories li input[type="checkbox"]:checked+label {
     border: 2px solid #11999E;
     background-color: #11999E;
     color: #fff;
     transition: all .2s;
 }
 
-ul.allergens li input[type="checkbox"]:checked + label {
+ul.allergens li input[type="checkbox"]:checked+label {
     border: 2px solid #7c0b42;
     background-color: #7c0b42;
     color: #fff;
@@ -1255,13 +1269,14 @@ ul.allergens li input[type="checkbox"]:checked + label {
 }
 
 ul.categories li input[type="checkbox"] {
-  display: absolute;
-}
-ul.categories li input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
+    display: absolute;
 }
 
-#login{
+ul.categories li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+#login {
     padding: 23px 20px;
 }

@@ -18,7 +18,7 @@
 	<!-- Authentication Backend -->
 	<script src="backend/security/auth/B_Auth.php"></script>
 	<!-- Features -->
-	<div class="topNav">
+	<div id="topNav" class="topNav">
 		<button class="backButton" onclick="window.history.back()">
 			<i id="backArrowIcon" class="fa fa-arrow-left" aria-hidden="true"></i>
 		</button>
@@ -85,7 +85,7 @@
 	<section id="signUpPage" class="page" >
 		<!-- Logo -->
 		<img class="landImg" src="assets/tmp_loginSignUpImg.png" />
-		<div class="landing" style="height: 88vh">
+		<div class="landing">
 			<h1 style="margin-bottom: 25px; margin-left: 20px">Sign up</h1>
 			<form action="" style="margin-left: 20px">
 				<input class="inputFunction" type="text" id="signUpFirstName" placeholder="Enter First Name" />
@@ -109,7 +109,7 @@
 		<button class="loginSignupBtn" style="padding: 20px 20px; margin-top: 20px" onclick="createUserEvent()">
 			SignUp
 		</button>
-		<div class="signoptions" style="margin-top: 50px">
+		<div class="signoptions">
 			<h3 id="smoler">
 				Already have an account? <a id="signlink" href="#/login">Log in</a>
 			</h3>
@@ -208,7 +208,8 @@
 	</section>
 	<!-- Add New Product -->
 	<section id="addNewProductPage" class="page">
-		<h1>ADD NEW PRODUCT</h1>
+		<div class="productPage">
+				<h1>ADD NEW PRODUCT</h1>
 		<p>Name of the Meal</p>
 		<input type="text" class="inputFunction" id="newProductName" placeholder="Name of Meal" />
 		<p>Short Description of Food Contents</p>
@@ -263,7 +264,9 @@
 		<input type="checkbox" id="newProductIsFree" /><b>Free on the last day?</b>
 		<button class="defaultButton" onclick="AddNewFoodProduct()">
 			Share Meal
-		</button><br><br><br>
+		</button>
+		</div>
+	
 	</section>
 	<!-- Bought Items -->
 	<section id="boughtItemsPage" class="page">
@@ -277,7 +280,7 @@
 	<!-- Account Page -->
 	<section id="userAccountPage" class="page">
 		<h1 id="headline">My account</h1>
-		<img class="profile" src="assets/tmp_profilePic.png">
+		<img class="profilePicture" src="assets/tmp_profilePic.png">
 		<p class="userName">Penda Svane</p>
 		<section id="accounttemplate">
 			<article class="accountcard" id="leftcard">
@@ -307,9 +310,10 @@
 					<p id="cardtext">Log out</p>
 				</div>
 			</article>
-			<h4>Help us improve, send feedback. :)</h4>
-			<button id="buybtn"  onclick="OpenFeedback()">Send Feedback</button>
 		</section>
+		<hr>
+		<p>Help us improve, send feedback. :)</p>
+		<button class="feedbackButton"  onclick="OpenFeedback()">Send Feedback</button>
 	</section>
 	<!-- Inbox Page -->
 	<section id="inboxPage" class="page">
@@ -359,7 +363,7 @@
 		<div id="imagePredictions">
 		</div>
 	</section>
-	<nav>
+	<nav id="bottomNav" class="bottomNav">
 		<article class="icons">
 			<a href="#/browse" class="nav-link"><i class="fas fa-map"></i></a>
 			<a href="#/browse" class="nav-link" onclick="loadFood()"><i class="fas fa-search"></i></a>
